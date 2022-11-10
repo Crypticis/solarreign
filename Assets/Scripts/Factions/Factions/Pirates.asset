@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27347f935a5ed14a90eba240a56b077, type: 3}
+  m_Name: Pirates
+  m_EditorClassIdentifier: 
+  name: Pirates
+  description: The faction that comprises of all criminal scum.
+  icon: {fileID: 21300000, guid: 2bd4425bf606dd74982e446520c43faf, type: 3}
+  playerInFaction: 0
+  resources: 9999999
+  factionColor: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
+  materialSmooth: {fileID: 2100000, guid: 0c12261101fafa741904eae00d611c84, type: 2}
+  materialDetail: {fileID: 2100000, guid: 0c12261101fafa741904eae00d611c84, type: 2}
+  leader: {fileID: 0}
+  defaultLeader: {fileID: 0}
+  isPlayerLeader: 0
+  isPlayerFaction: 0
+  enemies:
+  - {fileID: 11400000, guid: e1c4fa296eac6264e9f305fd11847c3d, type: 2}
+  - {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}
+  - {fileID: 11400000, guid: d4900c0925d8c2f44b7f0ebbaf59455f, type: 2}
+  - {fileID: 11400000, guid: 0a3a068a97dace145b90f579a660c899, type: 2}
+  - {fileID: 11400000, guid: cf38f8528f068b941af4d495cf1540fc, type: 2}
+  allies: []
+  shipPrefabs:
+  - {fileID: 2299313712135079954, guid: d71e2278c1a46544281d2bcb3ac793a0, type: 3}
+  defaultEnemies:
+  - {fileID: 11400000, guid: e1c4fa296eac6264e9f305fd11847c3d, type: 2}
+  - {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}
+  - {fileID: 11400000, guid: d4900c0925d8c2f44b7f0ebbaf59455f, type: 2}
+  - {fileID: 11400000, guid: 0a3a068a97dace145b90f579a660c899, type: 2}
+  - {fileID: 11400000, guid: cf38f8528f068b941af4d495cf1540fc, type: 2}
+  defaultAllies: []

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc7467aa8a3ced40906c6c1a23da9da, type: 3}
+  m_Name: Planet Unit #7881
+  m_EditorClassIdentifier: 
+  itemSlots:
+  - item: {fileID: 11400000, guid: cdf6e7305903c9143ad60e3bd81ebf1f, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: 4a9bb2ca800463e4ea504db631ad03e9, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: 7b4be479c047bc64d9e5b1fbd70ebc26, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: eb025ffe035c5564bbf3ba1df2128e45, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: 95ca57cf56fa0e948a082ce94dea4715, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: 8eee856ff41cd854bb83eb6430c44ef3, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: 5414cb67ddd2d1d4b87e789ea605416b, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: f71c7967aaba9d94c810e4211a513b0f, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: ea0938ef3ad5c6a4aa1c724bb67041fd, type: 2}
+    amount: 100

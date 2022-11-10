@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b21cc928e3988458b03c94dc3b6f7a, type: 3}
+  m_Name: Player Stats
+  m_EditorClassIdentifier: 
+  skillpoints: 0
+  level:
+    experience: 0
+    currentLevel: 1
+    MAX_EXP: 13034431
+    MAX_LEVEL: 99
+  Piloting:
+    experience: 0
+    currentLevel: 1
+    MAX_EXP: 13034431
+    MAX_LEVEL: 99
+  Missile:
+    experience: 0
+    currentLevel: 1
+    MAX_EXP: 13034431
+    MAX_LEVEL: 99
+  Projectile:
+    experience: 0
+    currentLevel: 1
+    MAX_EXP: 13034431
+    MAX_LEVEL: 99
+  Energy:
+    experience: 0
+    currentLevel: 1
+    MAX_EXP: 13034431
+    MAX_LEVEL: 99
+  Trade:
+    experience: 0
+    currentLevel: 26
+    MAX_EXP: 13034431
+    MAX_LEVEL: 99
+  commandLevel: 0
+  tacticsLevel: 0
+  logisticsLevel: 0
+  productionLevel: 0
+  currentInFleet: 0
+  maxInFleet: 0
+  playerInventory: {fileID: 11400000, guid: 62a35b9237647e543bb1e60f290951fe, type: 2}
+  currentMoney: 5000
+  influence: 0
+  votes: 0
+  startingPiloting: 0
+  startingMissile: 0
+  startingProjectile: 0
+  startingEnergy: 0
+  startingTrade: 0
+  startingCommandLevel: 0
+  startingTacticsLevel: 0
+  startingLogisticsLevel: 0
+  startingProductionLevel: 0
+  selectedCharType: 0
+  relations: []

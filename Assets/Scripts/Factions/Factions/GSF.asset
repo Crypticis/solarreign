@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27347f935a5ed14a90eba240a56b077, type: 3}
+  m_Name: GSF
+  m_EditorClassIdentifier: 
+  name: GSF
+  description: The Galactic Security Federation. Initially a rogue colony of the
+    Zero-G Corp, the GSF, through rebellions and conquest, have established themselves
+    as an independent faction. They now rival the power of their previous overlords.
+  icon: {fileID: 21300000, guid: 75b5639b93518384e923e5b0ee29b3cf, type: 3}
+  playerInFaction: 0
+  resources: 0
+  factionColor: {r: 1, g: 0.21960784, b: 0.21960784, a: 1}
+  materialSmooth: {fileID: 2100000, guid: eaee0f11d6e5b7d4db338fedb688937e, type: 2}
+  materialDetail: {fileID: 2100000, guid: 9cc05dbbc727f27499fdb727a4d10523, type: 2}
+  leader: {fileID: 11400000, guid: fb1aad243f95bd8438a5dca0cf8e2460, type: 2}
+  defaultLeader: {fileID: 11400000, guid: fb1aad243f95bd8438a5dca0cf8e2460, type: 2}
+  isPlayerLeader: 0
+  isPlayerFaction: 0
+  enemies:
+  - {fileID: 11400000, guid: e8c20e08f3fdab54ba86ada2b8fcb64c, type: 2}
+  - {fileID: 11400000, guid: cf38f8528f068b941af4d495cf1540fc, type: 2}
+  - {fileID: 11400000, guid: e1c4fa296eac6264e9f305fd11847c3d, type: 2}
+  - {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}
+  allies: []
+  shipPrefabs:
+  - {fileID: 1417914465641304766, guid: d7e177ff3697b0049a984f05e206b2fe, type: 3}
+  - {fileID: 2135386946449723132, guid: d88e50bd95ad4474c8c3294116ae1106, type: 3}
+  - {fileID: 3856265074520615155, guid: 23d0681a2fedf3c469982f3311547cd6, type: 3}
+  - {fileID: 3856265074520615155, guid: 76295dfc89a4ad34cb424eda99fe5ab6, type: 3}
+  - {fileID: 1353217034014172864, guid: 3d9b006c01fb15b469e79233cbf5b152, type: 3}
+  defaultEnemies:
+  - {fileID: 11400000, guid: e8c20e08f3fdab54ba86ada2b8fcb64c, type: 2}
+  - {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}
+  defaultAllies: []

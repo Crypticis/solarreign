@@ -1,0 +1,312 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4761075585249085987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9084259795131505365}
+  - component: {fileID: 8034556193019279880}
+  - component: {fileID: 137180611}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9084259795131505365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761075585249085987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 172.18845, y: -224.99915, z: 107.00816}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8034556193019279880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761075585249085987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889828a20508819459b68f1da4cd8654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Be With Me
+    clip: {fileID: 8300000, guid: c6e1404368cde3c4093863618af9b678, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Come Back
+    clip: {fileID: 8300000, guid: 89ba84d2978837146a15ea91f6759afd, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: In Another Life
+    clip: {fileID: 8300000, guid: e6e6f2bbf48cb7f478a59748dd10cffa, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Outer World
+    clip: {fileID: 8300000, guid: 5c8eb0d04628d5446a2bab583a56b965, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Following Clues
+    clip: {fileID: 8300000, guid: 861cb45803e254145b207fbfb2fca1b2, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: No Way Out
+    clip: {fileID: 8300000, guid: 6ed5c47286e4c9e45a765464e30d3a70, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Cozy Afternoons
+    clip: {fileID: 8300000, guid: 8d7cfb9a7573d8048afc68f72f105334, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Evolving Cities
+    clip: {fileID: 8300000, guid: efb9f0c4cb6af2a469dea4f65578df8c, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Forest Bathing
+    clip: {fileID: 8300000, guid: 2c5ab53e3e1def04db3c3b5dd1def7d9, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Fugue For One Synthetic Heart
+    clip: {fileID: 8300000, guid: a0da6e1ea58b3a640bfe567810804aa4, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Ground Control
+    clip: {fileID: 8300000, guid: e1654868671b0be40a7634062807b2aa, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: March Of The Waking Lights
+    clip: {fileID: 8300000, guid: 55c0fd8c287d9f34fb849aafabf1f378, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Night Time
+    clip: {fileID: 8300000, guid: 2e39fe8c80dcedf4d8e76a399885a3b8, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Slightly Across
+    clip: {fileID: 8300000, guid: 1a9324eb153f0de4e822b144c8c54c1b, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: The Longest Year
+    clip: {fileID: 8300000, guid: 884eb68ea6755ec4893b3aadbdeed880, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Endless Space
+    clip: {fileID: 8300000, guid: e9fcd631d0d84a845937c18287a4c3c7, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Horizon
+    clip: {fileID: 8300000, guid: 85d365bd0407e654180541f3356d4256, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: New Worlds
+    clip: {fileID: 8300000, guid: e87b8016c1786824fbee48181fe2395e, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Undiscovered
+    clip: {fileID: 8300000, guid: 3716a5bb1e259614da0e0b99bae155f6, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Andromeda
+    clip: {fileID: 8300000, guid: 8c20552e4f02b4443a57d5ff31c0af02, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  battleMusic:
+  - name: Investigations
+    clip: {fileID: 8300000, guid: 7841ddb526af33b4ab2c0155fe8b6972, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: The Escape Room
+    clip: {fileID: 8300000, guid: 8cde540ee33aad948a2b8211955da720, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: The Jigsaw
+    clip: {fileID: 8300000, guid: 45e25e37280fd9c42aa3719f9a29bdbd, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Nebula
+    clip: {fileID: 8300000, guid: 80fff25630c6f6f4db86ca6c100ae8e4, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Eclipse
+    clip: {fileID: 8300000, guid: 7a37f93962dc2584f9a602dfdd0f380a, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Infiltration
+    clip: {fileID: 8300000, guid: 4f75c6f5dd48bba489e02355c953f0b8, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Vortex
+    clip: {fileID: 8300000, guid: c209e783c4ea3124cb26648ddf066040, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Citadel
+    clip: {fileID: 8300000, guid: 8b432b6cadff7664db7347cc80346361, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 6975528458097786105, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+--- !u!114 &137180611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761075585249085987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dfe624a2be4a74bb26f210636221fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

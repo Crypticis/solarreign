@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ally
+  - Enemy
+  - Celestial Body
+  - Pirate
+  - Settlement
+  - NPC
+  - Neutral
+  - Environment
+  - _NPC
+  - BOT
+  - Warp Gate
+  - Warp Target
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Ground
+  - Non-Clickable
+  - PostProcessing
+  - Obstacles
+  - 
+  - Unit
+  - Target
+  - Weapon
+  - Projectile
+  - PlayerCollisionOnly
+  - Background
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
