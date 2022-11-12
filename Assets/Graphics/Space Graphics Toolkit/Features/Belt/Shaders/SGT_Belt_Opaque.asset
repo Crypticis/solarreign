@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Hidden/SgtBelt_Opaque
   target: {fileID: 4800000, guid: fadba8098476bba46baa3bfdb7c60189, type: 3}
   variantHash: 140561774
-  projectHash: -1858252020
+  projectHash: -1898616448
   variants:
   - Pipe: 0
     Code: "//<HASH>1851415410</HASH>\n////////////////////////////////////////\n//

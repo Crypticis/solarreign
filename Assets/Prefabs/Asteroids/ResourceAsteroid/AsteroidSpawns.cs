@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AsteroidSpawns : RandomAreaSpawner
 {
-    public Transform[] prefabNeutral;
+    public Transform[] prefab;
     public Transform[] prefabRich;
-    public Transform[] prefabVRich;
+    public Transform[] prefabPure;
 
     public override void CreateAsteroid()
     {
@@ -59,68 +59,76 @@ public class AsteroidSpawns : RandomAreaSpawner
         {
             case 5:
 
-                num = Random.Range(1, 10);
+                num = Random.Range(1, 100);
 
-                if (num > 9)
+                if (num <= 5)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabNeutral.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                } 
+                else if (num > 5 && num <= 20)
+                {
+                    t = Instantiate(base.prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
                 }
 
                 break;
 
             case 4:
 
-                num = Random.Range(1, 10);
+                num = Random.Range(1, 100);
 
-                if (num > 8)
+                if (num <= 7)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabNeutral.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                }
+                else if (num > 7 && num <= 23)
+                {
+                    t = Instantiate(base.prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
                 }
-
                 break;
 
             case 3:
 
-                num = Random.Range(1, 10);
+                num = Random.Range(1, 100);
 
-                if (num > 8)
+                if (num <= 9)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
                 }
-                else if (num > 2)
+                else if (num > 9 && num <= 26)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabNeutral.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
                 }
-
                 break;
 
             case 2:
 
                 num = Random.Range(1, 10);
 
-                if (num > 9)
+                num = Random.Range(1, 100);
+
+                if (num <= 11)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabVRich.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
                 }
-                else if (num > 4)
+                else if (num > 11 && num <= 29)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabNeutral.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
                 }
 
                 break;
@@ -129,36 +137,38 @@ public class AsteroidSpawns : RandomAreaSpawner
 
                 num = Random.Range(1, 10);
 
-                if (num > 9)
+                num = Random.Range(1, 100);
+
+                if (num <= 13)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabVRich.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
                 }
-                else if (num > 3)
+                else if (num > 13 && num <= 32)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabNeutral.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
                 }
 
                 break;
 
             case 0:
 
-                num = Random.Range(1, 10);
+                num = Random.Range(1, 100);
 
-                if(num > 8)
+                if (num <= 15)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabVRich.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
                 }
-                else if(num > 2)
+                else if (num > 15 && num <= 35)
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefabRich.Length)], spawnPos, spawnRot) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(prefab[Random.Range(0, prefabNeutral.Length)], spawnPos, spawnRot) as Transform;
+                    t = Instantiate(base.prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
                 }
 
                 break;
