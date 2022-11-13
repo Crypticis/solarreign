@@ -62,11 +62,11 @@ public class RandomAreaSpawner : MonoBehaviour
         if (prefab != null)
         {
             for (int i = 0; i < asteroidCount; i++)
-                CreateAsteroid();
+                CreateAsteroidAndNodes();
         }
     }
 
-    public virtual void CreateAsteroid()
+    public virtual void CreateAsteroidAndNodes()
     {
         Vector3 spawnPos = Vector3.zero;
          
@@ -130,6 +130,6 @@ public class RandomAreaSpawner : MonoBehaviour
 
     public void CreateNewAstroid()
     {
-        CreateAsteroid();
+        CreateAsteroidAndNodes();
     }
 }

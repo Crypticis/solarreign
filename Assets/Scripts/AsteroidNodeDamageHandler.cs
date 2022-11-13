@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AsteroidNodeDamageHandler : DamageHandler
 {
-    public LootTable itemRewards;
-    public Inventory inventory;
+    [SerializeField]
+    private LootTable itemRewards;
+    [SerializeField]
+    private Inventory inventory;
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class AsteroidNodeDamageHandler : DamageHandler
             // Destroy Asteroid if no nodes remain
             if ((this.transform.parent.gameObject.transform.childCount) - 1 == 0)
             {
-                Destroy(this.transform.parent.gameObject);
+                Destroy(this.transform.parent.gameObject, 5f);
                 Ticker.Ticker.AddItem("This asteroid has been depleted");
             }
             // Destroy Node

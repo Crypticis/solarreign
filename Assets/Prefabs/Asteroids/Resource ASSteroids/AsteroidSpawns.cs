@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class AsteroidSpawns : RandomAreaSpawner
 {
-    public Transform[] prefabNeutral;
-    public Transform[] prefabRich;
-    public Transform[] prefabPure;
-    public Transform prefabNodeNeutral;
-    public Transform prefabNodeRich;
-    public Transform prefabNodePure;
+    [SerializeField]
+    private Transform[] prefabNeutral;
+    [SerializeField]
+    private Transform[] prefabRich;
+    [SerializeField]
+    private Transform[] prefabPure;
+    [SerializeField]
+    private Transform prefabNodeNeutral;
+    [SerializeField]
+    private Transform prefabNodeRich;
+    [SerializeField]
+    private Transform prefabNodePure;
 
-    public override void CreateAsteroid()
+    public override void CreateAsteroidAndNodes()
     {
         Vector3 spawnPos = Vector3.zero;
         Vector3 direction;
@@ -57,7 +63,7 @@ public class AsteroidSpawns : RandomAreaSpawner
         // Create the object and set the parent to this gameobject for scene organization.
         // Switch case for NavigationManager danger rating.
 
-        // 
+        #region Spawning Asteroids
         Transform t = null;
         Transform prefab = null;
         int rand;
@@ -198,7 +204,9 @@ public class AsteroidSpawns : RandomAreaSpawner
 
         t.SetParent(transform);
         asteroids.Add(t.gameObject);
+        #endregion
 
+        #region Scaling and Rigidbody
         // Apply scaling.
         float scale = Random.Range(scaleRange.x, scaleRange.y);
         t.localScale = Vector3.one * scale;
@@ -213,7 +221,9 @@ public class AsteroidSpawns : RandomAreaSpawner
             r.AddRelativeForce(Random.insideUnitSphere * velocity, ForceMode.VelocityChange);
             r.AddRelativeTorque(Random.insideUnitSphere * angularVelocity * Mathf.Deg2Rad, ForceMode.VelocityChange);
         }
+        #endregion
 
+        #region Node Spawner
         // Spawns 2 - 5 Nodes on asteroid
         rand = Random.Range(2, 4);
         // Determines what type of node will spawn on the asteroid
@@ -224,7 +234,7 @@ public class AsteroidSpawns : RandomAreaSpawner
 
         for (int i = 0; i < rand; i++)
         {
-            // Determines node spawn based on asteroid type
+            // Spawns node type based on rand2
             if (prefabPure.Contains(prefab))
             {
                 if (rand2 <= 60)
@@ -274,5 +284,6 @@ public class AsteroidSpawns : RandomAreaSpawner
             Physics.Raycast(spawnPos + direction, -direction, out RaycastHit hit);
             Instantiate(node, hit.point, Quaternion.identity, t).transform.up = hit.normal;
         }
+        #endregion
     }
 }
