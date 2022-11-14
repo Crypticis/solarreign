@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8120785721557065641}
   - component: {fileID: -1812694124283893714}
   - component: {fileID: 4140981471530819073}
+  - component: {fileID: 6317320443210096171}
   m_Layer: 0
   m_Name: SM_Env_Asteroid_Rock_03 2
   m_TagString: Enemy
@@ -150,3 +151,16 @@ MonoBehaviour:
   recruitmentCost: 0
   scanned: 0
   requiredTimeToScan: 5
+--- !u!114 &6317320443210096171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020409335811022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14bf81e8766c394d83ce83543970c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1

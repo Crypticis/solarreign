@@ -44,7 +44,6 @@ public class AsteroidNodeDamageHandler : DamageHandler
             // Destroy Node
             else
             {
-                Ticker.Ticker.AddItem(string.Format("This Asteroid has <color=#0000FF>{0}</color> nodes left", (this.transform.parent.gameObject.transform.childCount - 1)));
                 Destroy(gameObject);
             }
         }

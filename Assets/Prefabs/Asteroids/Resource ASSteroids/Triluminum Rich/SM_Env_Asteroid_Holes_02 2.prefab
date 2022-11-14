@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5751462775683783974}
   - component: {fileID: -8437553969863867816}
   - component: {fileID: -3916567878953420364}
+  - component: {fileID: 3794660546825674338}
   m_Layer: 0
   m_Name: SM_Env_Asteroid_Holes_02 2
   m_TagString: Enemy
@@ -150,3 +151,16 @@ MonoBehaviour:
   recruitmentCost: 0
   scanned: 0
   requiredTimeToScan: 5
+--- !u!114 &3794660546825674338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887108158195998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14bf81e8766c394d83ce83543970c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1

@@ -49,7 +49,8 @@ public class RandomAreaSpawner : MonoBehaviour
 
     public SphereCollider sphereCollider;
 
-    public List<GameObject> asteroids = new List<GameObject>();
+    // public List<GameObject> asteroids = new List<GameObject>();
+
 
     // Use this for initialization
     void Start()
@@ -62,11 +63,11 @@ public class RandomAreaSpawner : MonoBehaviour
         if (prefab != null)
         {
             for (int i = 0; i < asteroidCount; i++)
-                CreateAsteroidAndNodes();
+                CreateAsteroid();
         }
     }
 
-    public virtual void CreateAsteroidAndNodes()
+    public virtual void CreateAsteroid()
     {
         Vector3 spawnPos = Vector3.zero;
          
@@ -110,8 +111,6 @@ public class RandomAreaSpawner : MonoBehaviour
         Transform t = Instantiate(prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
         t.SetParent(transform);
 
-        asteroids.Add(t.gameObject);
-
         // Apply scaling.
         float scale = Random.Range(scaleRange.x, scaleRange.y);
         t.localScale = Vector3.one * scale;
@@ -130,6 +129,6 @@ public class RandomAreaSpawner : MonoBehaviour
 
     public void CreateNewAstroid()
     {
-        CreateAsteroidAndNodes();
+        CreateAsteroid();
     }
 }
