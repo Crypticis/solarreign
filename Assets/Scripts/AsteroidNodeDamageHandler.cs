@@ -37,6 +37,7 @@ public class AsteroidNodeDamageHandler : DamageHandler
             // Destroy Asteroid if no nodes remain
             if ((this.transform.parent.gameObject.transform.childCount) - 1 == 0)
             {
+                Destroy(gameObject);
                 Destroy(this.transform.parent.gameObject, 5f);
                 Ticker.Ticker.AddItem("This asteroid has been depleted");
             }

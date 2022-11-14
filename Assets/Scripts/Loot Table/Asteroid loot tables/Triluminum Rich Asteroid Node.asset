@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ea1018a2afe96478e65ae0a09889a4, type: 3}
   m_Name: Triluminum Rich Asteroid Node
   m_EditorClassIdentifier: 
-  rolls: 5
+  rolls: 1
   items:
   - item: {fileID: 11400000, guid: 62e69c99f0d38924b9022053f4d0110c, type: 2}
-    chance: 90
+    chance: 95
     minAmt: 4
     maxAmt: 7
   - item: {fileID: 11400000, guid: 64922c5f1b62a18469770359d692d059, type: 2}
     chance: 10
-    minAmt: 1
+    minAmt: 0
     maxAmt: 3
   - item: {fileID: 11400000, guid: b14af55e0b2b11e42af673e943dacc6b, type: 2}
     chance: 12
-    minAmt: 2
+    minAmt: 0
     maxAmt: 4

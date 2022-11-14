@@ -25,7 +25,7 @@ public class LootTable : ScriptableObject
         int amountToAdd = 0;
         float roll;
 
-        // Check if item array has items
+        // Check if item array exists and has items
         if (!items.IsNullOrEmpty())
         {
             // Generate values to fill return array for use ingame 
@@ -41,7 +41,7 @@ public class LootTable : ScriptableObject
                     }
                 }
 
-                // Add item and reset amount to add to zero for next item
+                // Add item and reset amounttoadd to zero for next item
                 if (amountToAdd > 0)
                 {
                     inventory.AddItem(items[i].item, amountToAdd);

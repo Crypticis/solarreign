@@ -28,7 +28,7 @@ public class RandomAreaSpawner : MonoBehaviour
     [Tooltip("Distance from the center of the gameobject that prefabs will spawn")]
     public float range = 1000.0f;
 
-    public float subtractiveSphere = 100f;
+    public float subtractiveSphere = 100.0f;
 
     [Tooltip("Should prefab have a random rotation applied to it.")]
     public bool randomRotation = true;
