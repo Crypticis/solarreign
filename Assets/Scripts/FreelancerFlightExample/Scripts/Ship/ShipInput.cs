@@ -43,22 +43,26 @@ namespace FLFlight
         Vector3 gotoPos;
 
         public WarpJump warp;
+        public bool controlsEnabled = true;
         private void Update()
         {
-            strafe = Input.GetAxis("Horizontal");
-
             SetStickCommandsUsingAutopilot();
 
-            UpdateMouseWheelThrottle();
+            //UpdateMouseWheelThrottle();
             //UpdateKeyboardThrottle(KeyCode.W, KeyCode.S);
 
-            if (Input.GetKey(KeyCode.W))
+            if (controlsEnabled)
             {
-                throttle = Mathf.MoveTowards(throttle, 1, Time.deltaTime * 5f);
-            }
-            else if(!warp.isWarping)
-            {
-                throttle = Mathf.MoveTowards(throttle, 0, Time.deltaTime * 5f);
+                strafe = Input.GetAxis("Horizontal");
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    throttle = Mathf.MoveTowards(throttle, 1, Time.deltaTime * 5f);
+                }
+                else if (!warp.isWarping)
+                {
+                    throttle = Mathf.MoveTowards(throttle, 0, Time.deltaTime * 5f);
+                }
             }
         }
 

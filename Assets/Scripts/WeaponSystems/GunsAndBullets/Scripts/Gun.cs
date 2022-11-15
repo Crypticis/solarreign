@@ -138,6 +138,8 @@ namespace GNB
 
         private void Awake()
         {
+            ReloadAmmo();
+
             Rigidbody = GetComponentInParent<Rigidbody>();
             HasRigidbody = Rigidbody != null;
 
@@ -328,6 +330,7 @@ namespace GNB
                 firePointIndex += 1;
 
                 AmmoCount -= 1;
+                Debug.Log(AmmoCount);
             }
             else
             {
@@ -352,6 +355,7 @@ namespace GNB
 
             var bullet = Instantiate(BulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
             bullet.shooter = transform.root.gameObject;
+            bullet.gun = this;
             bullet.GetComponent<Bullet>().bulletDamage += damageBonus;
 
             if (IgnoreOwnRigidbody && HasRigidbody)
