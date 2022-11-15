@@ -19,10 +19,10 @@ MonoBehaviour:
     minAmt: 4
     maxAmt: 7
   - item: {fileID: 11400000, guid: 64922c5f1b62a18469770359d692d059, type: 2}
-    chance: 10
+    chance: 15
     minAmt: 0
     maxAmt: 3
   - item: {fileID: 11400000, guid: b14af55e0b2b11e42af673e943dacc6b, type: 2}
-    chance: 12
+    chance: 20
     minAmt: 0
     maxAmt: 4

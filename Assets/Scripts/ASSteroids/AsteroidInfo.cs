@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteroidInfo : MonoBehaviour
 {
-    public readonly AsteroidType type;
+    public AsteroidType type;
 }
 
 public enum AsteroidType

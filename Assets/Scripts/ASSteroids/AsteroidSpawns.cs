@@ -23,7 +23,7 @@ public class AsteroidSpawns : RandomAreaSpawner
         // INITIALIZE vectors
         Vector3 spawnPos = Vector3.zero;
         // initialize position for asteroid to null until created
-        Transform t = null;
+        Transform asteroid = null;
         // Random number needed for chances later in method
         int rand;
 
@@ -74,15 +74,15 @@ public class AsteroidSpawns : RandomAreaSpawner
 
                 if (rand <= 5)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 } 
                 else if (rand > 5 && rand <= 20)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 break;
 
@@ -92,15 +92,15 @@ public class AsteroidSpawns : RandomAreaSpawner
 
                 if (rand <= 7)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else if (rand > 7 && rand <= 23)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 break;
 
@@ -110,15 +110,15 @@ public class AsteroidSpawns : RandomAreaSpawner
 
                 if (rand <= 9)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else if (rand > 9 && rand <= 26)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
 
                 break;
@@ -129,15 +129,15 @@ public class AsteroidSpawns : RandomAreaSpawner
 
                 if (rand <= 11)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else if (rand > 11 && rand <= 29)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
 
                 break;
@@ -148,15 +148,15 @@ public class AsteroidSpawns : RandomAreaSpawner
 
                 if (rand <= 13)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else if (rand > 13 && rand <= 32)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
 
                 break;
@@ -167,30 +167,27 @@ public class AsteroidSpawns : RandomAreaSpawner
 
                 if (rand <= 15)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else if (rand > 15 && rand <= 35)
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
                 else
                 {
-                    t = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot) as Transform;
+                    asteroid = Instantiate(base.prefab[Random.Range(0, prefabPure.Length)], spawnPos, spawnRot, transform) as Transform;
                 }
 
                 break;
         }
-
-        t.SetParent(transform);
         #endregion
         #region Scaling and Rigidbody
         // Apply scaling.
         float scale = Random.Range(scaleRange.x, scaleRange.y);
-        t.localScale = Vector3.one * scale;
+        asteroid.localScale = Vector3.one * scale;
 
         // Apply rigidbody values.
-        Rigidbody r = t.GetComponent<Rigidbody>();
-        if (r)
+        if (asteroid.TryGetComponent<Rigidbody>(out Rigidbody r))
         {
             if (scaleMass)
                 r.mass *= scale * scale * scale;
@@ -199,9 +196,7 @@ public class AsteroidSpawns : RandomAreaSpawner
             r.AddRelativeTorque(Random.insideUnitSphere * angularVelocity * Mathf.Deg2Rad, ForceMode.VelocityChange);
         }
         #endregion
-
-        SpawnNodes(t);
-        
+        SpawnNodes(asteroid);
     }
 
     private void SpawnNodes(Transform parentAsteroid)
@@ -213,65 +208,63 @@ public class AsteroidSpawns : RandomAreaSpawner
         // Random nums for node spawn chance and type
         int rand = Random.Range(2, 5);
         int rand2 = Random.Range(0, 100);
-
-        if (parentAsteroid.TryGetComponent<Rigidbody>(out Rigidbody r))
-        {
-            direction = r.velocity = Random.onUnitSphere * 150;
-        }
-
+        
         if (parentAsteroid.TryGetComponent<AsteroidInfo>(out AsteroidInfo info))
         {
-        for (int i = 0; i < rand; i++)
-        {
-            switch (info.type)
+            for (int i = 0; i < rand; i++)
             {
-                case (AsteroidType.pure):
-                    if (rand2 <= 60)
-                    {
-                        node = prefabNodePure;
-                    }
-                    else
-                    {
-                        node = prefabNodeRich;
-                    }
-                    break;
-                case (AsteroidType.rich):
-                    if (rand2 <= 20)
-                    {
-                        node = prefabNodePure;
-                    }
-                    else if (rand2 > 20 && rand2 < 75)
-                    {
-                        node = prefabNodeRich;
-                    }
-                    else
-                    {
-                        node = prefabNodeNeutral;
-                    }
-                    break;
-                case (AsteroidType.neutral):
-                    if (rand2 <= 5)
-                    {
-                        node = prefabNodePure;
-                    }
-                    else if (rand2 > 5 && rand2 <= 25)
-                    {
-                        node = prefabNodeRich;
-                    }
-                    else
-                    {
-                        node = prefabNodeNeutral;
-                    }
-                    break;
-            }
+                switch (info.type)
+                {
+                    case (AsteroidType.pure):
+                        if (rand2 <= 60)
+                        {
+                            node = prefabNodePure;
+                        }
+                        else
+                        {
+                            node = prefabNodeRich;
+                        }
+                        break;
+                    case (AsteroidType.rich):
+                        if (rand2 <= 20)
+                        {
+                            node = prefabNodePure;
+                        }
+                        else if (rand2 > 20 && rand2 < 75)
+                        {
+                            node = prefabNodeRich;
+                        }
+                        else
+                        {
+                            node = prefabNodeNeutral;
+                        }
+                        break;
+                    case (AsteroidType.neutral):
+                        if (rand2 <= 5)
+                        {
+                            node = prefabNodePure;
+                        }
+                        else if (rand2 > 5 && rand2 <= 25)
+                        {
+                            node = prefabNodeRich;
+                        }
+                        else
+                        {
+                            node = prefabNodeNeutral;
+                        }
+                        break;
+                }
 
-            /* Creates Sphere of radius 150 around asteroid, plots random point on asteroid,
-                * casts ray out the back in to collide with asteroid and places node on collision point
-                */
-                
-            Physics.Raycast(parentAsteroid.position + direction, -direction, out RaycastHit hit);
-            Instantiate(node, hit.point, Quaternion.identity, parentAsteroid).transform.up = hit.normal;
-        }
+                /* Creates Sphere of radius 150 around asteroid, plots random point on asteroid,
+                    * casts ray out the back in to collide with asteroid and places node on collision point
+                    */
+                if (parentAsteroid.TryGetComponent<Rigidbody>(out Rigidbody r))
+                {
+                    direction = r.velocity = Random.onUnitSphere * 150;
+                    Physics.Raycast(parentAsteroid.position + direction, -direction, out RaycastHit hit);
+                    Instantiate(node, hit.point, Quaternion.identity, parentAsteroid).transform.up = hit.normal;
+                }
+            }
         }
     }
 }

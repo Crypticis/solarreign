@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8944334645092961008}
   - component: {fileID: -5402099574087411578}
   - component: {fileID: -851296185954179125}
-  - component: {fileID: 4219602223872042290}
+  - component: {fileID: 5059967597740111021}
   m_Layer: 0
   m_Name: SM_Env_Asteroid_Holes_01 2
   m_TagString: Enemy
@@ -151,7 +151,7 @@ MonoBehaviour:
   recruitmentCost: 0
   scanned: 0
   requiredTimeToScan: 5
---- !u!114 &4219602223872042290
+--- !u!114 &5059967597740111021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
