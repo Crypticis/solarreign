@@ -9,6 +9,7 @@ public enum WeaponType
     missile,
     healing,
     laser,
+    mining,
 }
 
 public class WeaponInfo : MonoBehaviour

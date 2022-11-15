@@ -5,18 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Loot Table", menuName = "Loot/Loot Table")]
 public class LootTable : ScriptableObject
 {
-    public int rolls; // How many times loot table will be rolled.
-    
+    [SerializeField]
+    private int rolls; // How many times loot table will be rolled.
+
     [System.Serializable]
-    public struct Items
+    private struct Items
     {
         public Item item;
         public float chance;
-        public int minAmt;
-        public int maxAmt;
+        public int minAmt, maxAmt;
     }
 
-    public Items[] items;
+    [SerializeField]
+    private Items[] items;
 
     public void RollTableToInventory(Inventory inventory)
     {
@@ -24,8 +25,8 @@ public class LootTable : ScriptableObject
         int amountToAdd = 0;
         float roll;
 
-        // Check if both arrays aren't null and align
-        if (items.Length > 0)
+        // Check if item array exists and has items
+        if (!items.IsNullOrEmpty())
         {
             // Generate values to fill return array for use ingame 
             for (int i = 0; i < items.Length; i++)
@@ -40,7 +41,7 @@ public class LootTable : ScriptableObject
                     }
                 }
 
-                // Add item and reset amount to add to zero for next item
+                // Add item and reset amounttoadd to zero for next item
                 if (amountToAdd > 0)
                 {
                     inventory.AddItem(items[i].item, amountToAdd);

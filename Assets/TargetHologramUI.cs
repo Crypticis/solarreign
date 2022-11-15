@@ -32,7 +32,10 @@ public class TargetHologramUI : MonoBehaviour
                     if (playerTargeting.target.GetComponent<ScannableHUDElements>().scanned)
                     {
                         nameText.text = playerTargeting.target.GetComponent<HUDElements>().name;
-                        healthText.text = (playerTargeting.target.GetComponent<DamageHandler>().health.ToString("#") + "/" + playerTargeting.target.GetComponent<DamageHandler>().maxHealth.ToString("#"));
+                        if (playerTargeting.target.GetComponent<DamageHandler>())
+                        {
+                            healthText.text = (playerTargeting.target.GetComponent<DamageHandler>().health.ToString("#") + "/" + playerTargeting.target.GetComponent<DamageHandler>().maxHealth.ToString("#"));
+                        }
                     }
                     else
                     {
@@ -45,8 +48,12 @@ public class TargetHologramUI : MonoBehaviour
                     healthText.text = (playerTargeting.target.GetComponent<DamageHandler>().health.ToString("#") + "/" + playerTargeting.target.GetComponent<DamageHandler>().maxHealth.ToString("#"));
                 }
             }
+            else
+            {
+                UpdateTargetUI();
+            }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.25f);
         }
     }
 

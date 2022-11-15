@@ -1,6 +1,4 @@
 using GNB;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShipInfo : MonoBehaviour
@@ -19,17 +17,21 @@ public class ShipInfo : MonoBehaviour
         {
             weaponModules[i].weapon = info.weapons[i];
 
-            if(info.weapons[i].weaponType == WeaponType.missile)
+            if (info.weapons[i].weaponType == WeaponType.missile)
             {
                 weaponModules[i].SetMissile();
             }
-            else if(info.weapons[i].weaponType == WeaponType.energy)
+            else if (info.weapons[i].weaponType == WeaponType.energy)
             {
                 weaponModules[i].SetBlaster();
             }
-            else if(info.weapons[i].weaponType == WeaponType.laser)
+            else if (info.weapons[i].weaponType == WeaponType.laser)
             {
                 weaponModules[i].SetLaser();
+            }
+            else if (info.weapons[i].weaponType == WeaponType.mining)
+            {
+                weaponModules[i].SetMining();
             }
         }
 

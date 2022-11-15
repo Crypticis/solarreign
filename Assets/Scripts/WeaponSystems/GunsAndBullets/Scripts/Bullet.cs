@@ -11,13 +11,14 @@ namespace GNB
         [SerializeField] public float bulletDamage;
 
         public GameObject shooter;
+        public Gun gun;
 
         //
         [Header("Prefabs")]
         [Tooltip("Effect played when the bullet impacts something.")]
-        [SerializeField] private ParticleSystem ImpactFXPrefab = null;
+        [SerializeField] public ParticleSystem ImpactFXPrefab = null;
         [Tooltip("Effect played when the bullet explodes.")]
-        [SerializeField] private ParticleSystem ExplodeFXPrefab = null;
+        [SerializeField] public ParticleSystem ExplodeFXPrefab = null;
         [Tooltip("Any trails listed here will be cleaned up nicely on the bullet's destruction. " +
             "Used to prevent unsightly deleted trails.")]
         [SerializeField] private List<TrailRenderer> ChildTrails = new List<TrailRenderer>();
@@ -170,7 +171,7 @@ namespace GNB
         /// <summary>
         /// Explodes the bullet. Typically used for air bursting explosive weapons.
         /// </summary>
-        public void ExplodeBullet(Vector3 explodePosition, Quaternion explodeRotation)
+        public virtual void ExplodeBullet(Vector3 explodePosition, Quaternion explodeRotation)
         {
             if (ExplodeFXPrefab != null)
                 Instantiate(ImpactFXPrefab, explodePosition, explodeRotation).Play();
@@ -184,7 +185,7 @@ namespace GNB
         /// <summary>
         /// Destroys the bullet as if it hit something.
         /// </summary>
-        public void DestroyBulletFromImpact(Vector3 impactedPoint, Quaternion impactRotation)
+        public virtual void DestroyBulletFromImpact(Vector3 impactedPoint, Quaternion impactRotation)
         {
             if (ImpactFXPrefab != null)
                 Instantiate(ImpactFXPrefab, impactedPoint, impactRotation).Play();
@@ -238,7 +239,7 @@ namespace GNB
             }
         }
 
-        private void HandleImpactDamage(RaycastHit hitInfo)
+        public virtual void HandleImpactDamage(RaycastHit hitInfo)
         {
             if (hitInfo.collider.GetComponent<DamageHandler>())
             {
@@ -246,7 +247,7 @@ namespace GNB
             }
         }
 
-        private void HandleExplosionDamage(Vector3 explodePos)
+        public void HandleExplosionDamage(Vector3 explodePos)
         {
             // ==========================================================
             // TODO: Bullet exploded, insert damage handling here!
@@ -344,7 +345,7 @@ namespace GNB
             return (hitSomething, closestHit);
         }
 
-        private void CleanUpTrails()
+        public void CleanUpTrails()
         {
             foreach (var trail in ChildTrails)
             {

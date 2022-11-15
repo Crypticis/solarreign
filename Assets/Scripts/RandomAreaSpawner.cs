@@ -28,7 +28,7 @@ public class RandomAreaSpawner : MonoBehaviour
     [Tooltip("Distance from the center of the gameobject that prefabs will spawn")]
     public float range = 1000.0f;
 
-    public float subtractiveSphere = 100f;
+    public float subtractiveSphere = 100.0f;
 
     [Tooltip("Should prefab have a random rotation applied to it.")]
     public bool randomRotation = true;
@@ -48,8 +48,6 @@ public class RandomAreaSpawner : MonoBehaviour
     public bool scaleMass = true;
 
     public SphereCollider sphereCollider;
-
-    public List<GameObject> asteroids = new List<GameObject>();
 
     // Use this for initialization
     void Start()
@@ -109,8 +107,6 @@ public class RandomAreaSpawner : MonoBehaviour
         // Create the object and set the parent to this gameobject for scene organization.
         Transform t = Instantiate(prefab[Random.Range(0, prefab.Length)], spawnPos, spawnRot) as Transform;
         t.SetParent(transform);
-
-        asteroids.Add(t.gameObject);
 
         // Apply scaling.
         float scale = Random.Range(scaleRange.x, scaleRange.y);

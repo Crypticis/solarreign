@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fighter I
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 11400000, guid: ea2e106a2c6d1454cad365782dbc736e, type: 2}
+  - {fileID: 11400000, guid: 2ff0c71aecd20eb4f92141bbd80e0d11, type: 2}
   defenses:
   - {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
   defaultWeapons:

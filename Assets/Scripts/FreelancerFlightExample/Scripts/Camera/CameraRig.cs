@@ -50,6 +50,7 @@ namespace FLFlight
             // that the rig will follow the ship's rotation in pitch and yaw, but NOT in roll.
             // This allows the ship to roll on it own.
             var targetRigRotation = Quaternion.LookRotation(ship.forward, transform.up);
+
             transform.rotation = SmoothDamp.DampS(transform.rotation, targetRigRotation, smoothSpeed, Time.deltaTime);
 
             // Handle the juicy Freelancer style camera rotations.
