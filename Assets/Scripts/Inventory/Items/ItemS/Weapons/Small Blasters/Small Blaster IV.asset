@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ef4931fac84c44daeff0c8b27de89a, type: 3}
+  m_Name: Small Blaster IV
+  m_EditorClassIdentifier: 
+  Name: Small Blaster IV
+  type: 10
+  stackable: 1
+  defaultPrice: 2000
+  sprite: {fileID: 21300000, guid: a120c51740a57f94ea579641583d5590, type: 3}
+  weaponType: 0
+  moduleSize: 0
+  range: 0
+  damage: 3
+  firerate: 0

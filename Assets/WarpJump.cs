@@ -39,6 +39,9 @@ public class WarpJump : MonoBehaviour
     public GameObject progressBar;
     public PlayerFleet fleet;
     public Transform fleetAnchor;
+
+    public Player player;
+    public ShipInput shipInput;
     void Start()
     {
         physics = GetComponent<ShipPhysics>();
@@ -177,6 +180,8 @@ public class WarpJump : MonoBehaviour
 
         col.enabled = true;
 
+        EnableControls();
+
         timer = 5f;
         fTimer = 0f;
     }
@@ -200,6 +205,24 @@ public class WarpJump : MonoBehaviour
 
         col.enabled = false;
 
+        DisableControls();
+
         fTimer = 0f;
+    }
+
+    private void DisableControls()
+    {
+        //Disables flight controls
+
+        shipInput.controlsEnabled = false;
+        player.controlsEnabled = false;
+    }
+
+    private void EnableControls()
+    {
+        //Enables flight controls
+
+        shipInput.controlsEnabled = true;
+        player.controlsEnabled = true;
     }
 }
