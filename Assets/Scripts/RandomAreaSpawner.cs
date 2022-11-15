@@ -49,9 +49,6 @@ public class RandomAreaSpawner : MonoBehaviour
 
     public SphereCollider sphereCollider;
 
-    // public List<GameObject> asteroids = new List<GameObject>();
-
-
     // Use this for initialization
     void Start()
     {

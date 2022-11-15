@@ -17,7 +17,7 @@ public class MiningDrill : Bullet
     {
         if(isImpacted == true && impactObject)
         {
-            impactObject.GetComponent<AsteroidDamageHandler>().TakeDamage(bulletDamage, shooter, this.gameObject);
+            impactObject.GetComponent<AsteroidNodeDamageHandler>().TakeDamage(bulletDamage, shooter, this.gameObject);
             TimeToLive = 9999;
         }
 
@@ -47,8 +47,8 @@ public class MiningDrill : Bullet
         }
 
         CleanUpTrails();
-
-        gameObject.transform.SetParent(impactObject.transform);
+        if (impactObject)
+            gameObject.transform.SetParent(impactObject.transform);
     }
 
     public override void ExplodeBullet(Vector3 explodePosition, Quaternion explodeRotation)
@@ -65,11 +65,15 @@ public class MiningDrill : Bullet
 
     public override void HandleImpactDamage(RaycastHit hitInfo)
     {
-        if (hitInfo.collider.GetComponent<AsteroidDamageHandler>())
+        if (hitInfo.collider.GetComponent<AsteroidNodeDamageHandler>())
         {
             impactObject = hitInfo.collider.gameObject;
 
             isImpacted = true;
         }
+    }
+    public void Reload()
+    {
+        gun.ReloadAmmo();
     }
 }

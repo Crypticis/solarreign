@@ -170,7 +170,7 @@ MonoBehaviour:
   maxShield: 0
   shieldRecovery: 0
   health: 0
-  maxHealth: 200
+  maxHealth: 500
   deathParticle: {fileID: 0}
   experienceReward: 0
   moneyReward: 0

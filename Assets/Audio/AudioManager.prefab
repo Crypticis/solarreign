@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 534.43085, y: 307.18747, z: -74.47563}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,6 +92,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Hover1
     clip: {fileID: 8300000, guid: 3d524410dfe218544814bf8e165cd57e, type: 3}
+    volume: 0.1
+    volumeVariance: 0.05
+    pitch: 1
+    pitchVariance: 0.05
+    loop: 0
+    mixerGroup: {fileID: 4507396475572188890, guid: 54c85c3d62054cb448bec96d63812dd4, type: 2}
+    source: {fileID: 0}
+  - name: Hitmarker
+    clip: {fileID: 8300000, guid: 72406669ab8c8ca488a6272d01fd0fc1, type: 3}
     volume: 0.1
     volumeVariance: 0.05
     pitch: 1

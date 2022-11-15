@@ -22,12 +22,24 @@ public class AsteroidNodeDamageHandler : DamageHandler
         if (shooter != null && shooter == player)
         {
             shooter.GetComponent<HitmarkerManager>().Hit();
-            health -= damageAmt * 5;
+
+            if (projectile.TryGetComponent<WeaponInfo>(out WeaponInfo info))
+            {
+                if (info.weaponType == WeaponType.mining)
+                {
+                    health -= damageAmt;
+                }
+            }
         }
 
         // Check if Asteroid is destroyed. Blow it up and gib player stuffs
         if (health <= 0 && shooter == player)
         {
+            if (projectile.TryGetComponent<MiningDrill>(out MiningDrill drill))
+            {
+                drill.Reload();
+            }
+
             if (deathParticle != null)
                 Instantiate(deathParticle, transform.position, Quaternion.identity);
 

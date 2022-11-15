@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5402099574087411578}
   - component: {fileID: -851296185954179125}
   - component: {fileID: 6860099373159722044}
+  - component: {fileID: -4536550930436010620}
   m_Layer: 0
   m_Name: Pure Triluminum Node
   m_TagString: Enemy
@@ -170,7 +171,7 @@ MonoBehaviour:
   maxShield: 0
   shieldRecovery: 0
   health: 0
-  maxHealth: 200
+  maxHealth: 1500
   deathParticle: {fileID: 0}
   experienceReward: 0
   moneyReward: 0
@@ -179,3 +180,16 @@ MonoBehaviour:
   amount: 0
   itemRewards: {fileID: 11400000, guid: 855a6387533102c4f82ee8a379dc625f, type: 2}
   inventory: {fileID: 11400000, guid: 62a35b9237647e543bb1e60f290951fe, type: 2}
+--- !u!114 &-4536550930436010620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120343239868084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14bf81e8766c394d83ce83543970c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
