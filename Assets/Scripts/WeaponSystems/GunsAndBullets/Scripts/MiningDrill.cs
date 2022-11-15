@@ -23,14 +23,12 @@ public class MiningDrill : Bullet
 
         if(!impactObject && isImpacted)
         {
-            gun.ReloadAmmo();
-            Destroy(gameObject);
+            Reload();
         }
 
         if(Vector3.Distance(Player.playerInstance.transform.position, this.transform.position) > tetherDistance)
         {
-            gun.ReloadAmmo();
-            Destroy(gameObject);
+            Reload();
         }
 
         lr.SetPosition(0, this.transform.position);
@@ -48,7 +46,10 @@ public class MiningDrill : Bullet
 
         CleanUpTrails();
         if (impactObject)
+        {
             gameObject.transform.SetParent(impactObject.transform);
+            AudioManager.instance.Play("Mining Drill");
+        }
     }
 
     public override void ExplodeBullet(Vector3 explodePosition, Quaternion explodeRotation)
@@ -59,8 +60,7 @@ public class MiningDrill : Bullet
         HandleExplosionDamage(explodePosition);
 
         CleanUpTrails();
-        gun.ReloadAmmo();
-        Destroy(gameObject);
+        Reload();
     }
 
     public override void HandleImpactDamage(RaycastHit hitInfo)
@@ -75,5 +75,7 @@ public class MiningDrill : Bullet
     public void Reload()
     {
         gun.ReloadAmmo();
+        AudioManager.instance.Stop("Mining Drill");
+        Destroy(gameObject);
     }
 }
