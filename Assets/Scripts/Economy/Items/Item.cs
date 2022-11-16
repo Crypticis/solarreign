@@ -12,23 +12,27 @@ public class Item : ScriptableObject
 
     public Sprite sprite;
     public int ID;
-
-    //public bool equipped;
+    void OnEnable()
+    {
+        Name = name;
+    }
 }
 
 public enum ItemType
 {
     crew,
-    spaceMetal,
+    metal,
     ice,
     water,
     scrap,
     food,
     rawOres,
-    gems,
     organics,
     gas,
     weapons,
     defenses,
     materials,
+    crystals,
+    data,
+    relic
 }

@@ -21,6 +21,7 @@ public class Recipe : ScriptableObject
     {
         public Item producedItem;
         public bool amountIsRange;
-        public int max, min, amount;
+        public int min, max;
+        public int amount;
     }
 }
