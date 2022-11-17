@@ -11,7 +11,7 @@ public class HitmarkerManager : MonoBehaviour
     public void Hit()
     {
         hitmarker.SetActive(true);
-        AudioManager.instance.Play("Hitmarker");
+        AudioManager.instance.Play("HitMarker");
         Invoke("DisableHit", .01f);
     }
 

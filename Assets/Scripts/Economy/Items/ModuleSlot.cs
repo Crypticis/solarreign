@@ -40,8 +40,6 @@ public class ModuleSlot : MonoBehaviour, IDropHandler
 
         inventory.AddItem(previousItem, 1);
         inventory.RemoveItem(item, 1);
-
-        //mechanicUI.ClearSelectModules();
     }
 
     public void OnDrop(PointerEventData eventData)

@@ -257,19 +257,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OpenSettingsMenu()
-    {
-        CloseUI();
-        SettingsMenu.instance.OpenSettings();
-        Time.timeScale = 0f;
-    }
+    //public void OpenSettingsMenu()
+    //{
+    //    CloseUI();
+    //    SettingsMenu.instance.OpenSettings();
+    //    Time.timeScale = 0f;
+    //}
 
-    public void OpenControlsMenu()
-    {
-        CloseUI();
-        SettingsMenu.instance.OpenControls();
-        Time.timeScale = 0f;
-    }
+    //public void OpenControlsMenu()
+    //{
+    //    CloseUI();
+    //    SettingsMenu.instance.OpenControls();
+    //    Time.timeScale = 0f;
+    //}
     public void OpenGameOverMenu()
     {
         gameOverMenu.SetActive(true);

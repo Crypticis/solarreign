@@ -9,6 +9,11 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryPrefab;
     public Transform inventoryUI;
 
+    private void OnEnable()
+    {
+        UpdateSlots();
+    }
+
     public void UpdateSlots()
     {
         for (int i = 0; i < slots.Count; i++)

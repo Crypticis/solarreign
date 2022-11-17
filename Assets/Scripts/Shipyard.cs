@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Shipyard : MonoBehaviour
 {
     public static Shipyard instance;
+    public static UnityAction onShipChanged;
+
 
     public GameObject shipModel;
     public RawImage shipDisplay;
@@ -98,7 +101,9 @@ public class Shipyard : MonoBehaviour
         playerInfo.shipType = shipyardSlots[index].shipType;
         Ticker.Ticker.AddItem("You are now flying the " + shipyardSlots[index].shipType + ".");
 
-        Player.playerInstance.UpdateModel();
+        //Player.playerInstance.UpdateModel();
+
+        onShipChanged.Invoke();
 
         UpdateShipyardUI(index);
     }

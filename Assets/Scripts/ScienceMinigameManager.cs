@@ -29,11 +29,11 @@ public class ScienceMinigameManager : MonoBehaviour
         instance = this;
     }
 
-    public void ShowMinigame(ScienceMinigame.DifficultyLevel _difficulty, Item _reward, int _rewardAmount, GameObject interactionObject)
+    public void ShowMinigame(ScienceMinigame.DifficultyLevel _difficulty, LootTable _rewards, GameObject interactionObject)
     {
         previousInteraction = interactionObject;
 
-        NewMinigame(_difficulty, _reward, _rewardAmount);
+        NewMinigame(_difficulty, _rewards);
 
         for (int i = 0; i < minigame.cells.GetLength(0); i++)
         {
@@ -107,9 +107,7 @@ public class ScienceMinigameManager : MonoBehaviour
 
     public void GiveReward()
     {
-        playerInventory.AddItem(minigame.reward, minigame.rewardAmount);
-
-        Ticker.Ticker.AddItem(minigame.rewardAmount + " " + minigame.reward.Name + " added to inventory.");
+        minigame.rewards.RollTableToInventory(playerInventory);
     }
 
     public void InitializeCells()
@@ -123,13 +121,12 @@ public class ScienceMinigameManager : MonoBehaviour
         }
     }
 
-    public void NewMinigame(ScienceMinigame.DifficultyLevel _difficulty, Item _reward, int _rewardAmount)
+    public void NewMinigame(ScienceMinigame.DifficultyLevel _difficulty, LootTable _rewards)
     {
         minigame = new ScienceMinigame
         {
             difficulty = _difficulty,
-            reward = _reward,
-            rewardAmount = _rewardAmount,
+            rewards = _rewards,
         };
 
         switch (minigame.difficulty)
@@ -414,8 +411,7 @@ public class ScienceMinigameManager : MonoBehaviour
         public ScienceMinigameCell[,] cells;
         public DifficultyLevel difficulty;
 
-        public Item reward;
-        public int rewardAmount;
+        public LootTable rewards;
         public int bombNumber;
 
         public enum DifficultyLevel

@@ -95,7 +95,7 @@ public class TargetingManager : MonoBehaviour
         if (optionalTargets.Count <= 0)
             return;
 
-        optionalTargets = optionalTargets.OrderBy(x => (((Mathf.Abs(Camera.main.WorldToScreenPoint(x.transform.position).x  - Screen.width / 2)) + (Mathf.Abs(Camera.main.WorldToScreenPoint(x.transform.position).y - Screen.height / 2)))) / 2 ).ToList();
+        optionalTargets = optionalTargets.OrderBy(x => (((Mathf.Abs(Camera.main.WorldToScreenPoint(x.transform.position).x - Screen.width / 2)) + (Mathf.Abs(Camera.main.WorldToScreenPoint(x.transform.position).y - Screen.height / 2)))) / 2).ThenByDescending(x => Vector3.Distance(x.transform.position, Player.playerInstance.transform.position)).ToList();
     }
 
     public virtual void AttemptTarget()

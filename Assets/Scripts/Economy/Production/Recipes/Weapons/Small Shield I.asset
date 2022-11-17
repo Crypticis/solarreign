@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38da2acd2adcc9f42b40913bd4058907, type: 3}
+  m_Name: Small Shield I
+  m_EditorClassIdentifier: 
+  requiredItems:
+  - requiredItem: {fileID: 11400000, guid: f428f8a3459dd6b4ab8e6fe4c9bfa1b3, type: 2}
+    amount: 50
+  producedItems:
+  - producedItem: {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
+    amountIsRange: 0
+    min: 0
+    max: 0
+    amount: 1

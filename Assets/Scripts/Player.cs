@@ -405,11 +405,6 @@ public class Player : PlayerController
         }
     }
 
-    public void UpdateModel()
-    {
-
-    }
-
     public void ShowLocationUI(SpaceStation spaceStation)
     {
         locationUI.GetComponent<SpaceStationUI>().spaceStation = spaceStation;

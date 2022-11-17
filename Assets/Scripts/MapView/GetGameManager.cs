@@ -103,15 +103,15 @@ public class GetGameManager : MonoBehaviour
     //    gameManager.SetEnemy(npc);
     //}
 
-    public void OpenSettings()
-    {
-        gameManager.OpenSettingsMenu();
-    }
+    //public void OpenSettings()
+    //{
+    //    gameManager.OpenSettingsMenu();
+    //}
 
-    public void OpenControls()
-    {
-        gameManager.OpenControlsMenu();
-    }
+    //public void OpenControls()
+    //{
+    //    gameManager.OpenControlsMenu();
+    //}
 
     public void OpenGameOver()
     {

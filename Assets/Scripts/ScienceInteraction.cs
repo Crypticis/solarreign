@@ -5,12 +5,11 @@ using UnityEngine;
 public class ScienceInteraction : WorldInteraction
 {
     public ScienceMinigameManager.ScienceMinigame.DifficultyLevel difficulty;
-    public Item reward;
-    public int rewardAmount;
+    public LootTable rewards;
     public bool completed = false;
 
     public override void Interact(PlayerController playerController)
     {
-        ScienceMinigameManager.instance.ShowMinigame(difficulty, reward, rewardAmount, this.gameObject);
+        ScienceMinigameManager.instance.ShowMinigame(difficulty, rewards, this.gameObject);
     }
 }
