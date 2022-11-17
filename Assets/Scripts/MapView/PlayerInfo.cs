@@ -57,7 +57,7 @@ public class PlayerInfo : MonoBehaviour
 
     private void Update()
     {
-        Shipyard.onShipChanged += Update;
+        Shipyard.onShipChanged += UpdateShip;
     }
 
     public void UpdateShip()
