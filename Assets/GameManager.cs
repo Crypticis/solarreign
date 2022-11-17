@@ -461,58 +461,58 @@ public class GameManager : MonoBehaviour
 
         #region Player Stats
 
-        float money = StatManager.instance.playerStatsObject.currentMoney;
+        float money = StatManager.instance.currentMoney;
 
-        float influenceTemp = StatManager.instance.playerStatsObject.influence;
+        float influenceTemp = StatManager.instance.influence;
 
-        int votesTemp = StatManager.instance.playerStatsObject.votes;
+        int votesTemp = StatManager.instance.votes;
 
         StatObject levelStat = new StatObject
         {
-            currentLevel = StatManager.instance.playerStatsObject.level.currentLevel,
-            experience = StatManager.instance.playerStatsObject.level.experience,
-            maxExp = StatManager.instance.playerStatsObject.level.MAX_EXP,
-            maxLevel = StatManager.instance.playerStatsObject.level.MAX_LEVEL
+            currentLevel = StatManager.instance.level.currentLevel,
+            experience = StatManager.instance.level.experience,
+            maxExp = StatManager.instance.level.MAX_EXP,
+            maxLevel = StatManager.instance.level.MAX_LEVEL
         };
 
         StatObject pilotingStat = new StatObject
         {
-            currentLevel = StatManager.instance.playerStatsObject.Piloting.currentLevel,
-            experience = StatManager.instance.playerStatsObject.Piloting.experience,
-            maxExp = StatManager.instance.playerStatsObject.Piloting.MAX_EXP,
-            maxLevel = StatManager.instance.playerStatsObject.Piloting.MAX_LEVEL
+            currentLevel = StatManager.instance.Piloting.currentLevel,
+            experience = StatManager.instance.Piloting.experience,
+            maxExp = StatManager.instance.Piloting.MAX_EXP,
+            maxLevel = StatManager.instance.Piloting.MAX_LEVEL
         };
 
         StatObject missileStat = new StatObject
         {
-            currentLevel = StatManager.instance.playerStatsObject.Missile.currentLevel,
-            experience = StatManager.instance.playerStatsObject.Missile.experience,
-            maxExp = StatManager.instance.playerStatsObject.Missile.MAX_EXP,
-            maxLevel = StatManager.instance.playerStatsObject.Missile.MAX_LEVEL
+            currentLevel = StatManager.instance.Missile.currentLevel,
+            experience = StatManager.instance.Missile.experience,
+            maxExp = StatManager.instance.Missile.MAX_EXP,
+            maxLevel = StatManager.instance.Missile.MAX_LEVEL
         };
 
         StatObject projectileStat = new StatObject
         {
-            currentLevel = StatManager.instance.playerStatsObject.Projectile.currentLevel,
-            experience = StatManager.instance.playerStatsObject.Projectile.experience,
-            maxExp = StatManager.instance.playerStatsObject.Projectile.MAX_EXP,
-            maxLevel = StatManager.instance.playerStatsObject.Projectile.MAX_LEVEL
+            currentLevel = StatManager.instance.Projectile.currentLevel,
+            experience = StatManager.instance.Projectile.experience,
+            maxExp = StatManager.instance.Projectile.MAX_EXP,
+            maxLevel = StatManager.instance.Projectile.MAX_LEVEL
         };
 
         StatObject energyStat = new StatObject
         {
-            currentLevel = StatManager.instance.playerStatsObject.Energy.currentLevel,
-            experience = StatManager.instance.playerStatsObject.Energy.experience,
-            maxExp = StatManager.instance.playerStatsObject.Energy.MAX_EXP,
-            maxLevel = StatManager.instance.playerStatsObject.Energy.MAX_LEVEL
+            currentLevel = StatManager.instance.Energy.currentLevel,
+            experience = StatManager.instance.Energy.experience,
+            maxExp = StatManager.instance.Energy.MAX_EXP,
+            maxLevel = StatManager.instance.Energy.MAX_LEVEL
         };
 
         StatObject tradeStat = new StatObject
         {
-            currentLevel = StatManager.instance.playerStatsObject.Trade.currentLevel,
-            experience = StatManager.instance.playerStatsObject.Trade.experience,
-            maxExp = StatManager.instance.playerStatsObject.Trade.MAX_EXP,
-            maxLevel = StatManager.instance.playerStatsObject.Trade.MAX_LEVEL
+            currentLevel = StatManager.instance.Trade.currentLevel,
+            experience = StatManager.instance.Trade.experience,
+            maxExp = StatManager.instance.Trade.MAX_EXP,
+            maxLevel = StatManager.instance.Trade.MAX_LEVEL
         };
 
         FleetObject playerFleetObject = new FleetObject
@@ -599,9 +599,9 @@ public class GameManager : MonoBehaviour
             playerFleet = playerFleetObject,
             pilots = pilotObject,
             cameraPosition = cameraPosition,
-            command = StatManager.instance.playerStatsObject.commandLevel,
-            tactics = StatManager.instance.playerStatsObject.tacticsLevel,
-            logistics = StatManager.instance.playerStatsObject.logisticsLevel,
+            command = StatManager.instance.commandLevel,
+            tactics = StatManager.instance.tacticsLevel,
+            logistics = StatManager.instance.logisticsLevel,
             items = playerInv.ToArray(),
             shipPlayerIsFlying = playerInfo.shipType,
             votes = votesTemp,
@@ -779,42 +779,42 @@ public class GameManager : MonoBehaviour
 
             #region Stats
 
-            StatManager.instance.playerStatsObject.votes = saveObject.votes;
-            StatManager.instance.playerStatsObject.influence = saveObject.influence;
-            StatManager.instance.playerStatsObject.currentMoney = saveObject.money;
-            StatManager.instance.playerStatsObject.commandLevel = saveObject.command;
-            StatManager.instance.playerStatsObject.tacticsLevel = saveObject.tactics;
-            StatManager.instance.playerStatsObject.logisticsLevel = saveObject.logistics;
+            StatManager.instance.votes = saveObject.votes;
+            StatManager.instance.influence = saveObject.influence;
+            StatManager.instance.currentMoney = saveObject.money;
+            StatManager.instance.commandLevel = saveObject.command;
+            StatManager.instance.tacticsLevel = saveObject.tactics;
+            StatManager.instance.logisticsLevel = saveObject.logistics;
 
             // Level
-            StatManager.instance.playerStatsObject.level.currentLevel = saveObject.stats[0].currentLevel;
-            StatManager.instance.playerStatsObject.level.experience = saveObject.stats[0].experience;
-            StatManager.instance.playerStatsObject.level.MAX_EXP = saveObject.stats[0].maxExp;
-            StatManager.instance.playerStatsObject.level.MAX_LEVEL = saveObject.stats[0].maxLevel;
+            StatManager.instance.level.currentLevel = saveObject.stats[0].currentLevel;
+            StatManager.instance.level.experience = saveObject.stats[0].experience;
+            StatManager.instance.level.MAX_EXP = saveObject.stats[0].maxExp;
+            StatManager.instance.level.MAX_LEVEL = saveObject.stats[0].maxLevel;
 
             // Piloting
-            StatManager.instance.playerStatsObject.Piloting.currentLevel = saveObject.stats[1].currentLevel;
-            StatManager.instance.playerStatsObject.Piloting.experience = saveObject.stats[1].experience;
-            StatManager.instance.playerStatsObject.Piloting.MAX_EXP = saveObject.stats[1].maxExp;
-            StatManager.instance.playerStatsObject.Piloting.MAX_LEVEL = saveObject.stats[1].maxLevel;
+            StatManager.instance.Piloting.currentLevel = saveObject.stats[1].currentLevel;
+            StatManager.instance.Piloting.experience = saveObject.stats[1].experience;
+            StatManager.instance.Piloting.MAX_EXP = saveObject.stats[1].maxExp;
+            StatManager.instance.Piloting.MAX_LEVEL = saveObject.stats[1].maxLevel;
 
             // Missile
-            StatManager.instance.playerStatsObject.Missile.currentLevel = saveObject.stats[2].currentLevel;
-            StatManager.instance.playerStatsObject.Missile.experience = saveObject.stats[2].experience;
-            StatManager.instance.playerStatsObject.Missile.MAX_EXP = saveObject.stats[2].maxExp;
-            StatManager.instance.playerStatsObject.Missile.MAX_LEVEL = saveObject.stats[2].maxLevel;
+            StatManager.instance.Missile.currentLevel = saveObject.stats[2].currentLevel;
+            StatManager.instance.Missile.experience = saveObject.stats[2].experience;
+            StatManager.instance.Missile.MAX_EXP = saveObject.stats[2].maxExp;
+            StatManager.instance.Missile.MAX_LEVEL = saveObject.stats[2].maxLevel;
 
             // Projectile
-            StatManager.instance.playerStatsObject.Projectile.currentLevel = saveObject.stats[3].currentLevel;
-            StatManager.instance.playerStatsObject.Projectile.experience = saveObject.stats[3].experience;
-            StatManager.instance.playerStatsObject.Projectile.MAX_EXP = saveObject.stats[3].maxExp;
-            StatManager.instance.playerStatsObject.Projectile.MAX_LEVEL = saveObject.stats[3].maxLevel;
+            StatManager.instance.Projectile.currentLevel = saveObject.stats[3].currentLevel;
+            StatManager.instance.Projectile.experience = saveObject.stats[3].experience;
+            StatManager.instance.Projectile.MAX_EXP = saveObject.stats[3].maxExp;
+            StatManager.instance.Projectile.MAX_LEVEL = saveObject.stats[3].maxLevel;
 
             // Energy
-            StatManager.instance.playerStatsObject.Energy.currentLevel = saveObject.stats[4].currentLevel;
-            StatManager.instance.playerStatsObject.Energy.experience = saveObject.stats[4].experience;
-            StatManager.instance.playerStatsObject.Energy.MAX_EXP = saveObject.stats[4].maxExp;
-            StatManager.instance.playerStatsObject.Energy.MAX_LEVEL = saveObject.stats[4].maxLevel;
+            StatManager.instance.Energy.currentLevel = saveObject.stats[4].currentLevel;
+            StatManager.instance.Energy.experience = saveObject.stats[4].experience;
+            StatManager.instance.Energy.MAX_EXP = saveObject.stats[4].maxExp;
+            StatManager.instance.Energy.MAX_LEVEL = saveObject.stats[4].maxLevel;
 
             #endregion
 
@@ -920,7 +920,7 @@ public class GameManager : MonoBehaviour
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
             Player.playerInstance.transform.position = saveObject.playerPosition;
-            StatManager.instance.playerStatsObject.currentMoney = saveObject.money;
+            StatManager.instance.currentMoney = saveObject.money;
 
             Player.playerInstance.fleet.fleet.Clear();
 
@@ -931,34 +931,34 @@ public class GameManager : MonoBehaviour
             // Stats
 
             // Level
-            StatManager.instance.playerStatsObject.level.currentLevel = saveObject.stats[0].currentLevel;
-            StatManager.instance.playerStatsObject.level.experience = saveObject.stats[0].experience;
-            StatManager.instance.playerStatsObject.level.MAX_EXP = saveObject.stats[0].maxExp;
-            StatManager.instance.playerStatsObject.level.MAX_LEVEL = saveObject.stats[0].maxLevel;
+            StatManager.instance.level.currentLevel = saveObject.stats[0].currentLevel;
+            StatManager.instance.level.experience = saveObject.stats[0].experience;
+            StatManager.instance.level.MAX_EXP = saveObject.stats[0].maxExp;
+            StatManager.instance.level.MAX_LEVEL = saveObject.stats[0].maxLevel;
 
             // Piloting
-            StatManager.instance.playerStatsObject.Piloting.currentLevel = saveObject.stats[1].currentLevel;
-            StatManager.instance.playerStatsObject.Piloting.experience = saveObject.stats[1].experience;
-            StatManager.instance.playerStatsObject.Piloting.MAX_EXP = saveObject.stats[1].maxExp;
-            StatManager.instance.playerStatsObject.Piloting.MAX_LEVEL = saveObject.stats[1].maxLevel;
+            StatManager.instance.Piloting.currentLevel = saveObject.stats[1].currentLevel;
+            StatManager.instance.Piloting.experience = saveObject.stats[1].experience;
+            StatManager.instance.Piloting.MAX_EXP = saveObject.stats[1].maxExp;
+            StatManager.instance.Piloting.MAX_LEVEL = saveObject.stats[1].maxLevel;
 
             // Missile
-            StatManager.instance.playerStatsObject.Missile.currentLevel = saveObject.stats[2].currentLevel;
-            StatManager.instance.playerStatsObject.Missile.experience = saveObject.stats[2].experience;
-            StatManager.instance.playerStatsObject.Missile.MAX_EXP = saveObject.stats[2].maxExp;
-            StatManager.instance.playerStatsObject.Missile.MAX_LEVEL = saveObject.stats[2].maxLevel;
+            StatManager.instance.Missile.currentLevel = saveObject.stats[2].currentLevel;
+            StatManager.instance.Missile.experience = saveObject.stats[2].experience;
+            StatManager.instance.Missile.MAX_EXP = saveObject.stats[2].maxExp;
+            StatManager.instance.Missile.MAX_LEVEL = saveObject.stats[2].maxLevel;
 
             // Projectile
-            StatManager.instance.playerStatsObject.Projectile.currentLevel = saveObject.stats[3].currentLevel;
-            StatManager.instance.playerStatsObject.Projectile.experience = saveObject.stats[3].experience;
-            StatManager.instance.playerStatsObject.Projectile.MAX_EXP = saveObject.stats[3].maxExp;
-            StatManager.instance.playerStatsObject.Projectile.MAX_LEVEL = saveObject.stats[3].maxLevel;
+            StatManager.instance.Projectile.currentLevel = saveObject.stats[3].currentLevel;
+            StatManager.instance.Projectile.experience = saveObject.stats[3].experience;
+            StatManager.instance.Projectile.MAX_EXP = saveObject.stats[3].maxExp;
+            StatManager.instance.Projectile.MAX_LEVEL = saveObject.stats[3].maxLevel;
 
             // Energy
-            StatManager.instance.playerStatsObject.Energy.currentLevel = saveObject.stats[4].currentLevel;
-            StatManager.instance.playerStatsObject.Energy.experience = saveObject.stats[4].experience;
-            StatManager.instance.playerStatsObject.Energy.MAX_EXP = saveObject.stats[4].maxExp;
-            StatManager.instance.playerStatsObject.Energy.MAX_LEVEL = saveObject.stats[4].maxLevel;
+            StatManager.instance.Energy.currentLevel = saveObject.stats[4].currentLevel;
+            StatManager.instance.Energy.experience = saveObject.stats[4].experience;
+            StatManager.instance.Energy.MAX_EXP = saveObject.stats[4].maxExp;
+            StatManager.instance.Energy.MAX_LEVEL = saveObject.stats[4].maxLevel;
 
             #region Player Fleet
 
@@ -1123,13 +1123,13 @@ public class GameManager : MonoBehaviour
                 } 
             }
 
-            StatManager.instance.playerStatsObject.commandLevel = saveObject.command;
-            StatManager.instance.playerStatsObject.tacticsLevel = saveObject.tactics;
-            StatManager.instance.playerStatsObject.logisticsLevel = saveObject.logistics;
+            StatManager.instance.commandLevel = saveObject.command;
+            StatManager.instance.tacticsLevel = saveObject.tactics;
+            StatManager.instance.logisticsLevel = saveObject.logistics;
             playerInfo.shipType = saveObject.shipPlayerIsFlying;
 
-            StatManager.instance.playerStatsObject.votes = saveObject.votes;
-            StatManager.instance.playerStatsObject.influence = saveObject.influence;
+            StatManager.instance.votes = saveObject.votes;
+            StatManager.instance.influence = saveObject.influence;
 
             // Shipyard
 

@@ -40,7 +40,7 @@ MonoBehaviour:
     MAX_LEVEL: 99
   Trade:
     experience: 0
-    currentLevel: 26
+    currentLevel: 1
     MAX_EXP: 13034431
     MAX_LEVEL: 99
   commandLevel: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   currentInFleet: 0
   maxInFleet: 0
   playerInventory: {fileID: 11400000, guid: 62a35b9237647e543bb1e60f290951fe, type: 2}
-  currentMoney: 5000
+  currentMoney: 499975000
   influence: 0
   votes: 0
   startingPiloting: 0

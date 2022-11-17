@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
         FactionManager.instance.ResetFactions();
         //QuestManager.instance.ResetQuests();
         AudioManager.instance.Play("Click");
-        StatManager.instance.playerStatsObject.currentMoney = 10000f;
+        StatManager.instance.currentMoney = 10000f;
         SceneManager.LoadScene(1);
         GameManager.instance.isNeedingLoading = false;
         GameManager.instance.isNewGame = true;

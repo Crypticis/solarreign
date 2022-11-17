@@ -14,7 +14,7 @@ public class JoinFaction : MonoBehaviour
 
     public void FactionJoin()
     {
-        if(StatManager.instance.playerStatsObject.currentMoney >= 1000)
+        if(StatManager.instance.currentMoney >= 1000)
         {
             for (int i = 0; i < FactionManager.instance.factions.Length; i++)
             {
@@ -27,7 +27,7 @@ public class JoinFaction : MonoBehaviour
                     Ticker.Ticker.AddItem("You have joined the " + faction.faction.name);
                     Ticker.Ticker.AddItem("You paid a $1000 membership fee to join");
 
-                    StatManager.instance.playerStatsObject.currentMoney -= 1000f;
+                    StatManager.instance.currentMoney -= 1000f;
                 }
                 else
                 {

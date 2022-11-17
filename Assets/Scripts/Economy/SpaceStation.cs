@@ -159,11 +159,11 @@ public class SpaceStation : MonoBehaviour
         {
             if (info.faction.leader.leaderTrait == NPC.LeaderTrait.economist)
             {
-                StatManager.instance.playerStatsObject.currentMoney += (settlementObject.taxes * 1.05f);
+                StatManager.instance.currentMoney += (settlementObject.taxes * 1.05f);
             }
             else
             {
-                StatManager.instance.playerStatsObject.currentMoney += (settlementObject.taxes);
+                StatManager.instance.currentMoney += (settlementObject.taxes);
             }
         }
 

@@ -15,8 +15,8 @@ public class TraderDamageHandler : DamageHandler
 
             Ticker.Ticker.AddItem((string.Format("<color=#0984e3>{0}</color> destroyed <color=#d63031>{1}</color>", (killer.GetComponent<PlayerInfo>().playerInfoObject.Name).ToString(), (GetComponent<HUDElements>().name).ToString())), 5f, Color.white);
 
-            StatManager.instance.playerStatsObject.level.AddExp(experienceReward);
-            StatManager.instance.playerStatsObject.currentMoney += moneyReward;
+            StatManager.instance.level.AddExp(experienceReward);
+            StatManager.instance.currentMoney += moneyReward;
 
             StatManager.instance.GetRelation(GetComponent<FleetFaction>().faction).relation -= 10;
             Ticker.Ticker.AddItem((string.Format("Relation with {0} reduced by 10. Relation is now: {1}", (GetComponent<FleetFaction>().faction.name), StatManager.instance.GetRelation(GetComponent<FleetFaction>().faction).relation)), 5f, Color.white);

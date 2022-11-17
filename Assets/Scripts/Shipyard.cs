@@ -81,15 +81,15 @@ public class Shipyard : MonoBehaviour
 
     public void PurchaseShip(int index)
     {
-        if(StatManager.instance.playerStatsObject.currentMoney >= shipyardSlots[index].cost)
+        if(StatManager.instance.currentMoney >= shipyardSlots[index].cost)
         {
             shipyardSlots[index].isOwned = true;
-            StatManager.instance.playerStatsObject.currentMoney -= shipyardSlots[index].cost;
+            StatManager.instance.currentMoney -= shipyardSlots[index].cost;
             Ticker.Ticker.AddItem("You have purchased " + shipyardSlots[index].shipType);
         }
         else
         {
-            var temp = (shipyardSlots[index].cost - StatManager.instance.playerStatsObject.currentMoney);
+            var temp = (shipyardSlots[index].cost - StatManager.instance.currentMoney);
             Ticker.Ticker.AddItem("You do not have enough money to purchase this ship. You need " + temp + " more.");
         }
 

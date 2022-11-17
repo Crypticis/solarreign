@@ -29,7 +29,7 @@ public class PlayerFleet : Fleet
 
     public void UpdateFleetMax()
     {
-        maxInFleet = 10 + (StatManager.instance.playerStatsObject.commandLevel * 2);
+        maxInFleet = 10 + (StatManager.instance.commandLevel * 2);
     }
 
     public IEnumerator ShipUpkeep()
@@ -40,7 +40,7 @@ public class PlayerFleet : Fleet
 
         for (int i = 0; i < fleet.Count; i++)
         {
-            StatManager.instance.playerStatsObject.currentMoney -= fleet[i].ship.GetComponent<FleetMember>().upkeep;
+            StatManager.instance.currentMoney -= fleet[i].ship.GetComponent<FleetMember>().upkeep;
             total += fleet[i].ship.GetComponent<FleetMember>().upkeep;
         }
 

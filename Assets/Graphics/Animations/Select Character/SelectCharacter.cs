@@ -11,7 +11,7 @@ public class SelectCharacter : MonoBehaviour
     public void SelectCurrentCharacter()
     {
         selectedCharType = (CharacterType)activeIndex;
-        StatManager.instance.playerStatsObject.selectedCharType = selectedCharType;
+        StatManager.instance.selectedCharType = selectedCharType;
     }
 
     public void Next()

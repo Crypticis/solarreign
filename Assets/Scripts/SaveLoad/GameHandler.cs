@@ -15,7 +15,7 @@ public class GameHandler : MonoBehaviour {
 
     private void Save() {
         Vector3 playerPosition = Player.playerInstance.transform.position;
-        float money = StatManager.instance.playerStatsObject.currentMoney;
+        float money = StatManager.instance.currentMoney;
 
         SaveObject saveObject = new SaveObject {
             money = money,
@@ -40,7 +40,7 @@ public class GameHandler : MonoBehaviour {
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
             Player.playerInstance.transform.position = saveObject.playerPosition;
-            StatManager.instance.playerStatsObject.currentMoney = saveObject.money;
+            StatManager.instance.currentMoney = saveObject.money;
 
             for (int i = 0; i < saveObject.npcPositions.Count; i++)
             {

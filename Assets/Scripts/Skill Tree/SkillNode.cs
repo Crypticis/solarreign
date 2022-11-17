@@ -58,7 +58,7 @@ public class SkillNode : MonoBehaviour
         if (CanBeUnlocked())
         {
             skill.unlocked = true;
-            StatManager.instance.playerStatsObject.skillpoints -= skill.requiredSkillPoints;
+            StatManager.instance.skillpoints -= skill.requiredSkillPoints;
             Debug.Log("Skill " + skill.Name + " unlocked.");
         }
         else
@@ -69,7 +69,7 @@ public class SkillNode : MonoBehaviour
                 {
                     Debug.Log("Skill " + skill.requiredSkills[i].Name + " needs to be unlocked.");
                 }
-                if (StatManager.instance.playerStatsObject.skillpoints < skill.requiredSkillPoints)
+                if (StatManager.instance.skillpoints < skill.requiredSkillPoints)
                 {
                     Debug.Log("Not enough skill points." + " Needs to have at least " + skill.requiredSkillPoints + ".");
                 }
@@ -81,7 +81,7 @@ public class SkillNode : MonoBehaviour
     {
         for (int i = 0; i < skill.requiredSkills.Length; i++)
         {
-            if (skill.requiredSkills[i].unlocked == false || (StatManager.instance.playerStatsObject.skillpoints < skill.requiredSkillPoints && !skill.unlocked))
+            if (skill.requiredSkills[i].unlocked == false || (StatManager.instance.skillpoints < skill.requiredSkillPoints && !skill.unlocked))
             {
                 return false;
             }

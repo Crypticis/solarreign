@@ -20,15 +20,15 @@ public class RankUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StatManager.instance.playerStatsObject.level.currentLevel - 1 <= rankSprites.Length)
+        if (StatManager.instance.level.currentLevel - 1 <= rankSprites.Length)
         {
-            rankIcon.sprite = rankSprites[StatManager.instance.playerStatsObject.level.currentLevel - 1];
-            rankText.text = StatManager.instance.playerStatsObject.level.currentLevel.ToString();
+            rankIcon.sprite = rankSprites[StatManager.instance.level.currentLevel - 1];
+            rankText.text = StatManager.instance.level.currentLevel.ToString();
         }
         else
         {
             rankIcon.sprite = rankSprites[rankSprites.Length - 1];
-            rankText.text = StatManager.instance.playerStatsObject.level.currentLevel.ToString();
+            rankText.text = StatManager.instance.level.currentLevel.ToString();
         }
     }
 }

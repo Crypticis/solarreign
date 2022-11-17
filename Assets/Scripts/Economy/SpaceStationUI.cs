@@ -300,7 +300,7 @@ public class SpaceStationUI : MonoBehaviour
 
     public void BuyStation()
     {
-        if(StatManager.instance.playerStatsObject.currentMoney > spaceStation.priceToPurchase)
+        if(StatManager.instance.currentMoney > spaceStation.priceToPurchase)
         {
             spaceStation.GetComponent<SettlementInfo>().faction = Player.playerInstance.GetComponent<FleetFaction>().faction;
             spaceStation.settlementObject.isPlayerOwned = true;
@@ -309,7 +309,7 @@ public class SpaceStationUI : MonoBehaviour
         } 
         else
         {
-            Ticker.Ticker.AddItem("You do not have enough money to purchase this station. You need " + (spaceStation.priceToPurchase - StatManager.instance.playerStatsObject.currentMoney) + " to purchase.");
+            Ticker.Ticker.AddItem("You do not have enough money to purchase this station. You need " + (spaceStation.priceToPurchase - StatManager.instance.currentMoney) + " to purchase.");
         }
     }
 

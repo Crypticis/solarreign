@@ -97,7 +97,7 @@ public class ShopSlot : MonoBehaviour
 
     public void Buy()
     {
-        if (StatManager.instance.playerStatsObject.currentMoney >= price && amount > 0)
+        if (StatManager.instance.currentMoney >= price && amount > 0)
         {
             var temp = new ItemSlot();
 
@@ -112,20 +112,20 @@ public class ShopSlot : MonoBehaviour
             shopInventory.RemoveItem(item, 1);
             amount = temp.amount;
 
-            StatManager.instance.playerStatsObject.currentMoney -= price;
+            StatManager.instance.currentMoney -= price;
 
             for (int i = 0; i < trader.shopItems.Length; i++)
             {
                 if(item == trader.shopItems[i].item)
                 {
                     trader.shopItems[i].currentPrice *= 1.011f;
-                    trader.shopItems[i].currentPrice -= ((StatManager.instance.playerStatsObject.Trade.currentLevel * .1f) * trader.shopItems[i].currentPrice);
+                    trader.shopItems[i].currentPrice -= ((StatManager.instance.Trade.currentLevel * .1f) * trader.shopItems[i].currentPrice);
                 }
             }
 
             playerInventory.AddItem(item, 1);
 
-            StatManager.instance.playerStatsObject.Trade.AddExp(1);
+            StatManager.instance.Trade.AddExp(1);
 
             SlotCheck();
         }
@@ -162,7 +162,7 @@ public class ShopSlot : MonoBehaviour
 
             playerInventory.RemoveItem(item, 1);
 
-            StatManager.instance.playerStatsObject.currentMoney += price;
+            StatManager.instance.currentMoney += price;
 
             for (int i = 0; i < trader.shopItems.Length; i++)
             {
@@ -173,11 +173,11 @@ public class ShopSlot : MonoBehaviour
                         trader.shopItems[i].currentPrice *= .99f;
                     }
 
-                    trader.shopItems[i].currentPrice += ((StatManager.instance.playerStatsObject.Trade.currentLevel * .1f) * trader.shopItems[i].currentPrice);
+                    trader.shopItems[i].currentPrice += ((StatManager.instance.Trade.currentLevel * .1f) * trader.shopItems[i].currentPrice);
                 }
             }
 
-            StatManager.instance.playerStatsObject.Trade.AddExp(1);
+            StatManager.instance.Trade.AddExp(1);
 
             SlotCheck();
         }
@@ -205,7 +205,7 @@ public class ShopSlot : MonoBehaviour
             sellButton.interactable = false;
         }
 
-        if (amount > 0 && StatManager.instance.playerStatsObject.currentMoney >= price)
+        if (amount > 0 && StatManager.instance.currentMoney >= price)
         {
             buyButton.interactable = true;
         } 

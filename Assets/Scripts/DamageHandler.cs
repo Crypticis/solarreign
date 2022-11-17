@@ -85,7 +85,7 @@ public class DamageHandler : MonoBehaviour
             {
                 if(defenseType == DefenseType.shield)
                 {
-                    var damageTotal = damageAmt * 1.1f + (StatManager.instance.playerStatsObject.Missile.currentLevel * .1f);
+                    var damageTotal = damageAmt * 1.1f + (StatManager.instance.Missile.currentLevel * .1f);
 
                     var shield = currentShield;
 
@@ -116,7 +116,7 @@ public class DamageHandler : MonoBehaviour
                 }
                 else
                 {
-                    var damageTotal = damageAmt + (StatManager.instance.playerStatsObject.Missile.currentLevel * .1f);
+                    var damageTotal = damageAmt + (StatManager.instance.Missile.currentLevel * .1f);
 
                     var shield = currentShield;
 
@@ -142,7 +142,7 @@ public class DamageHandler : MonoBehaviour
                     Ticker.Ticker.AddItem((string.Format("<color=#0984e3>{0}</color> did {1} damage to <color=#d63031>{2}</color>", (shooter.GetComponent<PlayerInfo>().playerInfoObject.Name).ToString(), (damageTotal).ToString("0"), (this.name).ToString())), 5f, Color.white);
                 }
 
-                StatManager.instance.playerStatsObject.Missile.AddExp(5);
+                StatManager.instance.Missile.AddExp(5);
             } 
             else if (wepType.weaponType == WeaponType.energy)
             {
@@ -150,7 +150,7 @@ public class DamageHandler : MonoBehaviour
 
                 if (defenseType == DefenseType.armor)
                 {
-                    var damageTotal = damageAmt * 1.1f + (StatManager.instance.playerStatsObject.Projectile.currentLevel * .1f);
+                    var damageTotal = damageAmt * 1.1f + (StatManager.instance.Projectile.currentLevel * .1f);
 
                     var shield = currentShield;
 
@@ -177,12 +177,12 @@ public class DamageHandler : MonoBehaviour
                     {
                         Ticker.Ticker.AddItem((string.Format("<color=#0984e3>{0}</color> did {1} damage to <color=#d63031>{2}</color>", (shooter.GetComponent<PlayerInfo>().playerInfoObject.Name).ToString(), (damageTotal * amount).ToString("0"), (this.name).ToString())), 5f, Color.white);
                         amount = 0;
-                        StatManager.instance.playerStatsObject.Projectile.AddExp(2);
+                        StatManager.instance.Projectile.AddExp(2);
                     }
                 }
                 else
                 {
-                    var damageTotal = damageAmt + (StatManager.instance.playerStatsObject.Projectile.currentLevel * .1f);
+                    var damageTotal = damageAmt + (StatManager.instance.Projectile.currentLevel * .1f);
 
                     var shield = currentShield;
 
@@ -209,7 +209,7 @@ public class DamageHandler : MonoBehaviour
                     {
                         Ticker.Ticker.AddItem((string.Format("<color=#0984e3>{0}</color> did {1} damage to <color=#d63031>{2}</color>", (shooter.GetComponent<PlayerInfo>().playerInfoObject.Name).ToString(), (damageTotal * amount).ToString("0"), (this.name).ToString())), 5f, Color.white);
                         amount = 0;
-                        StatManager.instance.playerStatsObject.Projectile.AddExp(2);
+                        StatManager.instance.Projectile.AddExp(2);
                     }
                 }
             }
@@ -217,7 +217,7 @@ public class DamageHandler : MonoBehaviour
             {
                 amount++;
 
-                var damageTotal = (damageAmt + (StatManager.instance.playerStatsObject.Energy.currentLevel * .1f));
+                var damageTotal = (damageAmt + (StatManager.instance.Energy.currentLevel * .1f));
 
 
                 var shield = currentShield;
@@ -245,7 +245,7 @@ public class DamageHandler : MonoBehaviour
                 {
                     Ticker.Ticker.AddItem((string.Format("<color=#0984e3>{0}</color> did {1} damage to <color=#d63031>{2}</color>", (shooter.GetComponent<PlayerInfo>().playerInfoObject.Name).ToString(), (damageAmt * amount).ToString("0"), (this.name).ToString())), 5f, Color.white);
                     amount = 0;
-                    StatManager.instance.playerStatsObject.Energy.AddExp(2);
+                    StatManager.instance.Energy.AddExp(2);
                 }
             }
         } 
@@ -277,7 +277,7 @@ public class DamageHandler : MonoBehaviour
 
             Ticker.Ticker.AddItem((string.Format("<color=#0984e3>{0}</color> destroyed <color=#d63031>{1}</color>", (killer.GetComponent<PlayerInfo>().playerInfoObject.Name).ToString(), (GetComponent<HUDElements>().name).ToString())), 5f, Color.white);
 
-            StatManager.instance.playerStatsObject.level.AddExp(experienceReward);
+            StatManager.instance.level.AddExp(experienceReward);
 
             if (experienceReward != 0)
                 Ticker.Ticker.AddItem(string.Format("Gained <color=#00b894>{0}</color> experience.", (experienceReward).ToString()), 5f, Color.white);

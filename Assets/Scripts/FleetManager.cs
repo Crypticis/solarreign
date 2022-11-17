@@ -57,7 +57,7 @@ public class FleetManager : MonoBehaviour
 
     public void AddToFleet(GameObject ship)
     {
-        if(StatManager.instance.playerStatsObject.currentInFleet < StatManager.instance.playerStatsObject.maxInFleet)
+        if(StatManager.instance.currentInFleet < StatManager.instance.maxInFleet)
         {
             fleet.Add(ship);
             //ship.GetComponent<SteerForTether>().MaximumDistance = 5f;
@@ -71,7 +71,7 @@ public class FleetManager : MonoBehaviour
             ship.GetComponent<SteerToFollow>().Target = player.transform;
 
             currentLength++;
-            StatManager.instance.playerStatsObject.currentInFleet++;
+            StatManager.instance.currentInFleet++;
         }
     }
 
@@ -84,7 +84,7 @@ public class FleetManager : MonoBehaviour
         ship.GetComponent<SteerToFollow>().enabled = false;
 
         currentLength--;
-        StatManager.instance.playerStatsObject.currentInFleet--;
+        StatManager.instance.currentInFleet--;
         for (int x = 0; x < fleetSlots.Count; x++)
         {
             if (fleetSlots[x].GetComponent<CommsSlot>().commsTarget == ship)
