@@ -15,7 +15,7 @@ public class DamageHandler : MonoBehaviour
 
     public float currentShield;
     public float maxShield;
-    public float shieldRecovery;
+    public float shieldRecoveryTotal;
 
     public float health;
     public float maxHealth;
@@ -34,19 +34,41 @@ public class DamageHandler : MonoBehaviour
     [HideInInspector]
     public int amount = 0;
 
+    const float BASE_SHIELD_RECOVERY = .025f;
+    public float shieldRecoveryModifier = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         currentShield = maxShield;
         player = GameObject.FindGameObjectWithTag("Player");
+
+        StartCoroutine("ShieldRecovery");
+
+        CalculateShieldRecovery();
     }
 
     public void Update()
     {
         currentShield = Mathf.Clamp(currentShield, 0, maxShield);
 
-        currentShield += Time.deltaTime * shieldRecovery;
+        //currentShield += Time.deltaTime * shieldRecovery;
+    }
+
+    public void CalculateShieldRecovery()
+    {
+        shieldRecoveryTotal = maxShield * (BASE_SHIELD_RECOVERY + shieldRecoveryModifier);
+    }
+
+    IEnumerator ShieldRecovery()
+    {
+        while (true)
+        {
+            currentShield += shieldRecoveryTotal;
+
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     public virtual void TakeDamage(float damageAmt, GameObject shooter, GameObject projectile)

@@ -101,11 +101,11 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.instance.Play("Click");
         CloseUI();
-        if (!SettingsMenu.instance.controlsUI.activeSelf)
-        {
-            SettingsMenu.instance.controlsUI.SetActive(true);
-            SettingsMenu.instance.controlsUI.GetComponent<EnlargePanel>().Enlarge();
-        }
+        //if (!SettingsMenu.instance.controlsUI.activeSelf)
+        //{
+        //    SettingsMenu.instance.controlsUI.SetActive(true);
+        //    SettingsMenu.instance.controlsUI.GetComponent<EnlargePanel>().Enlarge();
+        //}
     }
 
     public void ShowMain()
@@ -118,16 +118,16 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void ShowSettings()
-    {
-        AudioManager.instance.Play("Click");
-        CloseUI();
-        if (!SettingsMenu.instance.settingsUI.activeSelf)
-        {
-            SettingsMenu.instance.settingsUI.SetActive(true);
-            SettingsMenu.instance.settingsUI.GetComponent<EnlargePanel>().Enlarge();
-        }
-    }
+    //public void ShowSettings()
+    //{
+    //    AudioManager.instance.Play("Click");
+    //    CloseUI();
+    //    if (!SettingsMenu.instance.settingsUI.activeSelf)
+    //    {
+    //        SettingsMenu.instance.settingsUI.SetActive(true);
+    //        SettingsMenu.instance.settingsUI.GetComponent<EnlargePanel>().Enlarge();
+    //    }
+    //}
 
     public void ShowCredits()
     {

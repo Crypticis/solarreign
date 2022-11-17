@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UserInterfaceManager : MonoBehaviour
 {
     public GameObject menu;
+    public CanvasGroup flightCanvasGroup;
 
     public void Update()
     {
@@ -14,11 +15,14 @@ public class UserInterfaceManager : MonoBehaviour
             {
                 menu.SetActive(false);
                 Time.timeScale = 1;
+                LeanTween.alphaCanvas(flightCanvasGroup, 1, .1f);
+                menu.LeanScale(new Vector3(0, 0, 1), 0f).setIgnoreTimeScale(true);
             }
             else
             {
                 menu.SetActive(true);
                 Time.timeScale = 0;
+                LeanTween.alphaCanvas(flightCanvasGroup, 0, .1f).setIgnoreTimeScale(true);
             }
     }
 }

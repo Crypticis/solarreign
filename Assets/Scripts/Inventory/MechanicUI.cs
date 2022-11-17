@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MechanicUI : MonoBehaviour
 {
     public MechanicSlot[] ships;
+    public static UnityAction onShipModuleChange;
 
     public ShipInfoObject currentShip;
 
@@ -196,6 +198,8 @@ public class MechanicUI : MonoBehaviour
                 }
             }
         }
+
+        onShipModuleChange.Invoke();
     }
 
     [System.Serializable]
