@@ -42,20 +42,20 @@ public class RecruitmentSlot : MonoBehaviour
             button.interactable = true;
         }
 
-        if(StatManager.instance.playerStatsObject.currentMoney >= cost && Player.playerInstance.fleet.fleet.Count < Player.playerInstance.fleet.maxInFleet)
+        if(StatManager.instance.currentMoney >= cost && Player.playerInstance.fleet.fleet.Count < Player.playerInstance.fleet.maxInFleet)
         {
             GameObject go = Instantiate(shipToRecruit, Player.playerInstance.transform.position, Quaternion.identity);
             go.GetComponent<SteerToFollow>().Target = Player.playerInstance.transform;
             go.GetComponent<SteerToFollow>().enabled = true;
 
             Player.playerInstance.fleet.AddToFleet(go);
-            StatManager.instance.playerStatsObject.currentMoney -= cost;
+            StatManager.instance.currentMoney -= cost;
             Ticker.Ticker.AddItem("Recruited " + shipToRecruit.name + " for " + cost.ToString());
             stationUI.spaceStation.GetComponent<SettlementRecruitment>().purchasableShips.Remove(shipToRecruit);
             shipToRecruit = null;
             Destroy(gameObject);
         }
-        else if(StatManager.instance.playerStatsObject.currentMoney >= cost && Player.playerInstance.fleet.fleet.Count >= Player.playerInstance.fleet.maxInFleet)
+        else if(StatManager.instance.currentMoney >= cost && Player.playerInstance.fleet.fleet.Count >= Player.playerInstance.fleet.maxInFleet)
         {
             Ticker.Ticker.AddItem("Unable to recruit. Need more fleet space.");
         }

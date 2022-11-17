@@ -81,8 +81,8 @@ public class ElectionManager : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        influenceText.text = StatManager.instance.playerStatsObject.influence.ToString();
-        voteText.text = StatManager.instance.playerStatsObject.votes.ToString();
+        influenceText.text = StatManager.instance.influence.ToString();
+        voteText.text = StatManager.instance.votes.ToString();
 
         for (int i = 0; i < electionPrefabRoot.childCount; i++)
         {
@@ -91,7 +91,7 @@ public class ElectionManager : MonoBehaviour
 
         slots.Clear();
 
-        StatManager.instance.playerStatsObject.votes = 1;
+        StatManager.instance.votes = 1;
 
         for (int i = 0; i < 100; i++)
         {
@@ -155,7 +155,7 @@ public class ElectionManager : MonoBehaviour
             temp = temp.OrderBy(x => x.votes).ToList();
             temp.Reverse();
 
-            if (StatManager.instance.playerStatsObject.votes > temp[0].votes)
+            if (StatManager.instance.votes > temp[0].votes)
             {
                 FactionManager.instance.factions[0].isPlayerLeader = true;
                 FactionManager.instance.factions[0].leader = null;
@@ -178,7 +178,7 @@ public class ElectionManager : MonoBehaviour
             temp = temp.OrderBy(x => x.votes).ToList();
             temp.Reverse();
 
-            if (StatManager.instance.playerStatsObject.votes > temp[0].votes)
+            if (StatManager.instance.votes > temp[0].votes)
             {
                 FactionManager.instance.factions[1].isPlayerLeader = true;
                 FactionManager.instance.factions[1].leader = null;
@@ -196,7 +196,7 @@ public class ElectionManager : MonoBehaviour
 
         Time.timeScale = GameManager.instance.speedMultiplier;
 
-        StatManager.instance.playerStatsObject.votes = 1;
+        StatManager.instance.votes = 1;
 
         for (int i = 0; i < zerogVotes.Length; i++)
         {
@@ -213,33 +213,33 @@ public class ElectionManager : MonoBehaviour
 
     public void BuyVote()
     {
-        if(StatManager.instance.playerStatsObject.influence >= influenceCost)
+        if(StatManager.instance.influence >= influenceCost)
         {
-            StatManager.instance.playerStatsObject.influence -= influenceCost;
+            StatManager.instance.influence -= influenceCost;
 
-            StatManager.instance.playerStatsObject.votes++;
+            StatManager.instance.votes++;
         }
 
-        influenceText.text = StatManager.instance.playerStatsObject.influence.ToString();
-        voteText.text = StatManager.instance.playerStatsObject.votes.ToString();
+        influenceText.text = StatManager.instance.influence.ToString();
+        voteText.text = StatManager.instance.votes.ToString();
     }
 
     public void BuyVoteFor(int index)
     {
         if (faction.faction == FactionManager.instance.factions[0])
         {
-            if (StatManager.instance.playerStatsObject.influence >= influenceCost)
+            if (StatManager.instance.influence >= influenceCost)
             {
-                StatManager.instance.playerStatsObject.influence -= influenceCost;
+                StatManager.instance.influence -= influenceCost;
 
                 zerogVotes[index].votes++;
             }
         } // GSF
         else if (faction.faction == FactionManager.instance.factions[1])
         {
-            if (StatManager.instance.playerStatsObject.influence >= influenceCost)
+            if (StatManager.instance.influence >= influenceCost)
             {
-                StatManager.instance.playerStatsObject.influence -= influenceCost;
+                StatManager.instance.influence -= influenceCost;
 
                 gsfVotes[index].votes++;
             }
@@ -247,23 +247,23 @@ public class ElectionManager : MonoBehaviour
 
         UpdateVotes();
 
-        influenceText.text = StatManager.instance.playerStatsObject.influence.ToString();
-        voteText.text = StatManager.instance.playerStatsObject.votes.ToString();
+        influenceText.text = StatManager.instance.influence.ToString();
+        voteText.text = StatManager.instance.votes.ToString();
     }
 
     public void BuyInfluence()
     {
-        if(StatManager.instance.playerStatsObject.currentMoney >= influencePurchaseCost)
+        if(StatManager.instance.currentMoney >= influencePurchaseCost)
         {
-            StatManager.instance.playerStatsObject.currentMoney -= influencePurchaseCost;
+            StatManager.instance.currentMoney -= influencePurchaseCost;
 
-            StatManager.instance.playerStatsObject.influence += 100;
+            StatManager.instance.influence += 100;
 
             influencePurchaseCost *= 1.1f;
         }
 
-        influenceText.text = StatManager.instance.playerStatsObject.influence.ToString();
-        voteText.text = StatManager.instance.playerStatsObject.votes.ToString();
+        influenceText.text = StatManager.instance.influence.ToString();
+        voteText.text = StatManager.instance.votes.ToString();
     }
 
     public void UpdateVotes()

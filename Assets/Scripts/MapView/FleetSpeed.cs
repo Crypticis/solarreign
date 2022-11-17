@@ -12,7 +12,7 @@ public class FleetSpeed : MonoBehaviour
 
     public void Update()
     {
-        speed = startingSpeed - (fleet.fleet.Count * (speedChangePerUnit - (.01f * StatManager.instance.playerStatsObject.logisticsLevel)));
+        speed = startingSpeed - (fleet.fleet.Count * (speedChangePerUnit - (.01f * StatManager.instance.logisticsLevel)));
 
         if(speed < (startingSpeed * .1f))
         {

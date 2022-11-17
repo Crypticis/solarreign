@@ -34,19 +34,19 @@ public class BuildingUI : MonoBehaviour
 
     public void UpgradeBuilding(int index)
     {
-        if (spaceStation.settlementObject.buildingLevels[index] < 5 && StatManager.instance.playerStatsObject.currentMoney >= buildings[index].costToUpgrade)
+        if (spaceStation.settlementObject.buildingLevels[index] < 5 && StatManager.instance.currentMoney >= buildings[index].costToUpgrade)
         {
             spaceStation.settlementObject.upgrading[index] = true;
             spaceStation.settlementObject.buildTimers[index] = spaceStation.defaultTimers[spaceStation.settlementObject.buildingLevels[index] - 1];
             //spaceStation.buildingLevels[index]++;
-            StatManager.instance.playerStatsObject.currentMoney -= buildings[index].costToUpgrade;
+            StatManager.instance.currentMoney -= buildings[index].costToUpgrade;
             Ticker.Ticker.AddItem("Started upgrade.");
         }
-        else if (StatManager.instance.playerStatsObject.currentMoney <= buildings[index].costToUpgrade && spaceStation.settlementObject.buildingLevels[index] == 5)
+        else if (StatManager.instance.currentMoney <= buildings[index].costToUpgrade && spaceStation.settlementObject.buildingLevels[index] == 5)
         {
             Ticker.Ticker.AddItem("Not enough money and the building is max level.");
         }
-        else if(StatManager.instance.playerStatsObject.currentMoney <= buildings[index].costToUpgrade)
+        else if(StatManager.instance.currentMoney <= buildings[index].costToUpgrade)
         {
             Ticker.Ticker.AddItem("Not enough money.");
         }

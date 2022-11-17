@@ -20,11 +20,11 @@ public class FleetRadar : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerFaction>())
         {
-            for (int i = 0; i < StatManager.instance.playerStatsObject.relations.Length; i++)
+            for (int i = 0; i < StatManager.instance.relations.Length; i++)
             {
-                if(fleetFaction.faction == StatManager.instance.playerStatsObject.relations[i].faction)
+                if(fleetFaction.faction == StatManager.instance.relations[i].faction)
                 {
-                    if(StatManager.instance.playerStatsObject.relations[i].relation <= 0)
+                    if(StatManager.instance.relations[i].relation <= 0)
                     {
                         targeting.enemies.Add(other.gameObject);
                         targeting.SortList();

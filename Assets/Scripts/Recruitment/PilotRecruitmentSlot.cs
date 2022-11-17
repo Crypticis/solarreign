@@ -45,16 +45,16 @@ public class PilotRecruitmentSlot : MonoBehaviour
 
     public void AddToFleet()
     {
-        if (StatManager.instance.playerStatsObject.currentMoney >= cost)
+        if (StatManager.instance.currentMoney >= cost)
         {
             Player.playerInstance.fleet.AddToPilots(pilotToRecruit);
-            StatManager.instance.playerStatsObject.currentMoney -= cost;
+            StatManager.instance.currentMoney -= cost;
             Ticker.Ticker.AddItem("Recruited " + pilotToRecruit.name + " for " + cost.ToString());
             stationUI.spaceStation.GetComponent<SettlementRecruitment>().recruitablePilots.Remove(pilotToRecruit);
             pilotToRecruit = null;
             Destroy(gameObject);
         }
-        else if (StatManager.instance.playerStatsObject.currentMoney >= cost && Player.playerInstance.fleet.fleet.Count >= Player.playerInstance.fleet.maxInFleet)
+        else if (StatManager.instance.currentMoney >= cost && Player.playerInstance.fleet.fleet.Count >= Player.playerInstance.fleet.maxInFleet)
         {
             Ticker.Ticker.AddItem("Unable to recruit. Need more fleet space.");
         }

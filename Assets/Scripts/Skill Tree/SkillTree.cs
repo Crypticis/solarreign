@@ -30,7 +30,7 @@ public class SkillTree : MonoBehaviour
 
     public void UpdateSkills()
     {
-        if (StatManager.instance.playerStatsObject.skillpoints <= 0)
+        if (StatManager.instance.skillpoints <= 0)
         {
             for (int i = 0; i < buttons.Length; i++)
             {
@@ -45,31 +45,31 @@ public class SkillTree : MonoBehaviour
             }
         }
 
-        skillPoints.text = StatManager.instance.playerStatsObject.skillpoints.ToString();
+        skillPoints.text = StatManager.instance.skillpoints.ToString();
 
-        pilotingProficiency.text = StatManager.instance.playerStatsObject.Piloting.currentLevel.ToString();
+        pilotingProficiency.text = StatManager.instance.Piloting.currentLevel.ToString();
 
-        missilesProficiency.text = StatManager.instance.playerStatsObject.Missile.currentLevel.ToString();
+        missilesProficiency.text = StatManager.instance.Missile.currentLevel.ToString();
 
-        projectilesProficiency.text = StatManager.instance.playerStatsObject.Projectile.currentLevel.ToString();
+        projectilesProficiency.text = StatManager.instance.Projectile.currentLevel.ToString();
 
-        energyProficiency.text = StatManager.instance.playerStatsObject.Energy.currentLevel.ToString();
+        energyProficiency.text = StatManager.instance.Energy.currentLevel.ToString();
 
-        tradeSkill.text = StatManager.instance.playerStatsObject.Trade.currentLevel.ToString();
+        tradeSkill.text = StatManager.instance.Trade.currentLevel.ToString();
 
-        commandSkill.text = StatManager.instance.playerStatsObject.commandLevel.ToString();
+        commandSkill.text = StatManager.instance.commandLevel.ToString();
 
-        tacticsSkill.text = StatManager.instance.playerStatsObject.tacticsLevel.ToString();
+        tacticsSkill.text = StatManager.instance.tacticsLevel.ToString();
 
-        logisticsSkill.text = StatManager.instance.playerStatsObject.logisticsLevel.ToString();
+        logisticsSkill.text = StatManager.instance.logisticsLevel.ToString();
 
-        productionSkill.text = StatManager.instance.playerStatsObject.productionLevel.ToString();
+        productionSkill.text = StatManager.instance.productionLevel.ToString();
     }
 
     public void IncreaseCommand()
     {
-        StatManager.instance.playerStatsObject.skillpoints--;
-        StatManager.instance.playerStatsObject.commandLevel++;
+        StatManager.instance.skillpoints--;
+        StatManager.instance.commandLevel++;
 
         fleet.UpdateFleetMax();
 
@@ -78,24 +78,24 @@ public class SkillTree : MonoBehaviour
 
     public void IncreaseTactics()
     {
-        StatManager.instance.playerStatsObject.skillpoints--;
-        StatManager.instance.playerStatsObject.tacticsLevel++;
+        StatManager.instance.skillpoints--;
+        StatManager.instance.tacticsLevel++;
 
         UpdateSkills();
     }
 
     public void IncreaseLogistics()
     {
-        StatManager.instance.playerStatsObject.skillpoints--;
-        StatManager.instance.playerStatsObject.logisticsLevel++;
+        StatManager.instance.skillpoints--;
+        StatManager.instance.logisticsLevel++;
 
         UpdateSkills();
     }
 
     public void IncreaseProduction()
     {
-        StatManager.instance.playerStatsObject.skillpoints--;
-        StatManager.instance.playerStatsObject.productionLevel++;
+        StatManager.instance.skillpoints--;
+        StatManager.instance.productionLevel++;
 
         UpdateSkills();
     }

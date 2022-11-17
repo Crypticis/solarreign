@@ -99,24 +99,24 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if(selectedOption == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingTrade += 25;
+                        StatManager.instance.startingTrade += 25;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel += 1;
+                        StatManager.instance.startingLogisticsLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel += 1;
+                        StatManager.instance.startingProductionLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingMissile += 25;
-                        StatManager.instance.playerStatsObject.startingProjectile += 25;
-                        StatManager.instance.playerStatsObject.startingEnergy += 25;
+                        StatManager.instance.startingMissile += 25;
+                        StatManager.instance.startingProjectile += 25;
+                        StatManager.instance.startingEnergy += 25;
                         rememberedChoices[page] = selectedOption;
                     }
 
@@ -128,24 +128,24 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if (selectedOption == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingCommandLevel += 1;
+                        StatManager.instance.startingCommandLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingMissile += 10;
-                        StatManager.instance.playerStatsObject.startingProjectile += 10;
-                        StatManager.instance.playerStatsObject.startingEnergy += 10;
+                        StatManager.instance.startingMissile += 10;
+                        StatManager.instance.startingProjectile += 10;
+                        StatManager.instance.startingEnergy += 10;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel += 1;
+                        StatManager.instance.startingLogisticsLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel += 1;
+                        StatManager.instance.startingProductionLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
 
@@ -157,24 +157,24 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if (selectedOption == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingCommandLevel += 1;
+                        StatManager.instance.startingCommandLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingMissile += 25;
-                        StatManager.instance.playerStatsObject.startingProjectile += 25;
-                        StatManager.instance.playerStatsObject.startingEnergy += 25;
+                        StatManager.instance.startingMissile += 25;
+                        StatManager.instance.startingProjectile += 25;
+                        StatManager.instance.startingEnergy += 25;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel += 1;
+                        StatManager.instance.startingLogisticsLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel += 1;
+                        StatManager.instance.startingProductionLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
 
@@ -186,24 +186,24 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if (selectedOption == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingCommandLevel += 1;
+                        StatManager.instance.startingCommandLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingMissile += 25;
-                        StatManager.instance.playerStatsObject.startingProjectile += 25;
-                        StatManager.instance.playerStatsObject.startingEnergy += 25;
+                        StatManager.instance.startingMissile += 25;
+                        StatManager.instance.startingProjectile += 25;
+                        StatManager.instance.startingEnergy += 25;
                         rememberedChoices[page] = selectedOption;
                     }
                     else if (selectedOption == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel += 1;
+                        StatManager.instance.startingLogisticsLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel += 1;
+                        StatManager.instance.startingProductionLevel += 1;
                         rememberedChoices[page] = selectedOption;
                     }
 
@@ -212,13 +212,13 @@ public class CharacterBackgroundUI : MonoBehaviour
                     break;
             }
 
-            commandText.text = StatManager.instance.playerStatsObject.startingCommandLevel.ToString();
-            logisticsText.text = StatManager.instance.playerStatsObject.startingLogisticsLevel.ToString();
-            productionText.text = StatManager.instance.playerStatsObject.startingProductionLevel.ToString();
-            missilesText.text = StatManager.instance.playerStatsObject.startingMissile.ToString();
-            projectileText.text = StatManager.instance.playerStatsObject.startingProjectile.ToString();
-            energyText.text = StatManager.instance.playerStatsObject.startingEnergy.ToString();
-            tradeText.text = StatManager.instance.playerStatsObject.startingTrade.ToString();
+            commandText.text = StatManager.instance.startingCommandLevel.ToString();
+            logisticsText.text = StatManager.instance.startingLogisticsLevel.ToString();
+            productionText.text = StatManager.instance.startingProductionLevel.ToString();
+            missilesText.text = StatManager.instance.startingMissile.ToString();
+            projectileText.text = StatManager.instance.startingProjectile.ToString();
+            energyText.text = StatManager.instance.startingEnergy.ToString();
+            tradeText.text = StatManager.instance.startingTrade.ToString();
         }
 
         if (page < 3)
@@ -300,21 +300,21 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if (rememberedChoices[page - 1] == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingTrade -= 25;
+                        StatManager.instance.startingTrade -= 25;
                     }
                     else if (rememberedChoices[page - 1] == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel -= 1;
+                        StatManager.instance.startingLogisticsLevel -= 1;
                     }
                     else if (rememberedChoices[page - 1] == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel -= 1;
+                        StatManager.instance.startingProductionLevel -= 1;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingMissile -= 25;
-                        StatManager.instance.playerStatsObject.startingProjectile -= 25;
-                        StatManager.instance.playerStatsObject.startingEnergy -= 25;
+                        StatManager.instance.startingMissile -= 25;
+                        StatManager.instance.startingProjectile -= 25;
+                        StatManager.instance.startingEnergy -= 25;
                     }
 
                     previousSelectedOptions[page - 1].text = "";
@@ -325,21 +325,21 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if (rememberedChoices[page - 1] == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingCommandLevel -= 1;
+                        StatManager.instance.startingCommandLevel -= 1;
                     }
                     else if (rememberedChoices[page - 1] == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingMissile -= 10;
-                        StatManager.instance.playerStatsObject.startingProjectile -= 10;
-                        StatManager.instance.playerStatsObject.startingEnergy -= 10;
+                        StatManager.instance.startingMissile -= 10;
+                        StatManager.instance.startingProjectile -= 10;
+                        StatManager.instance.startingEnergy -= 10;
                     }
                     else if (rememberedChoices[page - 1] == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel -= 1;
+                        StatManager.instance.startingLogisticsLevel -= 1;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel -= 1;
+                        StatManager.instance.startingProductionLevel -= 1;
                     }
 
                     previousSelectedOptions[page - 1].text = "";
@@ -350,21 +350,21 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if (rememberedChoices[page - 1] == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingCommandLevel -= 1;
+                        StatManager.instance.startingCommandLevel -= 1;
                     }
                     else if (rememberedChoices[page - 1] == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingMissile -= 25;
-                        StatManager.instance.playerStatsObject.startingProjectile -= 25;
-                        StatManager.instance.playerStatsObject.startingEnergy -= 25;
+                        StatManager.instance.startingMissile -= 25;
+                        StatManager.instance.startingProjectile -= 25;
+                        StatManager.instance.startingEnergy -= 25;
                     }
                     else if (rememberedChoices[page - 1] == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel -= 1;
+                        StatManager.instance.startingLogisticsLevel -= 1;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel -= 1;
+                        StatManager.instance.startingProductionLevel -= 1;
                     }
 
                     previousSelectedOptions[page - 1].text = "";
@@ -375,21 +375,21 @@ public class CharacterBackgroundUI : MonoBehaviour
 
                     if (rememberedChoices[page - 1] == 0)
                     {
-                        StatManager.instance.playerStatsObject.startingCommandLevel -= 1;
+                        StatManager.instance.startingCommandLevel -= 1;
                     }
                     else if (rememberedChoices[page - 1] == 1)
                     {
-                        StatManager.instance.playerStatsObject.startingMissile -= 25;
-                        StatManager.instance.playerStatsObject.startingProjectile -= 25;
-                        StatManager.instance.playerStatsObject.startingEnergy -= 25;
+                        StatManager.instance.startingMissile -= 25;
+                        StatManager.instance.startingProjectile -= 25;
+                        StatManager.instance.startingEnergy -= 25;
                     }
                     else if (rememberedChoices[page - 1] == 2)
                     {
-                        StatManager.instance.playerStatsObject.startingLogisticsLevel -= 1;
+                        StatManager.instance.startingLogisticsLevel -= 1;
                     }
                     else
                     {
-                        StatManager.instance.playerStatsObject.startingProductionLevel -= 1;
+                        StatManager.instance.startingProductionLevel -= 1;
                     }
 
                     previousSelectedOptions[page - 1].text = "";
@@ -398,13 +398,13 @@ public class CharacterBackgroundUI : MonoBehaviour
 
             }
 
-            commandText.text = StatManager.instance.playerStatsObject.startingCommandLevel.ToString();
-            logisticsText.text = StatManager.instance.playerStatsObject.startingLogisticsLevel.ToString();
-            productionText.text = StatManager.instance.playerStatsObject.startingProductionLevel.ToString();
-            missilesText.text = StatManager.instance.playerStatsObject.startingMissile.ToString();
-            projectileText.text = StatManager.instance.playerStatsObject.startingProjectile.ToString();
-            energyText.text = StatManager.instance.playerStatsObject.startingEnergy.ToString();
-            tradeText.text = StatManager.instance.playerStatsObject.startingTrade.ToString();
+            commandText.text = StatManager.instance.startingCommandLevel.ToString();
+            logisticsText.text = StatManager.instance.startingLogisticsLevel.ToString();
+            productionText.text = StatManager.instance.startingProductionLevel.ToString();
+            missilesText.text = StatManager.instance.startingMissile.ToString();
+            projectileText.text = StatManager.instance.startingProjectile.ToString();
+            energyText.text = StatManager.instance.startingEnergy.ToString();
+            tradeText.text = StatManager.instance.startingTrade.ToString();
         }
 
         //selectedOption = -1;

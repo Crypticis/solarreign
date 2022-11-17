@@ -69,8 +69,8 @@ public class SurrenderHandler : MonoBehaviour
             _captor.GetComponent<NavMeshAgent>().isStopped = false;
         }
 
-        var moneyTaken = StatManager.instance.playerStatsObject.currentMoney * Random.Range(.05f, .15f);
-        StatManager.instance.playerStatsObject.currentMoney -= moneyTaken;
+        var moneyTaken = StatManager.instance.currentMoney * Random.Range(.05f, .15f);
+        StatManager.instance.currentMoney -= moneyTaken;
 
         Ticker.Ticker.AddItem("$" + moneyTaken + " was taken by your captors.");
     }
