@@ -141,7 +141,7 @@ public class Targeting : MonoBehaviour
     {
         try
         {
-            if (enemies.Count >= 1)
+            if (enemies.Count >= 1 && !target)
             {
                 enemies = enemies.OrderBy(x => (x.transform.position - this.transform.position).sqrMagnitude).ToList();
             }
@@ -169,6 +169,16 @@ public class Targeting : MonoBehaviour
         {
             return;
         }
+    }
+
+    public void SetTarget(GameObject objectToTarget)
+    {
+        target = objectToTarget;
+    }
+
+    public void RemoveTarget()
+    {
+        target = null;
     }
 
     public enum CombatStyle
