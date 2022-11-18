@@ -56,7 +56,7 @@ public class WarpJump : MonoBehaviour
         if (timer <= 0f)
             timer = 0f;
 
-        if(warpTargetingManager.target && Input.GetKey(KeyCode.F) && !isWarping)
+        if(warpTargetingManager.target && Input.GetKey(KeyCode.F) && !isWarping && (Vector3.Distance(transform.position, warpTargetingManager.target.position) > 750f + (warpTargetingManager.target.GetComponentInChildren<Collider>().bounds.size.x / 2)))
         {
             fTimer += Time.deltaTime;
 
