@@ -2,12 +2,17 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
+<<<<<<< HEAD
   serializedVersion: 8
+=======
+  serializedVersion: 6
+>>>>>>> f16a6930fb6764cc81c60e8469e352b66bb1f37f
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Details_01
+<<<<<<< HEAD
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _EMISSION
@@ -22,14 +27,27 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap:
     RenderType: Opaque
+=======
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHATEST_ON _EMISSION _METALLICGLOSSMAP _NORMALMAP
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
+>>>>>>> f16a6930fb6764cc81c60e8469e352b66bb1f37f
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+<<<<<<< HEAD
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: e8094aacc90214b40b14211e86818447, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+=======
+>>>>>>> f16a6930fb6764cc81c60e8469e352b66bb1f37f
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 5af65173be5db8c43805e2ca32a13441, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -66,6 +84,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+<<<<<<< HEAD
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -95,6 +114,13 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+=======
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+>>>>>>> f16a6930fb6764cc81c60e8469e352b66bb1f37f
     - _GlossMapScale: 0.84
     - _Glossiness: 0.541
     - _GlossyReflections: 1
@@ -102,6 +128,7 @@ Material:
     - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+<<<<<<< HEAD
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.84
@@ -131,3 +158,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
+=======
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+>>>>>>> f16a6930fb6764cc81c60e8469e352b66bb1f37f
