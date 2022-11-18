@@ -6,7 +6,7 @@ using UnityEngine;
 public class WarpTargetingManager : TargetingManager
 {
     TargetingManager targetingManager;
-
+    
     public override void Awake()
     {
         targetingManager = transform.parent.GetComponentInChildren<TargetingManager>();
@@ -23,9 +23,9 @@ public class WarpTargetingManager : TargetingManager
         var array2 = GameObject.FindGameObjectsWithTag("Warp Gate");
         var array3 = GameObject.FindGameObjectsWithTag("Warp Target");
 
-        var array4 = array1.Concat(array2).Concat(array3).ToArray();
+        var combinedArray = array1.Concat(array2).Concat(array3).ToArray();
 
-        potentialTargets = array4.ToList();
+        potentialTargets = combinedArray.ToList();
     }
 
     public override void OnTriggerEnter(Collider other)

@@ -313,7 +313,7 @@ MonoBehaviour:
   maxArmor: 0
   currentShield: 0
   maxShield: 25
-  shieldRecovery: 0.5
+  shieldRecoveryTotal: 0
   health: 0
   maxHealth: 25
   deathParticle: {fileID: 268362488234206613, guid: 1208d9bb8e801a646892921ee6f34c86, type: 3}
@@ -322,6 +322,7 @@ MonoBehaviour:
   isPlayer: 0
   player: {fileID: 0}
   amount: 0
+  shieldRecoveryModifier: 0
 --- !u!114 &1417914465641304752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +344,7 @@ MonoBehaviour:
   combatState: 0
   distanceTimer: 0
   disengageTimer: 0
-  disengageDistance: 30
+  disengageDistance: 60
   pursue: {fileID: 0}
   wander: {fileID: 0}
 --- !u!114 &1829571514467057844
