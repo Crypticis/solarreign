@@ -69,8 +69,6 @@ public class CivilianFleetSpawner : MonoBehaviour
         civilian.GetComponent<UniqueNPC>().npc = ScriptableObject.CreateInstance("NPC") as NPC;
 
         //civilian.GetComponent<UniqueNPC>().npc.Name = (info.faction.name + " Civilian Fleet");
-
-        civilian.GetComponent<NPCTraderShip>().AddItems();
     }
 
     GameObject[] FindGates()

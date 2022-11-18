@@ -34,9 +34,11 @@ public class ShopSlot : MonoBehaviour
     public void Start()
     {
         shopInventory = trader.inventory;
-        icon.sprite = item.sprite;
-        nameText.text = item.name;
-
+        if (item != null)
+        {
+            icon.sprite = item.sprite;
+            nameText.text = item.name;
+        }
         SlotCheck();
     }
 

@@ -668,24 +668,6 @@ public class GameManager : MonoBehaviour
                 npcFleet = fleetObject,
             };
 
-            if (targetGameObject.GetComponent<NPCTraderShip>())
-            {
-                npc.goods = new List<ItemSlot>();
-
-                for (int i = 0; i < targetGameObject.GetComponent<NPCTraderShip>().tradeGoods.Count; i++)
-                {
-                    var item = new ItemSlot();
-
-                    item.Name = targetGameObject.GetComponent<NPCTraderShip>().tradeGoods[i].item.name;
-                    item.type = targetGameObject.GetComponent<NPCTraderShip>().tradeGoods[i].item.type;
-                    item.amount = targetGameObject.GetComponent<NPCTraderShip>().tradeGoods[i].amount;
-
-                    npc.goods.Add(item);
-                }
-
-                //mobNpc.goods = mob.GetComponent<NPCTraderShip>().tradeGoods;
-            }
-
             saveObject.npcs.Add(npc);
         }
 
@@ -1051,24 +1033,6 @@ public class GameManager : MonoBehaviour
                     GameObject ship = Instantiate(database.GetShip[shipName], Player.playerInstance.transform.position, Quaternion.identity);
 
                     fleet.AddToFleet(go);
-                }
-
-                if (go.GetComponent<NPCTraderShip>())
-                {
-                    for (int j = 0; j < saveObject.npcs[i].goods.Count; j++)
-                    {
-                        var slot = new global::ItemSlot();
-
-                        for (int k = 0; k < database.items.Length; k++)
-                        {
-                            if (saveObject.npcs[i].goods[j].Name == database.items[k].name)
-                            {
-                                slot.item = database.items[k];
-                                slot.amount = saveObject.npcs[i].goods[j].amount;
-                                go.GetComponent<NPCTraderShip>().tradeGoods.Add(slot);
-                            }
-                        }
-                    }
                 }
             }
 
