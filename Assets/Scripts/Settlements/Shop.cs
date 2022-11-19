@@ -6,7 +6,6 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     // Inventories that are accessed
-    public Inventory playerInventory;
     public Inventory settlementInventory;
 
     // SettlementShop store inventory
@@ -51,7 +50,7 @@ public class Shop : MonoBehaviour
             if (slot.TryGetComponent<ShopSlot>(out ShopSlot slotinfo))
             {
                 // Check if item exists in player inventory and retrieve it
-                itemMatch = playerInventory.itemSlots.FirstOrDefault(p => p.item == slotinfo.itemsInSlot.item);
+                itemMatch = StatManager.instance.playerInventory.itemSlots.FirstOrDefault(p => p.item == slotinfo.itemsInSlot.item);
 
                 // Check if item was found in inventory and if so activate sell button
                 slotinfo.sellButton.interactable = itemMatch != null;
@@ -74,7 +73,7 @@ public class Shop : MonoBehaviour
         if (StatManager.instance.currentMoney >= item.currentPrice)
         {
             shopInventory.RemoveItem(item, amount);
-            playerInventory.AddItem(item, amount);
+            StatManager.instance.playerInventory.AddItem(item, amount);
             StatManager.instance.Trade.AddExp(1);
             StatManager.instance.currentMoney -= item.currentPrice;
             UpdateShop();
@@ -84,13 +83,13 @@ public class Shop : MonoBehaviour
     public void Sell(Item item, int amount)
     {
         // Retrieve item slot in player inventory where the item is the same as the one in shop
-        var itemSlotPlayerInventory = playerInventory.itemSlots.FirstOrDefault(itemslot => itemslot.item == item);
+        var itemSlotPlayerInventory = StatManager.instance.playerInventory.itemSlots.FirstOrDefault(itemslot => itemslot.item == item);
 
         // Check if player has item in inventory
         if (itemSlotPlayerInventory != null && itemSlotPlayerInventory.amount > 0)
         {
             shopInventory.AddItem(item, amount);
-            playerInventory.RemoveItem(item, amount);
+            StatManager.instance.playerInventory.RemoveItem(item, amount);
             StatManager.instance.Trade.AddExp(1);
             StatManager.instance.currentMoney += item.currentPrice;
             UpdateShop();

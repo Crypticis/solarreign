@@ -12,5 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc7467aa8a3ced40906c6c1a23da9da, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  itemSlots: []
-  type: 0
+  itemSlots:
+  - item: {fileID: 11400000, guid: 4a9bb2ca800463e4ea504db631ad03e9, type: 2}
+    amount: 431
+  - item: {fileID: 11400000, guid: cdf6e7305903c9143ad60e3bd81ebf1f, type: 2}
+    amount: 420
+  - item: {fileID: 11400000, guid: 00f0f34a891402542b14131ec38a2dd5, type: 2}
+    amount: 420
+  - item: {fileID: 11400000, guid: eb025ffe035c5564bbf3ba1df2128e45, type: 2}
+    amount: 376
+  - item: {fileID: 11400000, guid: ea0938ef3ad5c6a4aa1c724bb67041fd, type: 2}
+    amount: 21
+  - item: {fileID: 11400000, guid: 95ca57cf56fa0e948a082ce94dea4715, type: 2}
+    amount: 446
+  - item: {fileID: 11400000, guid: 64922c5f1b62a18469770359d692d059, type: 2}
+    amount: 420
+  - item: {fileID: 11400000, guid: fe3f62e416bd7584b83eff5e77135f7f, type: 2}
+    amount: 9
+  - item: {fileID: 11400000, guid: b14af55e0b2b11e42af673e943dacc6b, type: 2}
+    amount: 16
+  - item: {fileID: 11400000, guid: 62e69c99f0d38924b9022053f4d0110c, type: 2}
+    amount: 52
+  type: 1
