@@ -7,6 +7,7 @@ using UnitySteer.Behaviors;
 public class SpaceStation : MonoBehaviour
 {
     public SettlementObject settlementObject;
+    SettlementInfo info;
 
     readonly float resourceTimeRate = 15f;
     float resourceTimer;
@@ -16,8 +17,6 @@ public class SpaceStation : MonoBehaviour
     public SettlementFleet settlementFleet;
 
     public float priceToPurchase;
-
-    SettlementInfo info;
 
     public float[] defaultTimers = new float[5];
 
@@ -183,8 +182,6 @@ public class SpaceStation : MonoBehaviour
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
 
-        settlementObject.inventory = GetComponent<SettlementInfo>().settlementInventory;
-
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }
 
@@ -201,8 +198,6 @@ public class SpaceStation : MonoBehaviour
         settlementObject.stationName = GetComponent<SettlementInfo>().Name;
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
-
-        settlementObject.inventory = GetComponent<SettlementInfo>().settlementInventory;
 
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }

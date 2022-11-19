@@ -7,7 +7,7 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<ItemSlot> itemSlots = new();
-    [SerializeField] private InventoryType type;
+    [SerializeField] internal InventoryType type;
 
     public void AddItem(Item item, int amount)
     {
@@ -81,5 +81,6 @@ public class Inventory : ScriptableObject
 public enum InventoryType
 {
     player,
-    shop
+    shop,
+    settlement
 }

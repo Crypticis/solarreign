@@ -28,3 +28,5 @@ public class SettlementObject : ScriptableObject
     public float[] buildTimers = new float[5];
     public bool[] upgrading = new bool[5];
 }
+
+

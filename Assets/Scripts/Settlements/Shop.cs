@@ -5,7 +5,7 @@ using UnityEngine;
 
 class Shop : MonoBehaviour
 {
-    public Inventory shopInventory;
+    public ShopInventory shopInventory;
     public GameObject slotPrefab;
     public Transform shopUI;
 

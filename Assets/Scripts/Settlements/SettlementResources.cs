@@ -4,6 +4,7 @@ using UnityEngine;
 
 class SettlementResources : MonoBehaviour
 {
+    public SettlementObject settlement;
     public SettlementInfo settlementInfo;
     public SettlementRecruitment settlementRecruitment;
     public ResourceType resource;
@@ -81,52 +82,52 @@ class SettlementResources : MonoBehaviour
         {
             if(resource == ResourceType.crew)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[0], 1);
+                settlement.inventory.AddItem(resourceItems[0], 1);
             }
 
             if (resource == ResourceType.spaceMetal)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[1], 1);
+                settlement.inventory.AddItem(resourceItems[1], 1);
             }
 
             if (resource == ResourceType.ice)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[2], 1);
+                settlement.inventory.AddItem(resourceItems[2], 1);
             }
 
             if (resource == ResourceType.water)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[3], 1);
+                settlement.inventory.AddItem(resourceItems[3], 1);
             }
 
             if (resource == ResourceType.scrap)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[4], 1);
+                settlement.inventory.AddItem(resourceItems[4], 1);
             }
 
             if (resource == ResourceType.food)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[5], 1);
+                settlement.inventory.AddItem(resourceItems[5], 1);
             }
 
             if (resource == ResourceType.rawOres)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[6], 1);
+                settlement.inventory.AddItem(resourceItems[6], 1);
             }
 
             if (resource == ResourceType.gems)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[7], 1);
+                settlement.inventory.AddItem(resourceItems[7], 1);
             }
 
             if (resource == ResourceType.organics)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[8], 1);
+                settlement.inventory.AddItem(resourceItems[8], 1);
             }
 
             if (resource == ResourceType.gas)
             {
-                settlementInfo.settlementInventory.AddItem(resourceItems[9], 1);
+                settlement.inventory.AddItem(resourceItems[9], 1);
             }
 
             yield return new WaitForSeconds(waitTime);

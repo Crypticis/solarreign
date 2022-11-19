@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class SettlementInfo : MonoBehaviour
 {
-    public Inventory settlementInventory;
-    public SettlementType type;
     public string Name;
     public Faction faction;
     public NPC npc;
+    public SettlementType type;
 }
 
 public enum SettlementType
