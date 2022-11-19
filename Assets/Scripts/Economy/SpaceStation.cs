@@ -188,7 +188,7 @@ public class SpaceStation : MonoBehaviour
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
 
-        settlementObject.inventory = GetComponent<SettlementTrader>().inventory;
+        settlementObject.inventory = GetComponent<Shop>().settlementInventory;
 
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }
@@ -208,7 +208,7 @@ public class SpaceStation : MonoBehaviour
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
 
-        settlementObject.inventory = GetComponent<SettlementTrader>().inventory;
+        settlementObject.inventory = GetComponent<Shop>().settlementInventory;
 
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }

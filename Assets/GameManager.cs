@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [Header("Game Info")]
 
     public int speedMultiplier = 1;
+    public int gameTimeDay = 1;
+    public float gameTimeSeconds = 0;
+    public string timeToDisplay;
 
     [Header("Menus")]
     public GameObject pauseMenu;
@@ -69,8 +72,7 @@ public class GameManager : MonoBehaviour
     public bool isNewGame = false;
 
     //public Transform[] spawnPoints; 
-
-    private void Awake()
+    void Awake()
     {
         if (instance != null)
         {
@@ -134,6 +136,19 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F9))
         {
             Load();
+        }
+
+        PassGameTime();
+    }
+
+    // Passes game time depending on FPS
+    private void PassGameTime()
+    {
+        gameTimeSeconds += Time.unscaledDeltaTime;
+        if (gameTimeSeconds >= 1800)
+        {
+            gameTimeDay++;
+            gameTimeSeconds = 0 + (gameTimeSeconds - 1800);
         }
     }
 
@@ -1063,7 +1078,7 @@ public class GameManager : MonoBehaviour
                         }
                     }
 
-                    space.GetComponentInParent<SettlementTrader>().inventory.AddItem(temp, saveObject.settlements[i].shopSlots[j].amount);
+                    space.GetComponentInParent<Shop>().settlementInventory.AddItem(temp, saveObject.settlements[i].shopSlots[j].amount);
                 }
             }
 

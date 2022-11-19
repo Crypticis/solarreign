@@ -9,7 +9,7 @@ public class LootTable : ScriptableObject
     private int rolls; // How many times loot table will be rolled.
 
     [System.Serializable]
-    private struct itemsInTable
+    private struct ItemsInTable
     {
         public Item item;
         public float chance;
@@ -17,7 +17,7 @@ public class LootTable : ScriptableObject
     }
 
     [SerializeField]
-    private itemsInTable[] items;
+    private ItemsInTable[] items;
 
     public void RollTableToInventory(Inventory inventory)
     {

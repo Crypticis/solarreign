@@ -1,67 +1,97 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class Inventory : ScriptableObject
 {
     public List<ItemSlot> itemSlots = new List<ItemSlot>();
+    [SerializeField] private InventoryType type;
 
-    public void AddItem(Item item, int amount)
+    public virtual void AddItem(Item item, int amount)
     {
-        for (int i = 0; i < itemSlots.Count; i++)
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
+
+        if (itemMatch != null)
         {
-            if (item == itemSlots[i].item && item.stackable)
-            {
-                itemSlots[i].amount += amount;
-                return;
-            }
+            itemMatch.amount += amount;
         }
-        var temp = new ItemSlot();
-        temp.item = item;
-        temp.amount = amount;
-        itemSlots.Add(temp);
+        else
+        {
+            var temp = new ItemSlot();
+            temp.item = item;
+            temp.amount = amount;
+            itemSlots.Add(temp);
+        }
     }
 
-    public void RemoveItem(Item item, int amount)
+    public virtual void RemoveItem(Item item, int amount)
     {
-        for (int i = 0; i < itemSlots.Count; i++)
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
+
+        if (itemMatch != null)
         {
-            if (item == itemSlots[i].item)
+            switch (type)
             {
-                itemSlots[i].amount -= amount;
-                if(itemSlots[i].amount <= 0)
-                {
-                    itemSlots.RemoveAt(i);
-                }
+                case InventoryType.player:
+                    itemMatch.amount -= amount;
+                    if (itemMatch.amount == 0)
+                        itemSlots.Remove(itemMatch);
+                    break;
+                case InventoryType.shop:
+                    if (itemMatch.amount - amount >= 0)
+                        itemMatch.amount -= amount;
+                    break;
+                default:
+                    break;
             }
         }
     }
 
     public bool CheckIfInInventory(Item item)
     {
-        for (int i = 0; i < itemSlots.Count; i++)
-        {
-            if (itemSlots[i].item == item)
-            {
-                return true;
-            }
-        }
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
 
+        if (itemMatch != null)
+        {
+            return true;
+        }
         return false;
     }
 
     public int CheckAmountInInventory(Item item)
     {
-        for (int i = 0; i < itemSlots.Count; i++)
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
+
+        if (itemMatch != null)
         {
-            if (itemSlots[i].item == item)
-            {
-                return itemSlots[i].amount;
-            }
+            return itemMatch.amount;
         }
 
         return 0;
+    }
+
+    public IEnumerable<ItemSlot> SortAlphabeticallyByName()
+    {
+        IEnumerable<ItemSlot> sortedByName = itemSlots.OrderBy(p => p.item.name);
+        return sortedByName;
+    }
+
+    public IEnumerable<ItemSlot> SortByAmountDescendning()
+    {
+        IEnumerable<ItemSlot> sortedByAmountDescending = from num in itemSlots
+                                                         orderby num descending
+                                                         select num;
+        return sortedByAmountDescending;
+    }
+
+    public IEnumerable<ItemSlot> SortByAmountAscending()
+    {
+        IEnumerable<ItemSlot> sortedByAmountAscending = from num in itemSlots
+                                                        orderby num ascending
+                                                        select num;
+        return sortedByAmountAscending;
     }
 
     [ContextMenu("Reset")]
@@ -69,4 +99,10 @@ public class Inventory : ScriptableObject
     {
         itemSlots.Clear();
     }
+}
+
+public enum InventoryType
+{
+    player,
+    shop
 }

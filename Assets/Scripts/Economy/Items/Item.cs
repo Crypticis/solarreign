@@ -9,12 +9,14 @@ public class Item : ScriptableObject
     public ItemType type;
     public bool stackable;
     public float defaultPrice;
+    public float currentPrice;
 
     public Sprite sprite;
     public int ID;
     void OnEnable()
     {
         Name = name;
+        currentPrice = defaultPrice;
     }
 }
 

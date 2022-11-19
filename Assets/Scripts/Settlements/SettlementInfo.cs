@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class SettlementInfo : MonoBehaviour
 {
+    public SettlementType type;
     public string Name;
     public Faction faction;
     public NPC npc;
+}
+
+public enum SettlementType
+{
+    general,
+    science,
+    industry,
+    trade,
+    military,
 }

@@ -14,7 +14,7 @@ public class Ledger : MonoBehaviour
     public GameObject slotPrefab;
     public Scrollbar scrollBar;
 
-    public List<GameObject> slots = new List<GameObject>();
+    public List<GameObject> slots = new();
 
     float timer = 0f;
     public int lastChanged = -1;
@@ -28,7 +28,7 @@ public class Ledger : MonoBehaviour
         for (int i = 0; i < settlements.Length; i++)
         {
             var slot = Instantiate(slotPrefab, ledgerUI);
-            slot.GetComponent<LedgerSlot>().trader = settlements[i].GetComponent<SettlementTrader>();
+            slot.GetComponent<LedgerSlot>().trader = settlements[i].GetComponent<Shop>();
             slot.GetComponent<LedgerSlot>().settlement = settlements[i];
             slot.GetComponent<LedgerSlot>().ledger = this;
 
@@ -53,14 +53,14 @@ public class Ledger : MonoBehaviour
 
         if(timer <= 0 || index != lastChanged)
         {
-            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.shopItems[index].currentPrice).ToList();
+            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.shopInventory.itemSlots[index].item.currentPrice).ToList();
             slots.Reverse();
             lastChanged = index;
             timer = 1f;
         }
         else if (index == lastChanged)
         {
-            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.shopItems[index].currentPrice).ToList();
+            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.shopInventory.itemSlots[index].item.currentPrice).ToList();
             lastChanged = index;
         }
 
