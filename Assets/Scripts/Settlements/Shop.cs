@@ -27,6 +27,7 @@ class Shop : MonoBehaviour
 
                 if (slot.TryGetComponent<ShopSlot>(out ShopSlot info))
                 {
+                    info.shop = this;
                     info.itemsInSlot = shopInventory.itemSlots[i];
                 }
             }
@@ -60,8 +61,9 @@ class Shop : MonoBehaviour
             slotinfo.priceText.text = slotinfo.itemsInSlot.item.currentPrice.ToString("$0.00");
             if (itemMatch != null)
                 slotinfo.ownedAmountText.text = itemMatch.amount.ToString("0");
+            else
+                slotinfo.ownedAmountText.text = "0";
         }
-        
     }
     public void Buy(Item item, int amount)
     {

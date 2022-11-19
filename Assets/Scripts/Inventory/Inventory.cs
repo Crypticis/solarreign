@@ -75,7 +75,7 @@ public class Inventory : ScriptableObject
 
 
     [ContextMenu("Reset")]
-    private void ClearInventory() => itemSlots.Clear();
+    public void ClearInventory() => itemSlots.Clear();
 }
 
 public enum InventoryType
