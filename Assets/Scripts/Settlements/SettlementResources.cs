@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettlementResources : MonoBehaviour
+class SettlementResources : MonoBehaviour
 {
     public SettlementInfo settlementInfo;
     public SettlementRecruitment settlementRecruitment;
     public ResourceType resource;
-
     private IEnumerator coroutine;
 
-    Shop trader;
 
     public Item[] resourceItems;
 
@@ -18,7 +16,6 @@ public class SettlementResources : MonoBehaviour
     {
         settlementInfo = GetComponent<SettlementInfo>();
         settlementRecruitment = GetComponent<SettlementRecruitment>();
-        trader = GetComponent<Shop>();
         coroutine = ResourceCalculation(15f);
         StartCoroutine(coroutine);
     }
@@ -34,8 +31,6 @@ public class SettlementResources : MonoBehaviour
             {
                 if (settlementRecruitment.purchasableShips.Count > 0)
                 {
-                    var temp = Random.Range(1, settlementRecruitment.purchasableShips.Count);
-
                     for (int i = 0; i < settlementRecruitment.purchasableShips.Count; i++)
                     {
                         //if (ai.GetComponent<UniqueNPC>().npc.money >= settlementRecruitment.purchasableShips[i].GetComponent<HUDElements>().recruitmentCost)
@@ -86,52 +81,52 @@ public class SettlementResources : MonoBehaviour
         {
             if(resource == ResourceType.crew)
             {
-                trader.settlementInventory.AddItem(resourceItems[0], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[0], 1);
             }
 
             if (resource == ResourceType.spaceMetal)
             {
-                trader.settlementInventory.AddItem(resourceItems[1], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[1], 1);
             }
 
             if (resource == ResourceType.ice)
             {
-                trader.settlementInventory.AddItem(resourceItems[2], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[2], 1);
             }
 
             if (resource == ResourceType.water)
             {
-                trader.settlementInventory.AddItem(resourceItems[3], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[3], 1);
             }
 
             if (resource == ResourceType.scrap)
             {
-                trader.settlementInventory.AddItem(resourceItems[4], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[4], 1);
             }
 
             if (resource == ResourceType.food)
             {
-                trader.settlementInventory.AddItem(resourceItems[5], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[5], 1);
             }
 
             if (resource == ResourceType.rawOres)
             {
-                trader.settlementInventory.AddItem(resourceItems[6], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[6], 1);
             }
 
             if (resource == ResourceType.gems)
             {
-                trader.settlementInventory.AddItem(resourceItems[7], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[7], 1);
             }
 
             if (resource == ResourceType.organics)
             {
-                trader.settlementInventory.AddItem(resourceItems[8], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[8], 1);
             }
 
             if (resource == ResourceType.gas)
             {
-                trader.settlementInventory.AddItem(resourceItems[9], 1);
+                settlementInfo.settlementInventory.AddItem(resourceItems[9], 1);
             }
 
             yield return new WaitForSeconds(waitTime);

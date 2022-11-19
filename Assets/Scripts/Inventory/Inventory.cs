@@ -6,10 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class Inventory : ScriptableObject
 {
-    public List<ItemSlot> itemSlots = new List<ItemSlot>();
+    public List<ItemSlot> itemSlots = new();
     [SerializeField] private InventoryType type;
 
-    public virtual void AddItem(Item item, int amount)
+    public void AddItem(Item item, int amount)
     {
         var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
 
@@ -19,14 +19,14 @@ public class Inventory : ScriptableObject
         }
         else
         {
-            var temp = new ItemSlot();
+            ItemSlot temp = new();
             temp.item = item;
             temp.amount = amount;
             itemSlots.Add(temp);
         }
     }
 
-    public virtual void RemoveItem(Item item, int amount)
+    public void RemoveItem(Item item, int amount)
     {
         var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
 
@@ -35,15 +35,16 @@ public class Inventory : ScriptableObject
             switch (type)
             {
                 case InventoryType.player:
-                    itemMatch.amount -= amount;
-                    if (itemMatch.amount == 0)
-                        itemSlots.Remove(itemMatch);
+                    if (itemMatch.amount - amount >= 0)
+                    {
+                        itemMatch.amount -= amount;
+                        if (itemMatch.amount == 0)
+                            itemSlots.Remove(itemMatch);
+                    }
                     break;
                 case InventoryType.shop:
                     if (itemMatch.amount - amount >= 0)
                         itemMatch.amount -= amount;
-                    break;
-                default:
                     break;
             }
         }
@@ -72,33 +73,9 @@ public class Inventory : ScriptableObject
         return 0;
     }
 
-    public IEnumerable<ItemSlot> SortAlphabeticallyByName()
-    {
-        IEnumerable<ItemSlot> sortedByName = itemSlots.OrderBy(p => p.item.name);
-        return sortedByName;
-    }
-
-    public IEnumerable<ItemSlot> SortByAmountDescendning()
-    {
-        IEnumerable<ItemSlot> sortedByAmountDescending = from num in itemSlots
-                                                         orderby num descending
-                                                         select num;
-        return sortedByAmountDescending;
-    }
-
-    public IEnumerable<ItemSlot> SortByAmountAscending()
-    {
-        IEnumerable<ItemSlot> sortedByAmountAscending = from num in itemSlots
-                                                        orderby num ascending
-                                                        select num;
-        return sortedByAmountAscending;
-    }
 
     [ContextMenu("Reset")]
-    public void ClearInventory()
-    {
-        itemSlots.Clear();
-    }
+    private void ClearInventory() => itemSlots.Clear();
 }
 
 public enum InventoryType

@@ -8,7 +8,7 @@ public class SpaceStation : MonoBehaviour
 {
     public SettlementObject settlementObject;
 
-    float resourceTimeRate = 15f;
+    readonly float resourceTimeRate = 15f;
     float resourceTimer;
 
     public Building[] buildings;
@@ -43,11 +43,6 @@ public class SpaceStation : MonoBehaviour
         settlementFleet = GetComponent<SettlementFleet>();
         info = GetComponent<SettlementInfo>();
         priceToPurchase = 30000 + settlementObject.prosperity;
-    }
-
-    private void OnDestroy()
-    {
-        //time = Time.time;
     }
 
     void Update()
@@ -188,7 +183,7 @@ public class SpaceStation : MonoBehaviour
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
 
-        settlementObject.inventory = GetComponent<Shop>().settlementInventory;
+        settlementObject.inventory = GetComponent<SettlementInfo>().settlementInventory;
 
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }
@@ -198,7 +193,6 @@ public class SpaceStation : MonoBehaviour
     {
         SettlementObject asset = ScriptableObject.CreateInstance<SettlementObject>();
 
-        string name = GetComponent<SettlementInfo>().Name;
         //AssetDatabase.CreateAsset(asset, "Assets/Scripts/Settlements/Settlement Objects/" + name + " Settlement" + ".asset");
         //AssetDatabase.SaveAssets();
 
@@ -208,7 +202,7 @@ public class SpaceStation : MonoBehaviour
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
 
-        settlementObject.inventory = GetComponent<Shop>().settlementInventory;
+        settlementObject.inventory = GetComponent<SettlementInfo>().settlementInventory;
 
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }

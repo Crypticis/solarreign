@@ -281,20 +281,20 @@ public class SpaceStationUI : MonoBehaviour
             shipyardRenderCam.SetActive(false);
         }
 
-        if (mechanicUI.gameObject.activeSelf)
+        if (mechanicUI.activeSelf)
         {
-            mechanicUI.gameObject.SetActive(false);
+            mechanicUI.SetActive(false);
             mechanicRenderCam.SetActive(false);
         }
 
-        if (productionUI.gameObject.activeSelf)
+        if (productionUI.activeSelf)
         {
-            productionUI.gameObject.SetActive(false);
+            productionUI.SetActive(false);
         }
 
-        if (bountyUI.gameObject.activeSelf)
+        if (bountyUI.activeSelf)
         {
-            bountyUI.gameObject.SetActive(false);
+            bountyUI.SetActive(false);
         }
     }
 
@@ -317,13 +317,13 @@ public class SpaceStationUI : MonoBehaviour
     {
         CloseUI();
 
-        if (shipyardUI.gameObject.activeSelf)
+        if (shipyardUI.activeSelf)
         {
-            shipyardUI.gameObject.SetActive(false);
+            shipyardUI.SetActive(false);
         } 
         else
         {
-            shipyardUI.gameObject.SetActive(true);
+            shipyardUI.SetActive(true);
             shipyardUI.GetComponent<Shipyard>().UpdateShipyardUI(0);
             shipyardRenderCam.SetActive(true);
         }
@@ -333,13 +333,13 @@ public class SpaceStationUI : MonoBehaviour
     {
         CloseUI();
 
-        if (mechanicUI.gameObject.activeSelf)
+        if (mechanicUI.activeSelf)
         {
-            mechanicUI.gameObject.SetActive(false);
+            mechanicUI.SetActive(false);
         }
         else
         {
-            mechanicUI.gameObject.SetActive(true);
+            mechanicUI.SetActive(true);
             mechanicUI.GetComponent<MechanicUI>().UpdateInventoryModules();
             mechanicRenderCam.SetActive(true);
         }
@@ -349,13 +349,13 @@ public class SpaceStationUI : MonoBehaviour
     {
         CloseUI();
 
-        if (productionUI.gameObject.activeSelf)
+        if (productionUI.activeSelf)
         {
-            productionUI.gameObject.SetActive(false);
+            productionUI.SetActive(false);
         }
         else
         {
-            productionUI.gameObject.SetActive(true);
+            productionUI.SetActive(true);
         }
     }
 
@@ -363,13 +363,13 @@ public class SpaceStationUI : MonoBehaviour
     {
         CloseUI();
 
-        if (bountyUI.gameObject.activeSelf)
+        if (bountyUI.activeSelf)
         {
-            bountyUI.gameObject.SetActive(false);
+            bountyUI.SetActive(false);
         }
         else
         {
-            bountyUI.gameObject.SetActive(true);
+            bountyUI.SetActive(true);
         }
     }
 }

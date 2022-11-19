@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+class Shop : MonoBehaviour
 {
-    // Inventories that are accessed
-    public Inventory settlementInventory;
-
-    // SettlementShop store inventory
     public Inventory shopInventory;
-
-    // SettlementShop ui
     public GameObject slotPrefab;
     public Transform shopUI;
 
@@ -25,28 +19,32 @@ public class Shop : MonoBehaviour
             Destroy(shopUI.GetChild(i).gameObject);
         }
 
-        for (int i = 0; i < shopInventory.itemSlots.Count; i++)
+        if (shopInventory != null)
         {
-            slot = Instantiate(slotPrefab, shopUI.transform);
-
-            if (slot.TryGetComponent<ShopSlot>(out ShopSlot info))
+            for (int i = 0; i < shopInventory.itemSlots.Count; i++)
             {
-                info.shop = this;
-                info.itemsInSlot = shopInventory.itemSlots[i];
-            }
-        }
+                slot = Instantiate(slotPrefab, shopUI.transform);
 
-        // Update shop once slots are created
-        UpdateShop();
+                if (slot.TryGetComponent<ShopSlot>(out ShopSlot info))
+                {
+                    info.itemsInSlot = shopInventory.itemSlots[i];
+                }
+            }
+
+            // Update shop once slots are created
+            UpdateShop();
+        }
     }
 
     // Update Shop on buy or sell to reperesent shop inventory and player inventory contents
-    public void UpdateShop()
+    private void UpdateShop()
     {
         ItemSlot itemMatch = new();
         // Loop through all shop slots that are a part of shopUI
-       foreach (Transform slot in shopUI)
+        for (int i = 0; i < shopUI.childCount; i++)
         {
+            var slot = shopUI.GetChild(i);
+
             if (slot.TryGetComponent<ShopSlot>(out ShopSlot slotinfo))
             {
                 // Check if item exists in player inventory and retrieve it
@@ -58,8 +56,6 @@ public class Shop : MonoBehaviour
                 // Check if player has more money than current price of item and shop has supply
                 slotinfo.buyButton.interactable = (StatManager.instance.currentMoney >= slotinfo.itemsInSlot.item.currentPrice) && (slotinfo.itemsInSlot.amount > 0);
             }
-
-            // Update slot texts
             slotinfo.amountText.text = slotinfo.itemsInSlot.amount.ToString("0");
             slotinfo.priceText.text = slotinfo.itemsInSlot.item.currentPrice.ToString("$0.00");
             if (itemMatch != null)
@@ -67,7 +63,6 @@ public class Shop : MonoBehaviour
         }
         
     }
-
     public void Buy(Item item, int amount)
     {
         if (StatManager.instance.currentMoney >= item.currentPrice)
@@ -79,9 +74,9 @@ public class Shop : MonoBehaviour
             UpdateShop();
         }
     }
-
     public void Sell(Item item, int amount)
     {
+
         // Retrieve item slot in player inventory where the item is the same as the one in shop
         var itemSlotPlayerInventory = StatManager.instance.playerInventory.itemSlots.FirstOrDefault(itemslot => itemslot.item == item);
 
@@ -95,4 +90,56 @@ public class Shop : MonoBehaviour
             UpdateShop();
         }
     }
+
+    public void SortByName()
+    {
+        List<ShopSlot> shopUiChildren = new();
+
+        for (int i = 0; i < shopUI.childCount; i++)
+            if (shopUI.GetChild(i).TryGetComponent<ShopSlot>(out ShopSlot slot))
+             {
+                shopUiChildren.Add(slot);
+             }
+        
+        List<ShopSlot> sortedByName = shopUiChildren.OrderBy(p => p.itemsInSlot.item.name).ToList();
+        for (int i = 0; i < sortedByName.Count; i++)
+        {
+            sortedByName[i].transform.SetSiblingIndex(i);
+        }
+
+    }
+    public void SortByPrice()
+    {
+        List<ShopSlot> shopUiChildren = new();
+
+        for (int i = 0; i < shopUI.childCount; i++)
+            if (shopUI.GetChild(i).TryGetComponent<ShopSlot>(out ShopSlot slot))
+            {
+                shopUiChildren.Add(slot);
+            }
+
+        List<ShopSlot> sortedByName = shopUiChildren.OrderBy(p => p.itemsInSlot.item.currentPrice).ToList();
+        for (int i = 0; i < sortedByName.Count; i++)
+        {
+            sortedByName[i].transform.SetSiblingIndex(i);
+        }
+    }
+    public void SortByAmount()
+    {
+        List<ShopSlot> shopUiChildren = new();
+
+        for (int i = 0; i < shopUI.childCount; i++)
+            if (shopUI.GetChild(i).TryGetComponent<ShopSlot>(out ShopSlot slot))
+            {
+                shopUiChildren.Add(slot);
+            }
+
+        List<ShopSlot> sortedByName = shopUiChildren.OrderBy(p => p.itemsInSlot.amount).ToList();
+        for (int i = 0; i < sortedByName.Count; i++)
+        {
+            sortedByName[i].transform.SetSiblingIndex(i);
+        }
+    }
+
+
 }
