@@ -64,6 +64,7 @@ class Shop : MonoBehaviour
             else
                 slotinfo.ownedAmountText.text = "0";
         }
+        SortByNameDescending();
     }
     public void Buy(Item item, int amount)
     {
@@ -93,7 +94,7 @@ class Shop : MonoBehaviour
         }
     }
 
-    public void SortByName()
+    public void SortByNameDescending()
     {
         List<ShopSlot> shopUiChildren = new();
 
@@ -110,7 +111,7 @@ class Shop : MonoBehaviour
         }
 
     }
-    public void SortByPrice()
+    public void SortByPriceDescending()
     {
         List<ShopSlot> shopUiChildren = new();
 
@@ -120,13 +121,15 @@ class Shop : MonoBehaviour
                 shopUiChildren.Add(slot);
             }
 
-        List<ShopSlot> sortedByName = shopUiChildren.OrderBy(p => p.itemsInSlot.item.currentPrice).ToList();
-        for (int i = 0; i < sortedByName.Count; i++)
+        List<ShopSlot> sortedByPrice = shopUiChildren.OrderBy(p => p.itemsInSlot.item.currentPrice).ToList();
+        for (int i = 0; i < sortedByPrice.Count; i++)
         {
-            sortedByName[i].transform.SetSiblingIndex(i);
+            sortedByPrice[i].transform.SetSiblingIndex(i);
         }
+
+        sortedByPrice.Reverse();
     }
-    public void SortByAmount()
+    public void SortByAmountDescending()
     {
         List<ShopSlot> shopUiChildren = new();
 
@@ -136,10 +139,10 @@ class Shop : MonoBehaviour
                 shopUiChildren.Add(slot);
             }
 
-        List<ShopSlot> sortedByName = shopUiChildren.OrderBy(p => p.itemsInSlot.amount).ToList();
-        for (int i = 0; i < sortedByName.Count; i++)
+        List<ShopSlot> sortedByAmount = shopUiChildren.OrderBy(p => p.itemsInSlot.amount).ToList();
+        for (int i = 0; i < sortedByAmount.Count; i++)
         {
-            sortedByName[i].transform.SetSiblingIndex(i);
+            sortedByAmount[i].transform.SetSiblingIndex(i);
         }
     }
 
