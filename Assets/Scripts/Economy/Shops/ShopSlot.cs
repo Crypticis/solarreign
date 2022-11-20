@@ -22,7 +22,7 @@ class ShopSlot : MonoBehaviour
     public float incrementalSellTimer = 0;
     public bool buyButtonIsDown, sellButtonIsDown;
 
-    public Shop shopContainingSlot;
+    public Shop shop;
     public ItemSlot itemInSlot;
 
     public void Start()
@@ -41,7 +41,7 @@ class ShopSlot : MonoBehaviour
 
             if (incrementalBuyTimer >= .1f && buyTimer >= 1)
             {
-                shopContainingSlot.Buy(itemInSlot.item, 1);
+                shop.Buy(itemInSlot.item, 1);
                 incrementalBuyTimer = 0;
             }
         }
@@ -53,7 +53,7 @@ class ShopSlot : MonoBehaviour
 
             if (incrementalSellTimer >= .1f && sellTimer >= 1)
             {
-                shopContainingSlot.Sell(itemInSlot.item, 1);
+                shop.Sell(itemInSlot.item, 1);
                 incrementalSellTimer = 0;
             }
         }
@@ -79,12 +79,12 @@ class ShopSlot : MonoBehaviour
     }
     void Buy()
     {
-        shopContainingSlot.Buy(itemInSlot.item, 1);
+        shop.Buy(itemInSlot.item, 1);
     }
 
     void Sell()
     {
-        shopContainingSlot.Sell(itemInSlot.item, 1);
+        shop.Sell(itemInSlot.item, 1);
     }
 
     void BuyButtonDown()

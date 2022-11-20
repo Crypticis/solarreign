@@ -6,7 +6,7 @@ using UnityEngine;
 class Shop : MonoBehaviour
 {
     [SerializeField] private ShopInventory supply;
-    public ShopInventory Supply { get => supply; }
+    public ShopInventory Supply{ get => supply; }
 
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform shopUI;
@@ -30,7 +30,7 @@ class Shop : MonoBehaviour
                 if (slot.TryGetComponent(out ShopSlot info))
                 {
                     info.itemInSlot = supply.itemSlots[i];
-                    info.shopContainingSlot = this;
+                    info.shop = this;
                 }
             }
 
