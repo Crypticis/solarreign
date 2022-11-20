@@ -10,3 +10,12 @@ public class PlayerInfoObject : ScriptableObject
 
     public ShipType shipType;
 }
+
+public enum ShipType
+{
+    fighter,
+    bomber,
+    cruiser,
+    heavyFighter,
+    dreadnought
+}
