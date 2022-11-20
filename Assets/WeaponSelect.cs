@@ -76,7 +76,7 @@ public class WeaponSelect : MonoBehaviour
 
             if(weaponGroups[weaponGroups.Length - 1].weapons.Count == 0)
             {
-                weaponSelectionIcons[0].color = new Color(weaponSelectionIcons[2].color.r, weaponSelectionIcons[2].color.g, weaponSelectionIcons[2].color.b, .25f);
+                weaponSelectionIcons[0].color = new Color(weaponSelectionIcons[2].color.r, weaponSelectionIcons[2].color.g, weaponSelectionIcons[2].color.b, .1f);
             }
             else
             {
@@ -85,7 +85,7 @@ public class WeaponSelect : MonoBehaviour
 
             if (weaponGroups[selectIndex + 1].weapons.Count == 0)
             {
-                weaponSelectionIcons[2].color = new Color(weaponSelectionIcons[2].color.r, weaponSelectionIcons[2].color.g, weaponSelectionIcons[2].color.b, .25f);
+                weaponSelectionIcons[2].color = new Color(weaponSelectionIcons[2].color.r, weaponSelectionIcons[2].color.g, weaponSelectionIcons[2].color.b, .1f);
             }
             else
             {
