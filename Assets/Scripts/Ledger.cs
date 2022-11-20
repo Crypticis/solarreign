@@ -53,14 +53,14 @@ public class Ledger : MonoBehaviour
 
         if(timer <= 0 || index != lastChanged)
         {
-            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.shopInventory.itemSlots[index].item.currentPrice).ToList();
+            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.Supply.itemSlots[index].item.currentPrice).ToList();
             slots.Reverse();
             lastChanged = index;
             timer = 1f;
         }
         else if (index == lastChanged)
         {
-            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.shopInventory.itemSlots[index].item.currentPrice).ToList();
+            slots = slots.OrderBy(item => item.GetComponent<LedgerSlot>().trader.Supply.itemSlots[index].item.currentPrice).ToList();
             lastChanged = index;
         }
 

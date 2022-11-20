@@ -222,7 +222,7 @@ public class SpaceStationUI : MonoBehaviour
     {
         CloseUI();
 
-        spaceStation.GetComponent<Shop>().CreateShopSlots();
+        spaceStation.GetComponent<Shop>().CreateShopUI();
 
         if (shopUI.activeSelf)
         {
