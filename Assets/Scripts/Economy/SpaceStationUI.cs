@@ -323,8 +323,13 @@ public class SpaceStationUI : MonoBehaviour
         } 
         else
         {
+<<<<<<< HEAD
             shipyardUI.SetActive(true);
             shipyardUI.GetComponent<Shipyard>().UpdateShipyardUI(0);
+=======
+            shipyardUI.gameObject.SetActive(true);
+            //shipyardUI.GetComponent<Shipyard>().UpdateShipyardUI(0);
+>>>>>>> origin/RobertNotCorrupted
             shipyardRenderCam.SetActive(true);
         }
     }

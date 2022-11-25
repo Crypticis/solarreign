@@ -43,22 +43,22 @@ public class PlayerMap : PlayerController
     {
         //Debug.Log("Model Updating");
 
-        if (playerInfo.shipType == ShipType.fighter)
-        {
-            meshFilter.sharedMesh = ships[0].GetComponent<MeshFilter>().sharedMesh;
-        }
-        else if (playerInfo.shipType == ShipType.heavyFighter)
-        {
-            meshFilter.sharedMesh = ships[1].GetComponent<MeshFilter>().sharedMesh;
-        }
-        else if (playerInfo.shipType == ShipType.bomber)
-        {
-            meshFilter.sharedMesh = ships[2].GetComponent<MeshFilter>().sharedMesh;
-        }
-        else if (playerInfo.shipType == ShipType.cruiser)
-        {
-            meshFilter.sharedMesh = ships[3].GetComponent<MeshFilter>().sharedMesh;
-        }
+        //if (playerInfo.shipType == ShipType.fighter)
+        //{
+        //    meshFilter.sharedMesh = ships[0].GetComponent<MeshFilter>().sharedMesh;
+        //}
+        //else if (playerInfo.shipType == ShipType.heavyFighter)
+        //{
+        //    meshFilter.sharedMesh = ships[1].GetComponent<MeshFilter>().sharedMesh;
+        //}
+        //else if (playerInfo.shipType == ShipType.bomber)
+        //{
+        //    meshFilter.sharedMesh = ships[2].GetComponent<MeshFilter>().sharedMesh;
+        //}
+        //else if (playerInfo.shipType == ShipType.cruiser)
+        //{
+        //    meshFilter.sharedMesh = ships[3].GetComponent<MeshFilter>().sharedMesh;
+        //}
 
         List<float> size = new List<float>();
 

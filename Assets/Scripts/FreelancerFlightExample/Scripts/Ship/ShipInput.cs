@@ -44,6 +44,14 @@ namespace FLFlight
 
         public WarpJump warp;
         public bool controlsEnabled = true;
+
+        SpaceGraphicsToolkit.SgtThruster[] thrusters;
+
+        private void Start()
+        {
+            GetThrusters();
+        }
+
         private void Update()
         {
             SetStickCommandsUsingAutopilot();
@@ -64,6 +72,21 @@ namespace FLFlight
                     throttle = Mathf.MoveTowards(throttle, 0, Time.deltaTime * 5f);
                 }
             }
+
+            if(thrusters.Length > 0)
+            {
+                for (int i = 0; i < thrusters.Length; i++)
+                {
+                    thrusters[i].Throttle = throttle;
+                }
+            }
+
+            Shipyard.onShipChanged += GetThrusters;
+        }
+
+        void GetThrusters()
+        {
+            thrusters = GetComponentsInChildren<SpaceGraphicsToolkit.SgtThruster>();
         }
 
         private void SetStickCommandsUsingAutopilot()

@@ -19,7 +19,11 @@ MonoBehaviour:
   currentPrice: 3125
   sprite: {fileID: 21300000, guid: a120c51740a57f94ea579641583d5590, type: 3}
   ID: 0
+<<<<<<< HEAD:Assets/Scripts/Economy/Items/Weapons/Small Blasters/SC0 Blaster.asset
   weaponType: 4
+=======
+  weaponType: 0
+>>>>>>> origin/RobertNotCorrupted:Assets/Scripts/Economy/Items/Weapons/Small Blasters/Small Blaster I.asset
   moduleSize: 0
   range: 0
   damage: 0

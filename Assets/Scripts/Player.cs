@@ -185,14 +185,14 @@ public class Player : PlayerController
         audiosource.volume = Mathf.Clamp(audiosource.volume, .1f, 1f);
         energy = Mathf.Clamp(energy, 0, maxEnergy);
 
-        wingTails[0].materials[0].SetColor("_TintColor", Color.Lerp(new Color(1, 1, 1, 0), new Color(1, 1, 1, 0.1f), fovTimer));
-        wingTails[1].materials[0].SetColor("_TintColor", Color.Lerp(new Color(1, 1, 1, 0), new Color(1, 1, 1, 0.1f), fovTimer));
+        //wingTails[0].materials[0].SetColor("_TintColor", Color.Lerp(new Color(1, 1, 1, 0), new Color(1, 1, 1, 0.1f), fovTimer));
+        //wingTails[1].materials[0].SetColor("_TintColor", Color.Lerp(new Color(1, 1, 1, 0), new Color(1, 1, 1, 0.1f), fovTimer));
 
-        var emmision1 = flameBoosters[0].emission;
-        var emission2 = flameBoosters[1].emission;
+        //var emmision1 = flameBoosters[0].emission;
+        //var emission2 = flameBoosters[1].emission;
 
-        emmision1.rateOverTime = Mathf.Lerp(10, 100, fovTimer);
-        emission2.rateOverTime = Mathf.Lerp(10, 100, fovTimer);
+        //emmision1.rateOverTime = Mathf.Lerp(10, 100, fovTimer);
+        //emission2.rateOverTime = Mathf.Lerp(10, 100, fovTimer);
 
         if (!warp.isWarping)
         {
@@ -354,7 +354,7 @@ public class Player : PlayerController
         if (interactable && Input.GetButtonDown("Interact"))
         {
             interactable.Interact(this);
-            Debug.Log("Interaction logged");
+            //Debug.Log("Interaction logged");
         }
 
         if (Input.GetButtonDown("Perspective") && controlsEnabled)

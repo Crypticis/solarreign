@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4ef4931fac84c44daeff0c8b27de89a, type: 3}
+<<<<<<< HEAD:Assets/Scripts/Economy/Items/Weapons/Small Mining Drills/SC0 Mining Drill Launcher.asset
   m_Name: SC0 Mining Drill Launcher
+=======
+  m_Name: Small Mining Drill I
+>>>>>>> origin/RobertNotCorrupted:Assets/Scripts/Economy/Items/Weapons/Small Mining Drills/Small Mining Drill i.asset
   m_EditorClassIdentifier: 
   Name: Small Mining Drill
   type: 10

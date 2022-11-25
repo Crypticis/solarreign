@@ -10,7 +10,7 @@ namespace GT2
         [SerializeField] private Transform turretBase = null;
 
         [Tooltip("Transform of the turret's elevation rotations. ")]
-        [SerializeField] private Transform barrels = null;
+        [SerializeField] public Transform barrels = null;
 
         [Header("Elevation")]
         [Tooltip("Speed at which the turret's guns elevate up and down.")]

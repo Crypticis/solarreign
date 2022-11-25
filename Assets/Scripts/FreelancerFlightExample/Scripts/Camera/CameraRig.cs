@@ -6,6 +6,7 @@ namespace FLFlight
     {
         [Tooltip("The ship to follow around.")]
         [SerializeField] private Transform ship = null;
+        //[SerializeField] PlayerInfoObject playerInfo;
 
         [Tooltip("The camera on this rig. Required for lookahead motions.")]
         public Camera cam = null;
@@ -50,6 +51,8 @@ namespace FLFlight
             // that the rig will follow the ship's rotation in pitch and yaw, but NOT in roll.
             // This allows the ship to roll on it own.
             var targetRigRotation = Quaternion.LookRotation(ship.forward, transform.up);
+
+            // Maybe try to setup the new camera here.
 
             transform.rotation = SmoothDamp.DampS(transform.rotation, targetRigRotation, smoothSpeed, Time.deltaTime);
 

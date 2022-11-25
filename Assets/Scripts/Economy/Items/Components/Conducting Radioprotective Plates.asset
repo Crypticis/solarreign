@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7e3383ee493af4fb73fd9015269705, type: 3}
   m_Name: Conducting Radioprotective Plates
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Scripts/Economy/Items/Components/Conducting Radioprotective Plates.asset
   Name: Conducting Radioprotective Plates
   type: 11
   stackable: 1
@@ -19,3 +20,16 @@ MonoBehaviour:
   currentPrice: 0
   sprite: {fileID: 0}
   ID: 0
+=======
+  Name: Small Blaster V
+  type: 9
+  stackable: 1
+  defaultPrice: 4000
+  sprite: {fileID: 21300000, guid: a120c51740a57f94ea579641583d5590, type: 3}
+  ID: 0
+  weaponType: 0
+  moduleSize: 0
+  range: 0
+  damage: 4
+  firerate: 0
+>>>>>>> origin/RobertNotCorrupted:Assets/Scripts/Economy/Items/Weapons/Small Blasters/Small Blaster V.asset

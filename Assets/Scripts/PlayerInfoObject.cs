@@ -9,4 +9,16 @@ public class PlayerInfoObject : ScriptableObject
     public string Name;
 
     public ShipType shipType;
+
+    public int shipID;
+}
+
+public enum ShipType
+{
+    corvette,
+    destroyer,
+    cruiser,
+    battlecruiser,
+    battleship,
+    dreadnought
 }

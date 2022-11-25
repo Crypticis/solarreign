@@ -330,7 +330,7 @@ namespace GNB
                 firePointIndex += 1;
 
                 AmmoCount -= 1;
-                Debug.Log(AmmoCount);
+                //Debug.Log(AmmoCount);
             }
             else
             {

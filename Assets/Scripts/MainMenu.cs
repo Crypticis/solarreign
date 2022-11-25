@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
         database.ResetInventories();
         database.AddDefaultInventories();
         database.ResetShipInfo();
-        playerInfo.shipType = ShipType.fighter;
+        playerInfo.shipType = ShipType.corvette;
         FactionManager.instance.ResetFactions();
         //QuestManager.instance.ResetQuests();
         AudioManager.instance.Play("Click");

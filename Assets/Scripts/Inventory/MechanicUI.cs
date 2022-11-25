@@ -45,7 +45,7 @@ public class MechanicUI : MonoBehaviour
 
     public void Update()
     {
-        for (int i = 0; i < shipyard.shipyardSlots.Length; i++)
+        for (int i = 0; i < shipyard.shipyardSlots.Count; i++)
         {
             if(shipyard.shipyardSlots[i].isOwned == true)
             {
