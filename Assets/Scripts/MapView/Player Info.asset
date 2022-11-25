@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player Info
   m_EditorClassIdentifier: 
   Name: Player
-  shipType: 1
-  shipID: 14
+  shipType: 0
+  shipID: 0
