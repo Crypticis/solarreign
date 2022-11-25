@@ -30,34 +30,34 @@ public class HealthUI : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        UpdateShipModel();
-        healthMeshFilter = healthHologram.GetComponent<MeshFilter>();
-        rend = healthHologram.GetComponent<Renderer>();
-        healthMeshFilter.mesh = playerMeshFilter.mesh;
-        float objectSize = (healthMeshFilter.transform.localScale.z * healthMeshFilter.mesh.bounds.size.z) / 12f;
-        healthMeshFilter.transform.localScale /= objectSize;
-    }
+    //void Start()
+    //{
+    //    UpdateShipModel();
+    //    healthMeshFilter = healthHologram.GetComponent<MeshFilter>();
+    //    rend = healthHologram.GetComponent<Renderer>();
+    //    healthMeshFilter.mesh = playerMeshFilter.mesh;
+    //    float objectSize = (healthMeshFilter.transform.localScale.z * healthMeshFilter.mesh.bounds.size.z) / 12f;
+    //    healthMeshFilter.transform.localScale /= objectSize;
+    //}
 
-    public void UpdateHealth()
-    {
-        healthRenderCam.SetActive(true);
+    //public void UpdateHealth()
+    //{
+    //    healthRenderCam.SetActive(true);
 
-        healthMeshFilter.mesh = playerMeshFilter.mesh;
-        float healthPercent = player.health / player.maxHealth;
-        //shieldText.text = string.Format("SHLD: " + "{0}" + " / " + "{1}", (int)player.currentShield, player.maxShield);
-        healthText.text = string.Format("HP: " + "{0}" + " / " + "{1}", (int)player.health, player.maxHealth);
-        rend.material.Lerp(healthHolo2, healthHolo1, healthPercent);
-        float objectSize = (healthMeshFilter.transform.localScale.z * healthMeshFilter.mesh.bounds.size.z) / 12f;
-        healthMeshFilter.transform.localScale /= objectSize;
+    //    healthMeshFilter.mesh = playerMeshFilter.mesh;
+    //    float healthPercent = player.health / player.maxHealth;
+    //    //shieldText.text = string.Format("SHLD: " + "{0}" + " / " + "{1}", (int)player.currentShield, player.maxShield);
+    //    healthText.text = string.Format("HP: " + "{0}" + " / " + "{1}", (int)player.health, player.maxHealth);
+    //    rend.material.Lerp(healthHolo2, healthHolo1, healthPercent);
+    //    float objectSize = (healthMeshFilter.transform.localScale.z * healthMeshFilter.mesh.bounds.size.z) / 12f;
+    //    healthMeshFilter.transform.localScale /= objectSize;
 
-        FadeInHealthUI();
-    }
+    //    FadeInHealthUI();
+    //}
 
     public void UpdateShipModel()
     {
-        playerMeshFilter = Player.playerInstance.transform.Find("Ships").Find(playerInfoObject.shipType.ToString()).Find("Model").GetComponent<MeshFilter>();
+        //playerMeshFilter = Player.playerInstance.transform.Find("Ships").Find(playerInfoObject.shipType.ToString()).Find("Model").GetComponent<MeshFilter>();
     }
 
     // Fades in Health UI hologram and invokes a fade out method in 2 seconds. Checks if already planning to fade out before invoking. Prevents flashing of health UI.

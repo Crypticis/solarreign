@@ -6,11 +6,13 @@ public class PlayerInfo : MonoBehaviour
 {
     public PlayerInfoObject playerInfoObject;
 
-    public GameObject fighter;
-    public GameObject heavyFighter;
-    public GameObject bomber;
-    public GameObject cruiser;
+    //public GameObject fighter;
+    //public GameObject heavyFighter;
+    //public GameObject bomber;
+    //public GameObject cruiser;
     public GameObject camObject;
+
+    public Transform shipRoot;
 
     public HealthUI healthUI;
 
@@ -19,40 +21,9 @@ public class PlayerInfo : MonoBehaviour
 
     public ShipDefaultValues[] shipDefaults;
 
-    public void Awake()
+    public void Start()
     {
-        if (playerInfoObject.shipType == ShipType.fighter)
-        {
-            fighter.SetActive(true);
-            camObject.transform.localPosition = new Vector3(0, .75f, -4);
-            shipPhysics.linearForce = shipDefaults[0].linearForce;
-            shipPhysics.angularForce = shipDefaults[0].angularForce;
-            healthUI.playerMeshFilter = fighter.GetComponentInChildren<MeshFilter>();
-        }
-        else if (playerInfoObject.shipType == ShipType.heavyFighter)
-        {
-            heavyFighter.SetActive(true);
-            camObject.transform.localPosition = new Vector3(0, .75f, -4);
-            shipPhysics.linearForce = shipDefaults[1].linearForce;
-            shipPhysics.angularForce = shipDefaults[1].angularForce;
-            healthUI.playerMeshFilter = heavyFighter.GetComponentInChildren<MeshFilter>();
-        }
-        else if (playerInfoObject.shipType == ShipType.bomber)
-        {
-            bomber.SetActive(true);
-            camObject.transform.localPosition = new Vector3(0, .75f, -4);
-            shipPhysics.linearForce = shipDefaults[2].linearForce;
-            shipPhysics.angularForce = shipDefaults[2].angularForce;
-            healthUI.playerMeshFilter = bomber.GetComponentInChildren<MeshFilter>();
-        }
-        else if (playerInfoObject.shipType == ShipType.cruiser)
-        {
-            cruiser.SetActive(true);
-            camObject.transform.localPosition = new Vector3(0, 1.5f, -7);
-            shipPhysics.linearForce = shipDefaults[3].linearForce;
-            shipPhysics.angularForce = shipDefaults[3].angularForce;
-            healthUI.playerMeshFilter = cruiser.GetComponentInChildren<MeshFilter>();
-        }
+        UpdateShip();
     }
 
     private void Update()
@@ -62,87 +33,75 @@ public class PlayerInfo : MonoBehaviour
 
     public void UpdateShip()
     {
+        for (int i = 0; i < shipRoot.childCount; i++)
+        {
+            Destroy(shipRoot.GetChild(i).gameObject);
+        }
+
+        GameObject ship = Instantiate(GameManager.instance.database.GetShip[playerInfoObject.shipID], shipRoot.transform);
+
+        var missiles = ship.GetComponentsInChildren<AAHardpoint>();
+
+        for (int i = 0; i < missiles.Length; i++)
+        {
+            missiles[i].ownShip = transform;
+        }
+
         switch (playerInfoObject.shipType)
         {
-            case ShipType.fighter:
+            case ShipType.corvette:
 
-                fighter.SetActive(true);
+            //    fighter.SetActive(true);
                 camObject.transform.localPosition = new Vector3(0, .75f, -4);
                 shipPhysics.linearForce = shipDefaults[0].linearForce;
                 shipPhysics.angularForce = shipDefaults[0].angularForce;
-                healthUI.playerMeshFilter = fighter.GetComponentInChildren<MeshFilter>();
+                //healthUI.playerMeshFilter = fighter.GetComponentInChildren<MeshFilter>();
 
                 break;
-            case ShipType.bomber:
+            case ShipType.destroyer:
 
-                bomber.SetActive(true);
-                camObject.transform.localPosition = new Vector3(0, .75f, -4);
-                shipPhysics.linearForce = shipDefaults[2].linearForce;
-                shipPhysics.angularForce = shipDefaults[2].angularForce;
-                healthUI.playerMeshFilter = bomber.GetComponentInChildren<MeshFilter>();
+                //bomber.SetActive(true);
+                camObject.transform.localPosition = new Vector3(0, 1f, -5);
+                shipPhysics.linearForce = shipDefaults[1].linearForce;
+                shipPhysics.angularForce = shipDefaults[1].angularForce;
+                //healthUI.playerMeshFilter = bomber.GetComponentInChildren<MeshFilter>();
 
                 break;
             case ShipType.cruiser:
 
-                cruiser.SetActive(true);
+                //cruiser.SetActive(true);
                 camObject.transform.localPosition = new Vector3(0, 1.5f, -7);
-                shipPhysics.linearForce = shipDefaults[3].linearForce;
-                shipPhysics.angularForce = shipDefaults[3].angularForce;
-                healthUI.playerMeshFilter = cruiser.GetComponentInChildren<MeshFilter>();
+                shipPhysics.linearForce = shipDefaults[2].linearForce;
+                shipPhysics.angularForce = shipDefaults[2].angularForce;
+                //healthUI.playerMeshFilter = cruiser.GetComponentInChildren<MeshFilter>();
 
                 break;
-            case ShipType.heavyFighter:
+            case ShipType.battlecruiser:
 
-                heavyFighter.SetActive(true);
-                camObject.transform.localPosition = new Vector3(0, .75f, -4);
-                shipPhysics.linearForce = shipDefaults[1].linearForce;
-                shipPhysics.angularForce = shipDefaults[1].angularForce;
-                healthUI.playerMeshFilter = heavyFighter.GetComponentInChildren<MeshFilter>();
+                //heavyFighter.SetActive(true);
+                camObject.transform.localPosition = new Vector3(0, 2.5f, -9);
+                shipPhysics.linearForce = shipDefaults[3].linearForce;
+                shipPhysics.angularForce = shipDefaults[3].angularForce;
+                //healthUI.playerMeshFilter = heavyFighter.GetComponentInChildren<MeshFilter>();
+
+                break;
+            case ShipType.battleship:
+
+                camObject.transform.localPosition = new Vector3(0, 3.5f, -11);
+                shipPhysics.linearForce = shipDefaults[4].linearForce;
+                shipPhysics.angularForce = shipDefaults[4].angularForce;
 
                 break;
             case ShipType.dreadnought:
 
-
+                camObject.transform.localPosition = new Vector3(0, 4.5f, -13);
+                shipPhysics.linearForce = shipDefaults[5].linearForce;
+                shipPhysics.angularForce = shipDefaults[5].angularForce;
 
                 break;
-
-
             default:
                 break;
         }
-
-        //if (playerInfoObject.shipType == ShipType.fighter)
-        //{
-        //    fighter.SetActive(true);
-        //    camObject.transform.localPosition = new Vector3(0, .75f, -4);
-        //    shipPhysics.linearForce = shipDefaults[0].linearForce;
-        //    shipPhysics.angularForce = shipDefaults[0].angularForce;
-        //    healthUI.playerMeshFilter = fighter.GetComponentInChildren<MeshFilter>();
-        //}
-        //else if (playerInfoObject.shipType == ShipType.heavyFighter)
-        //{
-        //    heavyFighter.SetActive(true);
-        //    camObject.transform.localPosition = new Vector3(0, .75f, -4);
-        //    shipPhysics.linearForce = shipDefaults[1].linearForce;
-        //    shipPhysics.angularForce = shipDefaults[1].angularForce;
-        //    healthUI.playerMeshFilter = heavyFighter.GetComponentInChildren<MeshFilter>();
-        //}
-        //else if (playerInfoObject.shipType == ShipType.bomber)
-        //{
-        //    bomber.SetActive(true);
-        //    camObject.transform.localPosition = new Vector3(0, .75f, -4);
-        //    shipPhysics.linearForce = shipDefaults[2].linearForce;
-        //    shipPhysics.angularForce = shipDefaults[2].angularForce;
-        //    healthUI.playerMeshFilter = bomber.GetComponentInChildren<MeshFilter>();
-        //}
-        //else if (playerInfoObject.shipType == ShipType.cruiser)
-        //{
-        //    cruiser.SetActive(true);
-        //    camObject.transform.localPosition = new Vector3(0, 1.5f, -7);
-        //    shipPhysics.linearForce = shipDefaults[3].linearForce;
-        //    shipPhysics.angularForce = shipDefaults[3].angularForce;
-        //    healthUI.playerMeshFilter = cruiser.GetComponentInChildren<MeshFilter>();
-        //}
     }
 
     [System.Serializable]

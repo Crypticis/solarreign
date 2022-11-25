@@ -262,7 +262,7 @@ public class DamageHandler : MonoBehaviour
 
         if (isPlayer)
         {
-            HealthUI.instance.UpdateHealth();
+            //HealthUI.instance.UpdateHealth();
         }
     }
 

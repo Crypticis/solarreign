@@ -725,7 +725,7 @@ public class GameManager : MonoBehaviour
 
         var shipyard = GameObject.Find("MainCanvas").GetComponent<ShipyardUI>().shipyard;
 
-        for (int i = 0; i < shipyard.shipyardSlots.Length; i++)
+        for (int i = 0; i < shipyard.shipyardSlots.Count; i++)
         {
             saveObject.isShipOwned[i] = shipyard.shipyardSlots[i].isOwned;
         }
@@ -823,8 +823,8 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < saveObject.playerFleet.shipNames.Count; i++)
             {
-                GameObject go = Instantiate(database.GetShip[saveObject.playerFleet.shipNames[i]], Player.playerInstance.transform.position, Quaternion.identity);
-                Player.playerInstance.fleet.AddToFleet(go);
+                //GameObject go = Instantiate(database.GetShip[saveObject.playerFleet.shipNames[i]], Player.playerInstance.transform.position, Quaternion.identity);
+                //Player.playerInstance.fleet.AddToFleet(go);
 
                 Player.playerInstance.fleet.fleet[i].pilot = new Pilot();
                 Player.playerInstance.fleet.fleet[i].pilot.ResetLevels();
@@ -892,7 +892,7 @@ public class GameManager : MonoBehaviour
 
             var shipyard = GameObject.Find("MainCanvas").GetComponent<ShipyardUI>().shipyard;
 
-            for (int i = 0; i < shipyard.shipyardSlots.Length; i++)
+            for (int i = 0; i < shipyard.shipyardSlots.Count; i++)
             {
                 shipyard.shipyardSlots[i].isOwned = saveObject.isShipOwned[i];
             }
@@ -964,8 +964,8 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < saveObject.playerFleet.shipNames.Count; i++)
             {
-                GameObject go = Instantiate(database.GetShip[saveObject.playerFleet.shipNames[i]], Player.playerInstance.transform.position, Quaternion.identity);
-                Player.playerInstance.fleet.AddToFleet(go);
+                //GameObject go = Instantiate(database.GetShip[saveObject.playerFleet.shipNames[i]], Player.playerInstance.transform.position, Quaternion.identity);
+                //Player.playerInstance.fleet.AddToFleet(go);
 
                 Player.playerInstance.fleet.fleet[i].pilot = new Pilot();
                 Player.playerInstance.fleet.fleet[i].pilot.ResetLevels();
@@ -1048,7 +1048,7 @@ public class GameManager : MonoBehaviour
 
                 foreach (string shipName in saveObject.npcs[i].npcFleet.shipNames)
                 {
-                    GameObject ship = Instantiate(database.GetShip[shipName], Player.playerInstance.transform.position, Quaternion.identity);
+                    //GameObject ship = Instantiate(database.GetShip[shipName], Player.playerInstance.transform.position, Quaternion.identity);
 
                     fleet.AddToFleet(go);
                 }
@@ -1135,7 +1135,7 @@ public class GameManager : MonoBehaviour
 
             var shipyard = GameObject.Find("MainCanvas").GetComponent<ShipyardUI>().shipyard;
 
-            for (int i = 0; i < shipyard.shipyardSlots.Length; i++)
+            for (int i = 0; i < shipyard.shipyardSlots.Count; i++)
             {
                 shipyard.shipyardSlots[i].isOwned = saveObject.isShipOwned[i];
             }

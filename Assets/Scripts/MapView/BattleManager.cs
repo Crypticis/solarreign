@@ -83,7 +83,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < fleet.Count; i++)
         {
             var temp = new FleetShip();
-            temp.ship = GameManager.instance.database.GetShip[fleet[i].name];
+            //temp.ship = GameManager.instance.database.GetShip[fleet[i].name];
             //temp.attack = fleet[i].GetComponent<FleetMember>().power;
             //temp.health = fleet[i].GetComponent<DamageHandler>().health;
             temp.pilot.level = fleet[i].GetComponent<FleetMember>().level;

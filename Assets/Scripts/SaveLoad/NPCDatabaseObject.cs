@@ -9,7 +9,7 @@ public class NPCDatabaseObject : ScriptableObject
     public GameObject[] shipObjects;
     public GameObject[] fleetPrefabs;
     public GameObject[] interactionPrefab;
-    public Dictionary<string, GameObject> GetShip;
+    public Dictionary<int, GameObject> GetShip;
     public Dictionary<string, GameObject> GetFleetPrefab;
     public Dictionary<string, GameObject> GetInteractionPrefab;
 
@@ -29,10 +29,15 @@ public class NPCDatabaseObject : ScriptableObject
 
     public SystemInfo[] systems;
 
-    [ContextMenu("Update IDs")]
+    public void Awake()
+    {
+        UpdateID();
+    }
+
+    [ContextMenu("Update IDs and Dictionaries")]
     public void UpdateID()
     {
-        GetShip = new Dictionary<string, GameObject>();
+        GetShip = new Dictionary<int, GameObject>();
         GetFaction = new Dictionary<string, Faction>();
         GetPilotModel = new Dictionary<int, GameObject>();
         GetFleetPrefab = new Dictionary<string, GameObject>();
@@ -40,7 +45,8 @@ public class NPCDatabaseObject : ScriptableObject
 
         for (int i = 0; i < shipObjects.Length; i++)
         {
-            GetShip.Add(shipObjects[i].name, shipObjects[i]);
+            GetShip.Add(i, shipObjects[i]);
+            shipObjects[i].GetComponent<ShipInfo>().info.ID = i;
         }
 
         for (int i = 0; i < fleetPrefabs.Length; i++)
@@ -100,6 +106,7 @@ public class NPCDatabaseObject : ScriptableObject
         }
     }
 
+    [ContextMenu("Reset ship infos")]
     public void ResetShipInfo()
     {
         for (int i = 0; i < shipinfos.Length; i++)

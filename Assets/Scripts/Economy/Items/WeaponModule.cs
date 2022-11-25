@@ -10,39 +10,75 @@ public class WeaponModule : MonoBehaviour
     public Laser laser;
     public MiningDrillLauncher mining;
 
+    [SerializeField] GameObject[] weaponTurrets;
+
     public void SetBlaster()
     {
-        hardpoint.enabled = false;
-        gun.enabled = true;
-        if (laser)
-            laser.enabled = false;
-        mining.enabled = false;
+        for (int i = 0; i < weaponTurrets.Length; i++)
+        {
+            if (i != 0)
+                weaponTurrets[i].SetActive(false);
+            else
+                weaponTurrets[i].SetActive(true);
+        }
+
+
+
+        //hardpoint.enabled = false;
+        //gun.enabled = true;
+        //if (laser)
+        //    laser.enabled = false;
+        //mining.enabled = false;
     }
 
     public void SetMissile()
     {
-        hardpoint.enabled = true;
-        gun.enabled = false;
-        if (laser)
-            laser.enabled = false;
-        mining.enabled = false;
+        for (int i = 0; i < weaponTurrets.Length; i++)
+        {
+            if (i != 1)
+                weaponTurrets[i].SetActive(false);
+            else
+                weaponTurrets[i].SetActive(true);
+        }
+
+        //hardpoint.enabled = true;
+        //gun.enabled = false;
+        //if (laser)
+        //    laser.enabled = false;
+        //mining.enabled = false;
     }
 
     public void SetLaser()
     {
-        if (laser)
-            laser.enabled = true;
-        hardpoint.enabled = false;
-        gun.enabled = false;
-        mining.enabled = false;
+        for (int i = 0; i < weaponTurrets.Length; i++)
+        {
+            if (i != 2)
+                weaponTurrets[i].SetActive(false);
+            else
+                weaponTurrets[i].SetActive(true);
+        }
+
+        //if (laser)
+        //    laser.enabled = true;
+        //hardpoint.enabled = false;
+        //gun.enabled = false;
+        //mining.enabled = false;
     }
 
     public void SetMining()
     {
-        if (laser)
-            laser.enabled = false;
-        hardpoint.enabled = false;
-        gun.enabled = false;
-        mining.enabled = true;
+        for (int i = 0; i < weaponTurrets.Length; i++)
+        {
+            if (i != 3)
+                weaponTurrets[i].SetActive(false);
+            else
+                weaponTurrets[i].SetActive(true);
+        }
+
+        //if (laser)
+        //    laser.enabled = false;
+        //hardpoint.enabled = false;
+        //gun.enabled = false;
+        //mining.enabled = true;
     }
 }

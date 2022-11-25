@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Small Blaster I
   m_EditorClassIdentifier: 
   Name: Small Blaster I
-  type: 10
+  type: 9
   stackable: 1
   defaultPrice: 3125
   sprite: {fileID: 21300000, guid: a120c51740a57f94ea579641583d5590, type: 3}
+  ID: 0
   weaponType: 0
   moduleSize: 0
   range: 0

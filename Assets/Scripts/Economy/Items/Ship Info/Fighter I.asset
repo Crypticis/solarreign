@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e46fb6f1ab6fa44bba23b58aec3c15, type: 3}
   m_Name: Fighter I
   m_EditorClassIdentifier: 
+  Name: 
+  description: 
+  skillRequirements: []
+  shipType: 0
   weapons:
   - {fileID: 11400000, guid: 2ff0c71aecd20eb4f92141bbd80e0d11, type: 2}
   defenses:

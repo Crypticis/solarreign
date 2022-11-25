@@ -324,7 +324,7 @@ public class SpaceStationUI : MonoBehaviour
         else
         {
             shipyardUI.gameObject.SetActive(true);
-            shipyardUI.GetComponent<Shipyard>().UpdateShipyardUI(0);
+            //shipyardUI.GetComponent<Shipyard>().UpdateShipyardUI(0);
             shipyardRenderCam.SetActive(true);
         }
     }

@@ -8,56 +8,183 @@ using UnityEngine.UI;
 
 public class Shipyard : MonoBehaviour
 {
-    public static Shipyard instance;
     public static UnityAction onShipChanged;
 
+    [Header("Functionality")]
 
-    public GameObject shipModel;
-    public RawImage shipDisplay;
-    public RenderTexture fighter, cruiser;
+    [SerializeField] SpaceStationUI stationUI;
+    [SerializeField] Transform buttonRoot;
+    [SerializeField] GameObject buttonPrefab;
+    [SerializeField] PlayerInfoObject playerInfo;
+    public List<ShipyardSlot> shipyardSlots = new();
 
-    public ShipyardSlot[] shipyardSlots;
+    [SerializeField] NPCDatabaseObject database;
 
-    public Button purchaseButton;
-    public Button flyButton;
+    [Header("UI")]
 
-    public PlayerInfoObject playerInfo;
-    public TMP_Text nameText;
-    public TMP_Text priceText;
+    [SerializeField] RenderTexture shipRawImage;
+    [SerializeField] Transform shipSpawnRoot;
+    [SerializeField] Button purchaseButton;
+    [SerializeField] Button flyButton;
+    [SerializeField] TMP_Text nameText;
+    [SerializeField] TMP_Text priceText;
+    [SerializeField] TMP_Text descText;
 
-    private void Awake()
+    private Transform spawnedShipModel;
+
+    //Initial setup of ships from list
+    public void SetupShipyardUI()
     {
-        instance = this;
+        for (int i = 0; i < shipyardSlots.Count; i++)
+        {
+            Destroy(shipyardSlots[i].button.gameObject);
+        }
+
+        shipyardSlots.Clear();
+
+        for (int i = 0; i < database.shipinfos.Length; i++)
+        {
+            var j = i;
+
+            GameObject shipyardButton = Instantiate(buttonPrefab, buttonRoot);
+            shipyardButton.GetComponent<Button>().onClick.AddListener(() => UpdateShipyardUI(j));
+
+            var shipyardSlot = new ShipyardSlot
+            {
+                shipInfo = database.shipinfos[i],
+                cost = (database.shipinfos[i].baseCost * stationUI.spaceStation.settlementObject.ShipPriceModifierPerSettlementType(stationUI.spaceStation.settlementObject.stationType)),
+                isOwned = database.shipinfos[i].isOwned,
+                shipType = database.shipinfos[i].shipType,
+                button = shipyardButton,
+            };
+
+            shipyardButton.GetComponentInChildren<TMP_Text>().text = /*"[" + database.shipinfos[i].shipType + "] " + */database.shipinfos[i].Name;
+
+            shipyardSlots.Add(shipyardSlot);
+        }
     }
 
+    // Sorts by ship type
+    public void SetupShipyardUI(int shipTypeIndex)
+    {
+        for (int i = 0; i < shipyardSlots.Count; i++)
+        {
+            Destroy(shipyardSlots[i].button.gameObject);
+        }
+
+        shipyardSlots.Clear();
+
+        for (int i = 0; i < database.shipinfos.Length; i++)
+        {
+            if (((int)database.shipinfos[i].shipType) != shipTypeIndex)
+            {
+                continue;
+            }
+
+            var j = i;
+
+            GameObject shipyardButton = Instantiate(buttonPrefab, buttonRoot);
+            shipyardButton.GetComponent<Button>().onClick.AddListener(() => UpdateShipyardUI(j));
+
+            var shipyardSlot = new ShipyardSlot
+            {
+                shipInfo = database.shipinfos[i],
+                cost = (database.shipinfos[i].baseCost * stationUI.spaceStation.settlementObject.ShipPriceModifierPerSettlementType(stationUI.spaceStation.settlementObject.stationType)),
+                isOwned = database.shipinfos[i].isOwned,
+                shipType = database.shipinfos[i].shipType,
+                button = shipyardButton,
+            };
+
+            shipyardButton.GetComponentInChildren<TMP_Text>().text = /*"[" + database.shipinfos[i].shipType + "] " + */database.shipinfos[i].Name;
+
+            shipyardSlots.Add(shipyardSlot);
+        }
+    }
+
+    // Sorts by ship faction
+    public void SetupShipyardUI(string factionName)
+    {
+        for (int i = 0; i < shipyardSlots.Count; i++)
+        {
+            Destroy(shipyardSlots[i].button.gameObject);
+        }
+
+        shipyardSlots.Clear();
+
+        for (int i = 0; i < database.shipinfos.Length; i++)
+        {
+            if ((database.shipinfos[i].faction.name) != factionName)
+                continue;
+
+            var j = i;
+
+            GameObject shipyardButton = Instantiate(buttonPrefab, buttonRoot);
+            shipyardButton.GetComponent<Button>().onClick.AddListener(() => UpdateShipyardUI(j));
+
+            var shipyardSlot = new ShipyardSlot
+            {
+                shipInfo = database.shipinfos[i],
+                cost = (database.shipinfos[i].baseCost * stationUI.spaceStation.settlementObject.ShipPriceModifierPerSettlementType(stationUI.spaceStation.settlementObject.stationType)),
+                isOwned = database.shipinfos[i].isOwned,
+                shipType = database.shipinfos[i].shipType,
+                button = shipyardButton,
+            };
+
+            shipyardButton.GetComponentInChildren<TMP_Text>().text = /*"[" + database.shipinfos[i].shipType + "] " + */database.shipinfos[i].Name;
+
+            shipyardSlots.Add(shipyardSlot);
+        }
+    }
+
+    // Selects a new ship to display in the shipyard overview
     public void UpdateShipyardUI(int index)
     {
         // Visuals
-        shipModel.GetComponent<MeshFilter>().sharedMesh = shipyardSlots[index].shipPrefab.GetComponent<MeshFilter>().sharedMesh;
 
-        nameText.text = shipyardSlots[index].shipType.ToString();
+        nameText.text = shipyardSlots[index].shipInfo.Name;
         priceText.text = shipyardSlots[index].cost.ToString();
+        descText.text = shipyardSlots[index].shipInfo.description.ToString();
 
-        if (index == 3)
+        if (spawnedShipModel)
+            Destroy(spawnedShipModel.gameObject);
+        
+        spawnedShipModel = Instantiate(database.GetShip[shipyardSlots[index].shipInfo.ID], shipSpawnRoot).transform;
+
+        switch (shipyardSlots[index].shipInfo.shipType)
         {
-            shipDisplay.texture = cruiser;
+            case ShipType.corvette:
+
+                spawnedShipModel.gameObject.LeanScale(new Vector3(.45f, .45f, .45f), 0).setIgnoreTimeScale(true);
+
+                break;
+            case ShipType.destroyer:
+
+                spawnedShipModel.gameObject.LeanScale(new Vector3(.35f, .35f, .35f), 0).setIgnoreTimeScale(true);
+
+                break;
+            case ShipType.cruiser:
+
+                spawnedShipModel.gameObject.LeanScale(new Vector3(.25f, .25f, .25f), 0).setIgnoreTimeScale(true);
+
+                break;
+            case ShipType.battlecruiser:
+
+                spawnedShipModel.gameObject.LeanScale(new Vector3(.15f, .15f, .15f), 0).setIgnoreTimeScale(true);
+
+                break;
+            case ShipType.battleship:
+
+                spawnedShipModel.gameObject.LeanScale(new Vector3(.1f, .1f, .1f), 0).setIgnoreTimeScale(true);
+
+                break;
+            case ShipType.dreadnought:
+
+                spawnedShipModel.gameObject.LeanScale(new Vector3(.05f, .05f, .05f), 0).setIgnoreTimeScale(true);
+
+                break;
+            default:
+                break;
         }
-        else
-        {
-            shipDisplay.texture = fighter;
-        }
-
-        //List<float> size = new List<float>();
-
-        //size.Add((shipModel.GetComponent<MeshFilter>().transform.localScale.z * shipModel.GetComponent<MeshFilter>().mesh.bounds.size.z));
-        //size.Add((shipModel.GetComponent<MeshFilter>().transform.localScale.x * shipModel.GetComponent<MeshFilter>().mesh.bounds.size.x));
-        //size.Add((shipModel.GetComponent<MeshFilter>().transform.localScale.y * shipModel.GetComponent<MeshFilter>().mesh.bounds.size.y));
-
-        //size = size.OrderBy(i => i).ToList();
-
-        //float objectSize = size[0] / 2f;
-
-        //shipModel.GetComponent<MeshFilter>().transform.localScale /= objectSize;
 
         //Functionality
 
@@ -79,6 +206,7 @@ public class Shipyard : MonoBehaviour
         }
     }
 
+    //Makes the ship owned
     public void PurchaseShip(int index)
     {
         if(StatManager.instance.currentMoney >= shipyardSlots[index].cost)
@@ -96,12 +224,13 @@ public class Shipyard : MonoBehaviour
         UpdateShipyardUI(index);
     }
 
+    //Makes the player fly the ship.
     public void FlyShip(int index)
     {
         playerInfo.shipType = shipyardSlots[index].shipType;
-        Ticker.Ticker.AddItem("You are now flying the " + shipyardSlots[index].shipType + ".");
+        playerInfo.shipID = shipyardSlots[index].shipInfo.ID;
 
-        //Player.playerInstance.UpdateModel();
+        Ticker.Ticker.AddItem("You are now flying the " + shipyardSlots[index].shipType + ".");
 
         onShipChanged.Invoke();
 
@@ -109,13 +238,14 @@ public class Shipyard : MonoBehaviour
     }
 
     [System.Serializable]
-    public struct ShipyardSlot
+    public class ShipyardSlot
     {
-        public GameObject shipPrefab;
+        public ShipInfoObject shipInfo;
         public float cost;
         public bool isOwned;
 
         public ShipType shipType;
 
+        public GameObject button;
     }
 }
