@@ -47,7 +47,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
         GameManager.instance.isNeedingLoading = false;
         GameManager.instance.isNewGame = true;
-
+        
         StatManager.instance.CompleteBackground();
     }
 

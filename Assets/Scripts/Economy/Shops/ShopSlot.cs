@@ -4,19 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopSlot : MonoBehaviour
+class ShopSlot : MonoBehaviour
 {
-    public Inventory shopInventory;
-    public Inventory playerInventory;
-    public float price;
-    public int amount;
-
     public Button buyButton;
     public Button sellButton;
-
-    public SettlementTrader trader;
-
-    public Item item;
 
     public TMP_Text amountText;
     public TMP_Text priceText;
@@ -31,45 +22,18 @@ public class ShopSlot : MonoBehaviour
     public float incrementalSellTimer = 0;
     public bool buyButtonIsDown, sellButtonIsDown;
 
+    public Shop shop;
+    public ItemSlot itemInSlot;
+
     public void Start()
     {
-        shopInventory = trader.inventory;
-        icon.sprite = item.sprite;
-        nameText.text = item.name;
+        // Set shopslot item sprite and name
+        icon.sprite = itemInSlot.item.sprite;
+        nameText.text = itemInSlot.item.name;
 
-        SlotCheck();
     }
-
     public void Update()
     {
-        for (int i = 0; i < trader.shopItems.Length; i++)
-        {
-            if (item == trader.shopItems[i].item && price != trader.shopItems[i].currentPrice)
-            {
-                price = trader.shopItems[i].currentPrice;
-            }
-        }
-
-        amountText.text = amount.ToString("0");
-        priceText.text = price.ToString("$0.00");
-
-        if(playerInventory.itemSlots.Count <= 0)
-        {
-            ownedAmountText.text = "0";
-        }
-
-        for (int i = 0; i < playerInventory.itemSlots.Count; i++)
-        {
-            if (playerInventory.itemSlots[i].item == item)
-            {
-                ownedAmountText.text = playerInventory.itemSlots[i].amount.ToString();
-                break;
-            }
-
-            ownedAmountText.text = "0";
-
-        }
-
         if (buyButtonIsDown)
         {
             incrementalBuyTimer += Time.unscaledDeltaTime;
@@ -77,7 +41,7 @@ public class ShopSlot : MonoBehaviour
 
             if (incrementalBuyTimer >= .1f && buyTimer >= 1)
             {
-                Buy();
+                shop.Buy(itemInSlot.item, 1);
                 incrementalBuyTimer = 0;
             }
         }
@@ -89,151 +53,60 @@ public class ShopSlot : MonoBehaviour
 
             if (incrementalSellTimer >= .1f && sellTimer >= 1)
             {
-                Sell();
+                shop.Sell(itemInSlot.item, 1);
                 incrementalSellTimer = 0;
             }
         }
     }
-
-    public void Buy()
+    #region UI Methods
+    public void EnableBuyButton()
     {
-        if (StatManager.instance.currentMoney >= price && amount > 0)
-        {
-            var temp = new ItemSlot();
-
-            for (int i = 0; i < shopInventory.itemSlots.Count; i++)
-            {
-                if(shopInventory.itemSlots[i].item == item)
-                {
-                    temp = shopInventory.itemSlots[i];
-                }
-            }
-
-            shopInventory.RemoveItem(item, 1);
-            amount = temp.amount;
-
-            StatManager.instance.currentMoney -= price;
-
-            for (int i = 0; i < trader.shopItems.Length; i++)
-            {
-                if(item == trader.shopItems[i].item)
-                {
-                    trader.shopItems[i].currentPrice *= 1.011f;
-                    trader.shopItems[i].currentPrice -= ((StatManager.instance.Trade.currentLevel * .1f) * trader.shopItems[i].currentPrice);
-                }
-            }
-
-            playerInventory.AddItem(item, 1);
-
-            StatManager.instance.Trade.AddExp(1);
-
-            SlotCheck();
-        }
+        buyButton.interactable = true;
     }
 
-    public void Sell()
+    public void DisableBuyButton()
     {
-        var temp2 = new ItemSlot();
-
-        for (int i = 0; i < playerInventory.itemSlots.Count; i++)
-        {
-            if (playerInventory.itemSlots[i].item == item)
-            {
-                temp2 = playerInventory.itemSlots[i];
-            }
-        }
-
-        if (temp2.amount > 0)
-        {
-            shopInventory.AddItem(item, 1);
-
-            var temp = new ItemSlot();
-
-            for (int i = 0; i < shopInventory.itemSlots.Count; i++)
-            {
-                if (shopInventory.itemSlots[i].item == item)
-                {
-                    temp = shopInventory.itemSlots[i];
-                }
-            }
-
-            //temp.amount++;
-            amount = temp.amount;
-
-            playerInventory.RemoveItem(item, 1);
-
-            StatManager.instance.currentMoney += price;
-
-            for (int i = 0; i < trader.shopItems.Length; i++)
-            {
-                if (item == trader.shopItems[i].item)
-                {
-                    if (trader.shopItems[i].currentPrice > trader.shopItems[i].item.defaultPrice * .1f)
-                    {
-                        trader.shopItems[i].currentPrice *= .99f;
-                    }
-
-                    trader.shopItems[i].currentPrice += ((StatManager.instance.Trade.currentLevel * .1f) * trader.shopItems[i].currentPrice);
-                }
-            }
-
-            StatManager.instance.Trade.AddExp(1);
-
-            SlotCheck();
-        }
+        buyButton.interactable = false;
+    }
+    public void EnableSellButton()
+    {
+        sellButton.interactable = true;
     }
 
-    public void SlotCheck()
+    public void DisableSellButton()
     {
-        if(playerInventory.itemSlots.Count > 0)
-        {
-            for (int i = 0; i < playerInventory.itemSlots.Count; i++)
-            {
-                if (playerInventory.itemSlots[i].item == item)
-                {
-                    sellButton.interactable = true;
-                    break;
-                }
-                else
-                {
-                    sellButton.interactable = false;
-                }
-            }
-        } 
-        else
-        {
-            sellButton.interactable = false;
-        }
-
-        if (amount > 0 && StatManager.instance.currentMoney >= price)
-        {
-            buyButton.interactable = true;
-        } 
-        else
-        {
-            buyButton.interactable = false;
-        }
+        sellButton.interactable = false;
+    }
+    void Buy()
+    {
+        shop.Buy(itemInSlot.item, 1);
     }
 
-    public void BuyButtonDown()
+    void Sell()
+    {
+        shop.Sell(itemInSlot.item, 1);
+    }
+
+    void BuyButtonDown()
     {
         buyButtonIsDown = true;
     }
 
-    public void BuyButtonUp()
+    void BuyButtonUp()
     {
         buyButtonIsDown = false;
         buyTimer = 0;
     }
 
-    public void SellButtonDown()
+    void SellButtonDown()
     {
         sellButtonIsDown = true;
     }
 
-    public void SellButtonUp()
+    void SellButtonUp()
     {
         sellButtonIsDown = false;
         sellTimer = 0;
     }
+    #endregion
 }

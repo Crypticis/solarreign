@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [Header("Game Info")]
 
     public int speedMultiplier = 1;
+    public int gameTimeDay = 1;
+    public float gameTimeSeconds = 0;
+    public string timeToDisplay;
 
     [Header("Menus")]
     public GameObject pauseMenu;
@@ -40,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public bool isNeedingLoading = false;
 
-    public List<GameObject> NPC = new List<GameObject>();
+    public List<GameObject> NPC = new();
     //public List<GameObject> mobNPC = new List<GameObject>();
     public GameObject[] settlements;
 
@@ -69,8 +72,7 @@ public class GameManager : MonoBehaviour
     public bool isNewGame = false;
 
     //public Transform[] spawnPoints; 
-
-    private void Awake()
+    void Awake()
     {
         if (instance != null)
         {
@@ -134,6 +136,19 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F9))
         {
             Load();
+        }
+
+        PassGameTime();
+    }
+
+    // Passes game time depending on FPS
+    private void PassGameTime()
+    {
+        gameTimeSeconds += Time.unscaledDeltaTime;
+        if (gameTimeSeconds >= 1800)
+        {
+            gameTimeDay++;
+            gameTimeSeconds = 0 + (gameTimeSeconds - 1800);
         }
     }
 
@@ -445,8 +460,7 @@ public class GameManager : MonoBehaviour
 
     public static void ResourceRequest(string resource, SpaceStation station)
     {
-        if (OnResourceRequest != null)
-            OnResourceRequest(resource, station);
+        OnResourceRequest?.Invoke(resource, station);
     }
 
     // Saving
@@ -467,7 +481,7 @@ public class GameManager : MonoBehaviour
 
         int votesTemp = StatManager.instance.votes;
 
-        StatObject levelStat = new StatObject
+        StatObject levelStat = new()
         {
             currentLevel = StatManager.instance.level.currentLevel,
             experience = StatManager.instance.level.experience,
@@ -475,7 +489,7 @@ public class GameManager : MonoBehaviour
             maxLevel = StatManager.instance.level.MAX_LEVEL
         };
 
-        StatObject pilotingStat = new StatObject
+        StatObject pilotingStat = new()
         {
             currentLevel = StatManager.instance.Piloting.currentLevel,
             experience = StatManager.instance.Piloting.experience,
@@ -483,7 +497,7 @@ public class GameManager : MonoBehaviour
             maxLevel = StatManager.instance.Piloting.MAX_LEVEL
         };
 
-        StatObject missileStat = new StatObject
+        StatObject missileStat = new()
         {
             currentLevel = StatManager.instance.Missile.currentLevel,
             experience = StatManager.instance.Missile.experience,
@@ -491,7 +505,7 @@ public class GameManager : MonoBehaviour
             maxLevel = StatManager.instance.Missile.MAX_LEVEL
         };
 
-        StatObject projectileStat = new StatObject
+        StatObject projectileStat = new()
         {
             currentLevel = StatManager.instance.Projectile.currentLevel,
             experience = StatManager.instance.Projectile.experience,
@@ -499,7 +513,7 @@ public class GameManager : MonoBehaviour
             maxLevel = StatManager.instance.Projectile.MAX_LEVEL
         };
 
-        StatObject energyStat = new StatObject
+        StatObject energyStat = new()
         {
             currentLevel = StatManager.instance.Energy.currentLevel,
             experience = StatManager.instance.Energy.experience,
@@ -507,7 +521,7 @@ public class GameManager : MonoBehaviour
             maxLevel = StatManager.instance.Energy.MAX_LEVEL
         };
 
-        StatObject tradeStat = new StatObject
+        StatObject tradeStat = new()
         {
             currentLevel = StatManager.instance.Trade.currentLevel,
             experience = StatManager.instance.Trade.experience,
@@ -515,7 +529,7 @@ public class GameManager : MonoBehaviour
             maxLevel = StatManager.instance.Trade.MAX_LEVEL
         };
 
-        FleetObject playerFleetObject = new FleetObject
+        FleetObject playerFleetObject = new()
         {
             hasPilots = new bool[Player.playerInstance.fleet.fleet.Count],
             names = new string[Player.playerInstance.fleet.fleet.Count],
@@ -525,7 +539,7 @@ public class GameManager : MonoBehaviour
             skills = new FleetSkillObject[Player.playerInstance.fleet.fleet.Count],
         };
 
-        PilotObject pilotObject = new PilotObject
+        PilotObject pilotObject = new()
         {
             names = new string[Player.playerInstance.fleet.unusedPilots.Count],
             levels = new StatObject[Player.playerInstance.fleet.unusedPilots.Count],
@@ -551,7 +565,7 @@ public class GameManager : MonoBehaviour
                 playerFleetObject.levels[i].maxLevel = Player.playerInstance.fleet.fleet[i].pilot.level.MAX_LEVEL;
                 playerFleetObject.skillpoints[i] = Player.playerInstance.fleet.fleet[i].pilot.skillpoints;
 
-                playerFleetObject.skills[i].skills = new List<int>();
+                playerFleetObject.skills[i].skills = new();
                 playerFleetObject.skills[i].skills.Add(Player.playerInstance.fleet.fleet[i].pilot.speedSkill);
                 playerFleetObject.skills[i].skills.Add(Player.playerInstance.fleet.fleet[i].pilot.firespeedSkill);
                 playerFleetObject.skills[i].skills.Add(Player.playerInstance.fleet.fleet[i].pilot.durabilitySkill);
@@ -570,7 +584,7 @@ public class GameManager : MonoBehaviour
             pilotObject.levels[i].maxLevel = Player.playerInstance.fleet.unusedPilots[i].level.MAX_LEVEL;
             pilotObject.skillpoints[i] = Player.playerInstance.fleet.unusedPilots[i].skillpoints;
 
-            pilotObject.skills[i].skills = new List<int>();
+            pilotObject.skills[i].skills = new();
             pilotObject.skills[i].skills.Add(Player.playerInstance.fleet.unusedPilots[i].speedSkill);
             pilotObject.skills[i].skills.Add(Player.playerInstance.fleet.unusedPilots[i].firespeedSkill);
             pilotObject.skills[i].skills.Add(Player.playerInstance.fleet.unusedPilots[i].durabilitySkill);
@@ -582,7 +596,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < database.inventories[0].itemSlots.Count; i++)
         {
-            ItemSlot itemSlot = new ItemSlot
+            ItemSlot itemSlot = new()
             {
                 //type = database.inventories[0].itemSlots[i].item.type,
                 amount = database.inventories[0].itemSlots[i].amount,
@@ -592,7 +606,7 @@ public class GameManager : MonoBehaviour
             playerInv.Add(itemSlot);
         }
 
-        SaveObject saveObject = new SaveObject
+        SaveObject saveObject = new()
         {
             money = money,
             playerPosition = playerPosition,
@@ -625,7 +639,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < database.factions.Length; i++)
         {
-            FactionObject factionObject = new FactionObject
+            FactionObject factionObject = new()
             {
                 factionName = database.factions[i].name,
             };
@@ -651,7 +665,7 @@ public class GameManager : MonoBehaviour
         {
             Fleet fleet = targetGameObject.GetComponent<Fleet>();
 
-            FleetObject fleetObject = new FleetObject
+            FleetObject fleetObject = new()
             {
                 shipNames = new List<string>(),
             };
@@ -661,30 +675,12 @@ public class GameManager : MonoBehaviour
                 fleetObject.shipNames.Add(fleet.fleet[i].ship.name);
             }
 
-            NPCObject npc = new NPCObject
+            NPCObject npc = new()
             {
                 npcPosition = targetGameObject.transform.position,
                 npcFaction = targetGameObject.GetComponent<FleetFaction>().faction.name,
                 npcFleet = fleetObject,
             };
-
-            if (targetGameObject.GetComponent<NPCTraderShip>())
-            {
-                npc.goods = new List<ItemSlot>();
-
-                for (int i = 0; i < targetGameObject.GetComponent<NPCTraderShip>().tradeGoods.Count; i++)
-                {
-                    var item = new ItemSlot();
-
-                    item.Name = targetGameObject.GetComponent<NPCTraderShip>().tradeGoods[i].item.name;
-                    item.type = targetGameObject.GetComponent<NPCTraderShip>().tradeGoods[i].item.type;
-                    item.amount = targetGameObject.GetComponent<NPCTraderShip>().tradeGoods[i].amount;
-
-                    npc.goods.Add(item);
-                }
-
-                //mobNpc.goods = mob.GetComponent<NPCTraderShip>().tradeGoods;
-            }
 
             saveObject.npcs.Add(npc);
         }
@@ -695,7 +691,7 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < settlement.inventory.itemSlots.Count; i++)
             {
-                ItemSlot shopSlot = new ItemSlot
+                ItemSlot shopSlot = new()
                 {
                     type = settlement.inventory.itemSlots[i].item.type,
                     amount = settlement.inventory.itemSlots[i].amount,
@@ -704,7 +700,7 @@ public class GameManager : MonoBehaviour
                 temp.Add(shopSlot);
             }
 
-            SettlementSaveObject settlementObject = new SettlementSaveObject
+            SettlementSaveObject settlementObject = new()
             {
                 settlementFaction = settlement.faction.name,
                 buildingLevels = settlement.buildingLevels,
@@ -734,7 +730,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < POIManager.instance.pois.Count; i++)
         {
-            POISaveObject poi = new POISaveObject
+            POISaveObject poi = new()
             {
                 name = POIManager.instance.pois[i].name,
                 prefabName = POIManager.instance.pois[i].prefab.name,
@@ -875,7 +871,7 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < saveObject.items.Length; i++)
             {
-                var temp = new Item();
+                Item temp = new();
 
                 for (int k = 0; k < database.items.Length; k++)
                 {
@@ -1016,7 +1012,7 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < saveObject.items.Length; i++)
             {
-                var temp = new Item();
+                Item temp = new();
 
                 for (int k = 0; k < database.items.Length; k++)
                 {
@@ -1052,24 +1048,6 @@ public class GameManager : MonoBehaviour
 
                     fleet.AddToFleet(go);
                 }
-
-                if (go.GetComponent<NPCTraderShip>())
-                {
-                    for (int j = 0; j < saveObject.npcs[i].goods.Count; j++)
-                    {
-                        var slot = new global::ItemSlot();
-
-                        for (int k = 0; k < database.items.Length; k++)
-                        {
-                            if (saveObject.npcs[i].goods[j].Name == database.items[k].name)
-                            {
-                                slot.item = database.items[k];
-                                slot.amount = saveObject.npcs[i].goods[j].amount;
-                                go.GetComponent<NPCTraderShip>().tradeGoods.Add(slot);
-                            }
-                        }
-                    }
-                }
             }
 
             // Settlements
@@ -1089,7 +1067,7 @@ public class GameManager : MonoBehaviour
 
                 for (int j = 0; j < saveObject.settlements[i].shopSlots.Length; j++)
                 {
-                    var temp = new Item();
+                    Item temp = new();
 
                     for (int k = 0; k < database.items.Length; k++)
                     {
@@ -1099,7 +1077,7 @@ public class GameManager : MonoBehaviour
                         }
                     }
 
-                    space.GetComponentInParent<SettlementTrader>().inventory.AddItem(temp, saveObject.settlements[i].shopSlots[j].amount);
+                    space.settlementObject.inventory.AddItem(temp, saveObject.settlements[i].shopSlots[j].amount);
                 }
             }
 
@@ -1157,14 +1135,13 @@ public class GameManager : MonoBehaviour
     private class SaveObject
     {
         public string sceneName;
-        public List<NPCObject> npcs = new List<NPCObject>();
+        public List<NPCObject> npcs = new();
         //public List<MobNPCObject> mobNpcs = new List<MobNPCObject>();
 
-        public List<SettlementSaveObject> settlements = new List<SettlementSaveObject>();
-        public List<FactionObject> factions = new List<FactionObject>();
-        public List<StatObject> stats = new List<StatObject>();
-        public List<POISaveObject> poi = new List<POISaveObject>();
-
+        public List<SettlementSaveObject> settlements = new();
+        public List<FactionObject> factions = new();
+        public List<StatObject> stats = new();
+        public List<POISaveObject> poi = new();
         public int command;
         public int tactics;
         public int logistics;

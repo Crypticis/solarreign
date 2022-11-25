@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1120343239868084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.07671356, y: -1.5546875, z: -0.95808125}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   maxArmor: 0
   currentShield: 0
   maxShield: 0
-  shieldRecovery: 0
+  shieldRecoveryTotal: 0
   health: 0
   maxHealth: 1000
   deathParticle: {fileID: 0}
@@ -177,5 +177,6 @@ MonoBehaviour:
   isPlayer: 0
   player: {fileID: 0}
   amount: 0
+  shieldRecoveryModifier: 0
   itemRewards: {fileID: 11400000, guid: 58f5ee273779f1c4f8a5dfa62b53ee64, type: 2}
   inventory: {fileID: 11400000, guid: 62a35b9237647e543bb1e60f290951fe, type: 2}

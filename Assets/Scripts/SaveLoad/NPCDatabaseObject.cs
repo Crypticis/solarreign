@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New NPC Database", menuName = "Database/NPC Database")]
 public class NPCDatabaseObject : ScriptableObject
 {
-    public List<NPC> npcs = new List<NPC>(); 
+    public List<NPC> npcs = new();
     public GameObject[] shipObjects;
     public GameObject[] fleetPrefabs;
     public GameObject[] interactionPrefab;

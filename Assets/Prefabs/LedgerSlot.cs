@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class LedgerSlot : MonoBehaviour
+class LedgerSlot : MonoBehaviour
 {
-    public SettlementTrader trader;
+    public Shop trader;
 
     public Ledger ledger;
 
@@ -29,7 +29,7 @@ public class LedgerSlot : MonoBehaviour
     {
         for (int i = 0; i < priceText.Length; i++)
         {
-            priceText[i].text = "$" + trader.shopItems[i].currentPrice.ToString("0.0");
+            priceText[i].text = "$" + trader.Supply.itemSlots[i].item.currentPrice.ToString("0.0");
         }
 
         factionText.text = settlement.GetComponent<SettlementInfo>().faction.name;

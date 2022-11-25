@@ -57,7 +57,7 @@ public class CivilianFleetSpawner : MonoBehaviour
         if (info)
             civilian.GetComponent<FleetFaction>().faction = info.faction;
 
-        if (GetComponent<SettlementTrader>())
+        if (GetComponent<Shop>())
             civilian.GetComponent<CivilianCommanderAI>().originSettlement = transform;
 
         //civilian.GetComponent<CivilianCommanderAI>().destinationType = destinationType;
@@ -69,8 +69,6 @@ public class CivilianFleetSpawner : MonoBehaviour
         civilian.GetComponent<UniqueNPC>().npc = ScriptableObject.CreateInstance("NPC") as NPC;
 
         //civilian.GetComponent<UniqueNPC>().npc.Name = (info.faction.name + " Civilian Fleet");
-
-        civilian.GetComponent<NPCTraderShip>().AddItems();
     }
 
     GameObject[] FindGates()

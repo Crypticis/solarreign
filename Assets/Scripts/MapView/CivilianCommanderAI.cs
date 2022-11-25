@@ -27,8 +27,6 @@ public class CivilianCommanderAI : CommanderAI
 
     public NPCTraderShip tradeship;
 
-    public GameObject[] cargoPods;
-
     private IEnumerator decisionsCoroutine;
     public ShipCommanderAIState shipShipCommanderAIState;
 
@@ -176,28 +174,7 @@ public class CivilianCommanderAI : CommanderAI
     {
         if (targetSettlement)
         {
-            if(other.transform == targetSettlement)
-            {
-                for (int i = 0; i < tradeship.tradeGoods.Count; i++)
-                {
-                    //other.GetComponent<SettlementTrader>().inventory.AddItem(other.GetComponent<SettlementTrader>().shopItems[i].item, tradeship.tradeGoods[i].amount);
-
-                    //other.GetComponent<SettlementTrader>().inventory.itemSlots[i].amount += tradeship.tradeGoodAmount[i];
-
-                    other.GetComponent<SettlementTrader>().inventory.AddItem(tradeship.tradeGoods[i].item, tradeship.tradeGoods[i].amount);
-
-                    for (int j = 0; j < other.GetComponent<SettlementTrader>().shopItems.Length; j++)
-                    {
-                        if(other.GetComponent<SettlementTrader>().shopItems[j].item == tradeship.tradeGoods[i].item)
-                        {
-                            other.GetComponent<SettlementTrader>().shopItems[j].currentPrice *= .99f;
-                        }
-                    }
-                    
-                }
-
-                Defeat();
-            }
+            Defeat();
         }
     }
 

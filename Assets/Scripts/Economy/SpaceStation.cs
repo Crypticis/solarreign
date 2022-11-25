@@ -7,8 +7,9 @@ using UnitySteer.Behaviors;
 public class SpaceStation : MonoBehaviour
 {
     public SettlementObject settlementObject;
+    SettlementInfo info;
 
-    float resourceTimeRate = 15f;
+    readonly float resourceTimeRate = 15f;
     float resourceTimer;
 
     public Building[] buildings;
@@ -16,8 +17,6 @@ public class SpaceStation : MonoBehaviour
     public SettlementFleet settlementFleet;
 
     public float priceToPurchase;
-
-    SettlementInfo info;
 
     public float[] defaultTimers = new float[5];
 
@@ -43,11 +42,6 @@ public class SpaceStation : MonoBehaviour
         settlementFleet = GetComponent<SettlementFleet>();
         info = GetComponent<SettlementInfo>();
         priceToPurchase = 30000 + settlementObject.prosperity;
-    }
-
-    private void OnDestroy()
-    {
-        //time = Time.time;
     }
 
     void Update()
@@ -188,8 +182,6 @@ public class SpaceStation : MonoBehaviour
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
 
-        settlementObject.inventory = GetComponent<SettlementTrader>().inventory;
-
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }
 
@@ -198,7 +190,6 @@ public class SpaceStation : MonoBehaviour
     {
         SettlementObject asset = ScriptableObject.CreateInstance<SettlementObject>();
 
-        string name = GetComponent<SettlementInfo>().Name;
         //AssetDatabase.CreateAsset(asset, "Assets/Scripts/Settlements/Settlement Objects/" + name + " Settlement" + ".asset");
         //AssetDatabase.SaveAssets();
 
@@ -207,8 +198,6 @@ public class SpaceStation : MonoBehaviour
         settlementObject.stationName = GetComponent<SettlementInfo>().Name;
 
         settlementObject.faction = GetComponent<SettlementInfo>().faction;
-
-        settlementObject.inventory = GetComponent<SettlementTrader>().inventory;
 
         settlementObject.npcOwner = GetComponent<SettlementInfo>().npc;
     }

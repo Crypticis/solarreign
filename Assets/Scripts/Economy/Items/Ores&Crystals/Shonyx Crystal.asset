@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Shonyx Crystal
   type: 0
   stackable: 1
-  defaultPrice: 0
+  defaultPrice: 25
+  currentPrice: 25
   sprite: {fileID: 21300000, guid: 7c396b187fa595d4698f9dbca06d3a75, type: 3}
   ID: 0

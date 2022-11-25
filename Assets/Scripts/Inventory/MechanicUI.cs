@@ -29,7 +29,7 @@ public class MechanicUI : MonoBehaviour
 
     public Button[] buttons;
 
-    public List<ModuleSlot> modules = new List<ModuleSlot>();
+    public List<ModuleSlot> modules = new();
 
     public Camera fighterCam, cruiserCam;
 
