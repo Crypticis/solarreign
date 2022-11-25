@@ -46,13 +46,13 @@ public class ModuleSlot : MonoBehaviour, IDropHandler
     {
         if(eventData.pointerDrag != null)
         {
-            if(eventData.pointerDrag.GetComponent<ModuleSelect>().item.type == ItemType.weapon && moduleType == ModuleType.weapon)
+            if(eventData.pointerDrag.GetComponent<ModuleSelect>().item.type == ItemType.weapons && moduleType == ModuleType.weapon)
             {
                 eventData.pointerDrag.GetComponent<ModuleSelect>().overSlot = true;
                 Select(eventData.pointerDrag.GetComponent<ModuleSelect>().item);
                 mechanicUI.UpdateInventoryModules();
             }
-            else if (eventData.pointerDrag.GetComponent<ModuleSelect>().item.type == ItemType.defense && moduleType == ModuleType.defense)
+            else if (eventData.pointerDrag.GetComponent<ModuleSelect>().item.type == ItemType.defenses && moduleType == ModuleType.defense)
             {
                 eventData.pointerDrag.GetComponent<ModuleSelect>().overSlot = true;
                 Select(eventData.pointerDrag.GetComponent<ModuleSelect>().item);

@@ -12,18 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ef4931fac84c44daeff0c8b27de89a, type: 3}
   m_Name: SC0 Blaster
   m_EditorClassIdentifier: 
-  Name: Small Blaster I
-  type: 9
-  stackable: 1
-  defaultPrice: 3125
-  currentPrice: 3125
-  sprite: {fileID: 21300000, guid: a120c51740a57f94ea579641583d5590, type: 3}
+  Name: 
+  type: 0
+  stackable: 0
+  defaultPrice: 0
+  currentPrice: 0
+  sprite: {fileID: 0}
   ID: 0
-<<<<<<< HEAD:Assets/Scripts/Economy/Items/Weapons/Small Blasters/SC0 Blaster.asset
-  weaponType: 4
-=======
   weaponType: 0
->>>>>>> origin/RobertNotCorrupted:Assets/Scripts/Economy/Items/Weapons/Small Blasters/Small Blaster I.asset
   moduleSize: 0
   range: 0
   damage: 0

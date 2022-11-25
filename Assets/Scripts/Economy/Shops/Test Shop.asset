@@ -26,10 +26,10 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 95ca57cf56fa0e948a082ce94dea4715, type: 2}
     amount: 284
   - item: {fileID: 11400000, guid: 64922c5f1b62a18469770359d692d059, type: 2}
-    amount: 162
+    amount: 1629
   - item: {fileID: 11400000, guid: b14af55e0b2b11e42af673e943dacc6b, type: 2}
-    amount: 342
+    amount: 3420
   - item: {fileID: 11400000, guid: fe3f62e416bd7584b83eff5e77135f7f, type: 2}
-    amount: 284
+    amount: 2840
   - item: {fileID: 11400000, guid: 62e69c99f0d38924b9022053f4d0110c, type: 2}
-    amount: 2362
+    amount: 234

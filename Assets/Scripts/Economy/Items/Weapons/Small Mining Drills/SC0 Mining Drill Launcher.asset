@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4ef4931fac84c44daeff0c8b27de89a, type: 3}
-<<<<<<< HEAD:Assets/Scripts/Economy/Items/Weapons/Small Mining Drills/SC0 Mining Drill Launcher.asset
   m_Name: SC0 Mining Drill Launcher
-=======
-  m_Name: Small Mining Drill I
->>>>>>> origin/RobertNotCorrupted:Assets/Scripts/Economy/Items/Weapons/Small Mining Drills/Small Mining Drill i.asset
   m_EditorClassIdentifier: 
-  Name: Small Mining Drill
-  type: 10
+  Name: 
+  type: 0
   stackable: 0
-  defaultPrice: 2000
-  sprite: {fileID: 21300000, guid: 13bf0a0e510dbc64b83b98ccbd72bcaa, type: 3}
+  defaultPrice: 0
+  currentPrice: 0
+  sprite: {fileID: 0}
   ID: 0
-  weaponType: 5
+  weaponType: 0
   moduleSize: 0
   range: 0
-  damage: 1
-  firerate: 0.2
+  damage: 0
+  firerate: 0

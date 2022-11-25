@@ -38,7 +38,6 @@ class Shop : MonoBehaviour
             UpdateShop();
         }
     }
-
     /// <summary>
     /// Updates shop ui to reflect changes after transactions and on shop cui creation.
     /// </summary>
