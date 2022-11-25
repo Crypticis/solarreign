@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Loot Table", menuName = "Loot/Loot Table")]
-public class LootTable : ScriptableObject
+class LootTable : ScriptableObject
 {
     [SerializeField]
     private int rolls; // How many times loot table will be rolled.

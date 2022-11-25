@@ -16,5 +16,6 @@ MonoBehaviour:
   type: 9
   stackable: 1
   defaultPrice: 100
+  currentPrice: 100
   sprite: {fileID: 21300000, guid: 4a58ee299ef6b9542aaad38ca0d48b7f, type: 3}
-  ID: 0
+  ID: 2

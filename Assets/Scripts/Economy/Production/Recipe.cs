@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Recipe", menuName = "Inventory System/Recipe")]
-public class Recipe : ScriptableObject
+[CreateAssetMenu(fileName = "New Recipe", menuName = "Recipe/Recipe")]
+class Recipe : ScriptableObject
 {
-    public RequiredItem[] requiredItems;
-
-    public ProducedItem[] producedItems;
+    // Leaving public just in case there are skills / tools to use less for a recipe or create more produced items
+    [SerializeField] private RequiredItem[] requiredItems;
+    [SerializeField] private ProducedItem[] producedItems;
+    internal RequiredItem[] RequiredItems { get => requiredItems; set => requiredItems = value; }
+    internal ProducedItem[] ProducedItems { get => producedItems; set => producedItems = value; }
 
     [System.Serializable]
-    public struct RequiredItem
+    internal struct RequiredItem
     {
         public Item requiredItem;
         public int amount;
     }
 
     [System.Serializable]
-    public struct ProducedItem
+    internal struct ProducedItem
     {
         public Item producedItem;
         public bool amountIsRange;

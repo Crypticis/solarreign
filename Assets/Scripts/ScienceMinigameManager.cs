@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScienceMinigameManager : MonoBehaviour
+class ScienceMinigameManager : MonoBehaviour
 {
     public static ScienceMinigameManager instance;
 

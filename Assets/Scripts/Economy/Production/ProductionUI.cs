@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProductionUI : MonoBehaviour
+class ProductionUI : MonoBehaviour
 {
     public ProductionSlot[] productionSlots;
 
@@ -19,7 +19,7 @@ public class ProductionUI : MonoBehaviour
         {
             productionSlots[i].Refresh();
 
-            if(productionSlots[i].recipe.requiredItems.Length <= StatManager.instance.productionLevel + 1)
+            if(productionSlots[i].recipe.RequiredItems.Length <= StatManager.instance.productionLevel + 1)
             {
                 //productionSlots[i].transform.Find("Button").GetComponent<Button>().interactable = false;
 

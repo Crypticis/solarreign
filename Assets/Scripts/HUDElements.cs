@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HUDElements : MonoBehaviour
 {
-    public string name;
+    public new string name;
     public Sprite icon;
     public Sprite iconModel;
     public bool inOverlay = false;

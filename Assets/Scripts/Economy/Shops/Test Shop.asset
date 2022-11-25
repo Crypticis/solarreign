@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSlots:
   - item: {fileID: 11400000, guid: 4a9bb2ca800463e4ea504db631ad03e9, type: 2}
-    amount: 496
+    amount: 480
   - item: {fileID: 11400000, guid: cdf6e7305903c9143ad60e3bd81ebf1f, type: 2}
     amount: 215
   - item: {fileID: 11400000, guid: 00f0f34a891402542b14131ec38a2dd5, type: 2}
@@ -33,6 +33,3 @@ MonoBehaviour:
     amount: 284
   - item: {fileID: 11400000, guid: 62e69c99f0d38924b9022053f4d0110c, type: 2}
     amount: 2362
-  - item: {fileID: 11400000, guid: f428f8a3459dd6b4ab8e6fe4c9bfa1b3, type: 2}
-    amount: 21
-  type: 1

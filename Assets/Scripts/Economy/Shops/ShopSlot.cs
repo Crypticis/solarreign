@@ -23,7 +23,7 @@ class ShopSlot : MonoBehaviour
     public bool buyButtonIsDown, sellButtonIsDown;
 
     public Shop shop;
-    public ItemSlot itemInSlot;
+    internal ItemSlot itemInSlot;
 
     public void Start()
     {
@@ -59,34 +59,12 @@ class ShopSlot : MonoBehaviour
         }
     }
     #region UI Methods
-    public void EnableBuyButton()
-    {
-        buyButton.interactable = true;
-    }
-
-    public void DisableBuyButton()
-    {
-        buyButton.interactable = false;
-    }
-    public void EnableSellButton()
-    {
-        sellButton.interactable = true;
-    }
-
-    public void DisableSellButton()
-    {
-        sellButton.interactable = false;
-    }
-    void Buy()
-    {
-        shop.Buy(itemInSlot.item, 1);
-    }
-
-    void Sell()
-    {
-        shop.Sell(itemInSlot.item, 1);
-    }
-
+    public void EnableBuyButton() => buyButton.interactable = true;
+    public void DisableBuyButton() => buyButton.interactable = false;
+    public void EnableSellButton() => sellButton.interactable = true;
+    public void DisableSellButton() => sellButton.interactable = false;
+    void Buy() => shop.Buy(itemInSlot.item, 1);
+    void Sell() => shop.Sell(itemInSlot.item, 1);
     void BuyButtonDown()
     {
         buyButtonIsDown = true;

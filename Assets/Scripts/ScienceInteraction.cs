@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScienceInteraction : WorldInteraction
+class ScienceInteraction : WorldInteraction
 {
     public ScienceMinigameManager.ScienceMinigame.DifficultyLevel difficulty;
     public LootTable rewards;

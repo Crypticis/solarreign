@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProductionSlotShip : MonoBehaviour
+class ProductionSlotShip : MonoBehaviour
 {
     public ShipRecipe recipe;
     public Inventory playerInventory;
@@ -28,20 +28,20 @@ public class ProductionSlotShip : MonoBehaviour
     {
         tooltip = GetComponentInChildren<TooltipTrigger>();
 
-        for (int i = 0; i < recipe.requiredItems.Length; i++)
+        for (int i = 0; i < recipe.RequiredItems.Length; i++)
         {
             var input = Instantiate(inputPrefab, inputTransform);
-            input.transform.Find("Name").GetComponentInChildren<TMP_Text>().text = recipe.requiredItems[i].requiredItem.name;
-            if (playerInventory.CheckIfInInventory(recipe.requiredItems[i].requiredItem))
+            input.transform.Find("Name").GetComponentInChildren<TMP_Text>().text = recipe.RequiredItems[i].requiredItem.name;
+            if (playerInventory.CheckIfInInventory(recipe.RequiredItems[i].requiredItem))
             {
-                input.transform.Find("Owned").transform.Find("Owned Amount").GetComponentInChildren<TMP_Text>().text = playerInventory.CheckAmountInInventory(recipe.requiredItems[i].requiredItem).ToString();
+                input.transform.Find("Owned").transform.Find("Owned Amount").GetComponentInChildren<TMP_Text>().text = playerInventory.CheckAmountInInventory(recipe.RequiredItems[i].requiredItem).ToString();
             }
             else
             {
                 input.transform.Find("Owned").transform.Find("Owned Amount").GetComponentInChildren<TMP_Text>().text = "0";
             }
-            input.transform.Find("Owned").transform.Find("Required Amount").GetComponentInChildren<TMP_Text>().text = recipe.requiredItems[i].amount.ToString();
-            input.GetComponent<Image>().sprite = recipe.requiredItems[i].requiredItem.sprite;
+            input.transform.Find("Owned").transform.Find("Required Amount").GetComponentInChildren<TMP_Text>().text = recipe.RequiredItems[i].amount.ToString();
+            input.GetComponent<Image>().sprite = recipe.RequiredItems[i].requiredItem.sprite;
 
             requiredItemSlots.Add(input);
         }
@@ -93,9 +93,9 @@ public class ProductionSlotShip : MonoBehaviour
 
         for (int i = 0; i < requiredItemSlots.Count; i++)
         {
-            if (playerInventory.CheckIfInInventory(recipe.requiredItems[i].requiredItem))
+            if (playerInventory.CheckIfInInventory(recipe.RequiredItems[i].requiredItem))
             {
-                requiredItemSlots[i].transform.Find("Owned").transform.Find("Owned Amount").GetComponentInChildren<TMP_Text>().text = playerInventory.CheckAmountInInventory(recipe.requiredItems[i].requiredItem).ToString();
+                requiredItemSlots[i].transform.Find("Owned").transform.Find("Owned Amount").GetComponentInChildren<TMP_Text>().text = playerInventory.CheckAmountInInventory(recipe.RequiredItems[i].requiredItem).ToString();
             }
             else
             {
@@ -116,11 +116,11 @@ public class ProductionSlotShip : MonoBehaviour
 
     public bool HasResources()
     {
-        for (int i = 0; i < recipe.requiredItems.Length; i++)
+        for (int i = 0; i < recipe.RequiredItems.Length; i++)
         {
-            if (playerInventory.CheckIfInInventory(recipe.requiredItems[i].requiredItem))
+            if (playerInventory.CheckIfInInventory(recipe.RequiredItems[i].requiredItem))
             {
-                if(playerInventory.CheckAmountInInventory(recipe.requiredItems[i].requiredItem) < recipe.requiredItems[i].amount)
+                if(playerInventory.CheckAmountInInventory(recipe.RequiredItems[i].requiredItem) < recipe.RequiredItems[i].amount)
                 {
                     return false;
                 }
@@ -140,9 +140,9 @@ public class ProductionSlotShip : MonoBehaviour
 
         Ticker.Ticker.AddItem("You have made a " + recipe.producedShip.GetComponent<HUDElements>().name + " and it has been added to your fleet.");
 
-        for (int i = 0; i < recipe.requiredItems.Length; i++)
+        for (int i = 0; i < recipe.RequiredItems.Length; i++)
         {
-            playerInventory.RemoveItem(recipe.requiredItems[i].requiredItem, recipe.requiredItems[i].amount);
+            playerInventory.RemoveItem(recipe.RequiredItems[i].requiredItem, recipe.RequiredItems[i].amount);
         }
     }
 }

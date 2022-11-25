@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace Ticker
 {
@@ -130,6 +131,11 @@ namespace Ticker
         private void DequeueTickerItem()
         {
             items.Dequeue();
+        }
+
+        internal static void AddItem(object p)
+        {
+            throw new NotImplementedException();
         }
     }
 }

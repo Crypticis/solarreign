@@ -7,52 +7,43 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     public List<ItemSlot> itemSlots = new();
-    [SerializeField] internal InventoryType type;
-
-    public void AddItem(Item item, int amount)
+    public virtual void AddItem(Item _item, int _amount)
     {
-        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == _item);
 
         if (itemMatch != null)
         {
-            itemMatch.amount += amount;
+            itemMatch.amount += _amount;
         }
         else
         {
-            ItemSlot temp = new();
-            temp.item = item;
-            temp.amount = amount;
+            ItemSlot temp = new ItemSlot
+            {
+                item = _item,
+                amount = _amount
+            };
             itemSlots.Add(temp);
         }
     }
 
-    public void RemoveItem(Item item, int amount)
+    public virtual void RemoveItem(Item _item, int _amount)
     {
-        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == _item);
 
         if (itemMatch != null)
         {
-            switch (type)
+            if (itemMatch.amount - _amount >= 0)
             {
-                case InventoryType.player:
-                    if (itemMatch.amount - amount >= 0)
-                    {
-                        itemMatch.amount -= amount;
-                        if (itemMatch.amount == 0)
-                            itemSlots.Remove(itemMatch);
-                    }
-                    break;
-                case InventoryType.shop:
-                    if (itemMatch.amount - amount >= 0)
-                        itemMatch.amount -= amount;
-                    break;
+                itemMatch.amount -= _amount;
+                if (itemMatch.amount == 0)
+                    itemSlots.Remove(itemMatch);
             }
         }
     }
 
-    public bool CheckIfInInventory(Item item)
+    public bool CheckIfInInventory(Item _item)
     {
-        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == _item);
 
         if (itemMatch != null)
         {
@@ -61,9 +52,9 @@ public class Inventory : ScriptableObject
         return false;
     }
 
-    public int CheckAmountInInventory(Item item)
+    public int CheckAmountInInventory(Item _item)
     {
-        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == item);
+        var itemMatch = itemSlots.FirstOrDefault(itemToCheck => itemToCheck.item == _item);
 
         if (itemMatch != null)
         {
@@ -76,11 +67,4 @@ public class Inventory : ScriptableObject
 
     [ContextMenu("Reset")]
     public void ClearInventory() => itemSlots.Clear();
-}
-
-public enum InventoryType
-{
-    player,
-    shop,
-    settlement
 }

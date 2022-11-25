@@ -13,11 +13,7 @@ public class Item : ScriptableObject
 
     public Sprite sprite;
     public int ID;
-    void OnEnable()
-    {
-        Name = name;
-        currentPrice = defaultPrice;
-    }
+    void OnEnable() => Name = name;
 }
 
 public enum ItemType
@@ -31,10 +27,11 @@ public enum ItemType
     rawOres,
     organics,
     gas,
-    weapons,
-    defenses,
-    materials,
-    crystals,
+    weapon,
+    defense,
+    component,
+    crystal,
     data,
-    relic
+    relic,
+    blueprint
 }
