@@ -40,7 +40,7 @@ class Shop : MonoBehaviour
     }
 
     // Update Shop on buy or sell to reperesent shop inventory and player inventory contents
-    private void UpdateShop()
+    public void UpdateShop()
     {
         ItemSlot itemMatch = new();
         // Loop through all shop slots that are a part of shopUI

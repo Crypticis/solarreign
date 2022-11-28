@@ -36,5 +36,6 @@ public enum ItemType
     materials,
     crystals,
     data,
-    relic
+    relic,
+    utility
 }

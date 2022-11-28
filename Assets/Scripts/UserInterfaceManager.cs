@@ -23,6 +23,7 @@ public class UserInterfaceManager : MonoBehaviour
                 menu.SetActive(true);
                 Time.timeScale = 0;
                 LeanTween.alphaCanvas(flightCanvasGroup, 0, .1f).setIgnoreTimeScale(true);
+                menu.LeanScale(new Vector3(1, 1, 1), 0f).setIgnoreTimeScale(true);
             }
     }
 }

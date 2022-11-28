@@ -13,6 +13,7 @@ public class ShipInfoObject : ScriptableObject
     public int ID;
     public SkillRequirement[] skillRequirements;
     public ShipType shipType;
+    public ModuleSize moduleSize;
 
     [Header("Shop Information")]
     public Sprite sprite;
@@ -49,17 +50,5 @@ public class ShipInfoObject : ScriptableObject
     {
         public Skill skill;
         public int skillLevel;
-    }
-
-    public class WeaponSlot
-    {
-        Weapon weapon;
-        ModuleSize moduleSize;
-    }
-
-    public class DefensiveSlot
-    {
-        Defense defense;
-        ModuleSize moduleSize;
     }
 }
