@@ -7,6 +7,8 @@ public class ShipInfo : MonoBehaviour
 
     public WeaponModule[] weaponModules;
 
+    public DefenseModule[] defenseModules;
+
     DamageHandler damageHandler;
 
     [ContextMenu("Rename gameObject to ShipInfoObject name")]
@@ -31,6 +33,8 @@ public class ShipInfo : MonoBehaviour
 
         weaponModules = GetComponentsInChildren<WeaponModule>();
 
+        defenseModules = GetComponentsInChildren<DefenseModule>();
+
         for (int i = 0; i < weaponModules.Length; i++)
         {
             weaponModules[i].weapon = info.weapons[i];
@@ -50,6 +54,20 @@ public class ShipInfo : MonoBehaviour
             else if (info.weapons[i].weaponType == WeaponType.mining)
             {
                 weaponModules[i].SetMining();
+            }
+        }
+
+        for (int i = 0; i < defenseModules.Length; i++)
+        {
+            defenseModules[i].defense = info.defenses[i];
+
+            if (info.defenses[i].defenseType == DefenseType.point_defense)
+            {
+                defenseModules[i].SetPointDefense();
+            }
+            else
+            {
+                defenseModules[i].SetNotPointDefense();
             }
         }
 

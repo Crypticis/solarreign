@@ -15,12 +15,22 @@ MonoBehaviour:
   Name: Dorado
   description: 
   faction: {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}
-  ID: 13
+  ID: 17
   skillRequirements: []
   shipType: 2
+  moduleSize: 0
+  sprite: {fileID: 0}
+  baseCost: 0
   isOwned: 0
-  weapons: []
-  defenses: []
+  weapons:
+  - {fileID: 11400000, guid: bfb85f5ecd985494795a0021c6e3a830, type: 2}
+  - {fileID: 11400000, guid: bfb85f5ecd985494795a0021c6e3a830, type: 2}
+  - {fileID: 11400000, guid: 12c0f4ad58e73ef40a3d6c939f24a78a, type: 2}
+  - {fileID: 11400000, guid: 12c0f4ad58e73ef40a3d6c939f24a78a, type: 2}
+  defenses:
+  - {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
+  - {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
+  Utilities: []
   defaultWeapons:
   - {fileID: 11400000, guid: bfb85f5ecd985494795a0021c6e3a830, type: 2}
   - {fileID: 11400000, guid: bfb85f5ecd985494795a0021c6e3a830, type: 2}
@@ -28,4 +38,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 12c0f4ad58e73ef40a3d6c939f24a78a, type: 2}
   defaultDefenses:
   - {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
-  - {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
+  - {fileID: 11400000, guid: df4ad71d66ca6bb4597d07a546146e53, type: 2}
+  defaultUtilities: []

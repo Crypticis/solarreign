@@ -50,12 +50,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 2
   shooter: {fileID: 0}
+  gun: {fileID: 0}
   ImpactFXPrefab: {fileID: 7151222455551807539, guid: a440320afe8c0284ea102d0532dc914e, type: 3}
   ExplodeFXPrefab: {fileID: 7151222455551807539, guid: a440320afe8c0284ea102d0532dc914e, type: 3}
   ChildTrails: []
   RayHitLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 130047
   TimeToLive: 1
   GravityModifier: 0
   AlignToVelocity: 0
