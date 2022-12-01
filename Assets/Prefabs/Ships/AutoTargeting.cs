@@ -114,6 +114,16 @@ public class AutoTargeting : MonoBehaviour
                 return;
             }
         }
+
+        if(other.TryGetComponent(out AAMissile missile))
+        {
+            if (missile.shooter != player)
+            {
+                enemies.Add(missile.gameObject);
+                SortList();
+                return;
+            }
+        }
     }
 
     public virtual void OnTriggerExit(Collider other)
