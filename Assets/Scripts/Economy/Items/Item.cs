@@ -33,5 +33,6 @@ public enum ItemType
     crystal,
     data,
     relic,
-    blueprint
+    blueprint,
+    packedship
 }

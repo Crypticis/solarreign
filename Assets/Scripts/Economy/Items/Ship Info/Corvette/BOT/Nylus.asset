@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf998834ca8308c4495f3fbf2d1d4a3d, type: 3}
+  m_Name: Nylus
+  m_EditorClassIdentifier: 
+  Name: Nylus
+  type: 16
+  stackable: 0
+  defaultPrice: 0
+  currentPrice: 0
+  sprite: {fileID: 0}
+  ID: 0
+  shipInfo: {fileID: 11400000, guid: d101049c14e9eb2458e7534d8704accd, type: 2}

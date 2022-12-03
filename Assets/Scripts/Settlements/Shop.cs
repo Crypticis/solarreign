@@ -5,6 +5,7 @@ using UnityEngine;
 
 class Shop : MonoBehaviour
 {
+    [SerializeField] ShopInventory supply;
     public ShopInventory Supply { get; }
 
     [SerializeField] GameObject slotPrefab;
@@ -41,7 +42,7 @@ class Shop : MonoBehaviour
     /// <summary>
     /// Updates shop ui to reflect changes after transactions and on shop cui creation.
     /// </summary>
-    private void UpdateShop()
+    public void UpdateShop()
     {
         ItemSlot itemMatch = new();
 
