@@ -2,29 +2,21 @@ using System.Collections;
 using UnityEngine;
 using UnitySteer.Behaviors;
 //using Polarith.AI.Move;
-public class MobCommanderAIPolarith : CommanderAI
+public class ShipAI : CommanderAI
 {
     public Targeting targeting;
 
     [Header("Steering Behaviors")]
-    //public AIMPursue pursue;
-    //public AIMWander wander;
-    //public AIMFollow follow;
-
     public SteerToFollow follow;
     public SteerForWander wander;
     public SteerForPursuit pursue;
     public SteerForTether tether;
 
     private IEnumerator decisionsCoroutine;
-    public ShipCommanderAIState shipShipCommanderAIState;
+    public ShipCommanderAIState shipCommanderAIState;
 
     void Start()
     {
-        //pursue = GetComponentInChildren<AIMPursue>();
-        //wander = GetComponentInChildren<AIMWander>();
-        //follow = GetComponentInChildren<AIMFollow>();
-
         pursue = GetComponentInChildren<SteerForPursuit>();
         wander = GetComponentInChildren<SteerForWander>();
         follow = GetComponentInChildren<SteerToFollow>();
@@ -38,7 +30,7 @@ public class MobCommanderAIPolarith : CommanderAI
 
     public void MakeDecision()
     {
-        switch (shipShipCommanderAIState)
+        switch (shipCommanderAIState)
         {
             case ShipCommanderAIState.pursuing:
 
@@ -75,14 +67,14 @@ public class MobCommanderAIPolarith : CommanderAI
         {
             if (targeting.target != null)
             {
-                shipShipCommanderAIState = ShipCommanderAIState.pursuing;
+                shipCommanderAIState = ShipCommanderAIState.pursuing;
 
                 MakeDecision();
                 yield return new WaitForSeconds(2f);
             }
             else
             {
-                shipShipCommanderAIState = ShipCommanderAIState.wandering;
+                shipCommanderAIState = ShipCommanderAIState.wandering;
                 MakeDecision();
                 yield return new WaitForSeconds(2f);
             }
