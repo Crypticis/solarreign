@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnitySteer.Behaviors;
 
 public class CivilianFleetSpawner : MonoBehaviour
 {
-    public GameObject[] potentialDestinations;
+    //public GameObject[] potentialDestinations;
     public GameObject[] civilianPrefabs;
     SettlementInfo info;
     public Transform spawnPoint;
@@ -21,11 +19,11 @@ public class CivilianFleetSpawner : MonoBehaviour
         info = GetComponent<SettlementInfo>();
         timer = Random.Range(0f, 240f);
 
-        potentialDestinations = FindGates().Concat(FindSettlements()).ToArray();
+       // potentialDestinations = FindGates().Concat(FindSettlements()).ToArray();
 
         for (int i = 0; i < 5; i++)
         {
-            SpawnCivilian();
+            Invoke("SpawnCivilian", 1f);
         }
     }
 
@@ -48,27 +46,50 @@ public class CivilianFleetSpawner : MonoBehaviour
         }
     }
 
+    //public void SpawnCivilian()
+    //{
+    //    var dest = potentialDestinations[Random.Range(0, potentialDestinations.Length)].transform;
+
+    //    GameObject civilian = Instantiate(civilianPrefabs[Random.Range(0, civilianPrefabs.Length)], Vector3.Lerp(this.transform.position, dest.transform.position, Random.Range(0.0f, 1.0f)), Quaternion.identity);
+
+    //    if (info)
+    //        civilian.GetComponent<FleetFaction>().faction = info.faction;
+
+    //    if (GetComponent<Shop>())
+    //        civilian.GetComponent<CivilianCommanderAI>().originSettlement = transform;
+
+    //    //civilian.GetComponent<CivilianCommanderAI>().destinationType = destinationType;
+
+    //    civilian.GetComponent<CivilianCommanderAI>().destination = dest;
+
+    //    civilian.GetComponent<UniqueNPC>().ID = Random.Range(1000, 99999);
+
+    //    civilian.GetComponent<UniqueNPC>().npc = ScriptableObject.CreateInstance("NPC") as NPC;
+
+    //    //civilian.GetComponent<UniqueNPC>().npc.Name = (info.faction.name + " Civilian Fleet");
+    //}
+
+
+    //Spawns and sets scripts on the ships to be the desired values to fly around the POI.
     public void SpawnCivilian()
     {
-        var dest = potentialDestinations[Random.Range(0, potentialDestinations.Length)].transform;
-
-        GameObject civilian = Instantiate(civilianPrefabs[Random.Range(0, civilianPrefabs.Length)], Vector3.Lerp(this.transform.position, dest.transform.position, Random.Range(0.0f, 1.0f)), Quaternion.identity);
+        GameObject civilian = Instantiate(civilianPrefabs[Random.Range(0, civilianPrefabs.Length)], spawnPoint.position, Quaternion.identity);
 
         if (info)
             civilian.GetComponent<FleetFaction>().faction = info.faction;
 
-        if (GetComponent<Shop>())
-            civilian.GetComponent<CivilianCommanderAI>().originSettlement = transform;
+        var tether = civilian.GetComponent<SteerForTether>();
+        tether.enabled = true;
+        tether.TetherPosition = this.transform.position;
+        tether.MaximumDistance = 200f;
 
-        //civilian.GetComponent<CivilianCommanderAI>().destinationType = destinationType;
+        civilian.GetComponent<SteerForWander>().enabled = true;
 
-        civilian.GetComponent<CivilianCommanderAI>().destination = dest;
-
-        civilian.GetComponent<UniqueNPC>().ID = Random.Range(1000, 99999);
-
-        civilian.GetComponent<UniqueNPC>().npc = ScriptableObject.CreateInstance("NPC") as NPC;
-
-        //civilian.GetComponent<UniqueNPC>().npc.Name = (info.faction.name + " Civilian Fleet");
+        civilian.TryGetComponent(out SteerForMinimumSpeed speed);
+        {
+            speed.enabled = true;
+            speed.MinimumSpeed = civilian.GetComponent<AutonomousVehicle>().MaxSpeed;
+        }
     }
 
     GameObject[] FindGates()

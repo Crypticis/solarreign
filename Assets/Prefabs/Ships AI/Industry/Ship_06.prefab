@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8818951009516063489}
+  - component: {fileID: 6159171086094834686}
   - component: {fileID: 7401685742061908813}
   - component: {fileID: -1627005047223604298}
   - component: {fileID: 2383729757486430262}
@@ -69,6 +70,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6159171086094834686
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818951009516063494}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 2
+  m_AngularDrag: 5
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &7401685742061908813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,19 +272,19 @@ MonoBehaviour:
   _radius: 1
   _minSpeedForTurning: 0.1
   _movementPriority: 0
-  _turnTime: 0.25
+  _turnTime: 0.5
   _mass: 1
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 0.25
-  _maxSpeed: 1
-  _maxForce: 10
+  _maxSpeed: 9
+  _maxForce: 18
   _canMove: 1
   _queueName: Steering
   _tickLength: 0.1
   _maxQueueProcessedPerUpdate: 20
   _traceAdjustments: 0
-  _accelerationRate: 5
-  _decelerationRate: 8
+  _accelerationRate: 2.5
+  _decelerationRate: 4.5
 --- !u!114 &-6368193855602546059
 MonoBehaviour:
   m_ObjectHideFlags: 0

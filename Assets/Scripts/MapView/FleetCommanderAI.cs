@@ -132,7 +132,7 @@ public class FleetCommanderAI : CommanderAI
 
                 break;
 
-            case ShipCommanderAIState.refueling:
+            case ShipCommanderAIState.following:
                 break;
 
             case ShipCommanderAIState.wandering:

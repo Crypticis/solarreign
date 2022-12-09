@@ -43,7 +43,7 @@ public class MobCommanderAI : CommanderAI
 
                 break;
 
-            case ShipCommanderAIState.refueling:
+            case ShipCommanderAIState.following:
 
                 break;
 

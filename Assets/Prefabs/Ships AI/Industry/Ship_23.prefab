@@ -9,6 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2704383470976959668}
+  - component: {fileID: -9038804410049133506}
+  - component: {fileID: 311459126509506778}
+  - component: {fileID: 185480131993551139}
+  - component: {fileID: 5113465636925781148}
   - component: {fileID: 177928781905172359}
   - component: {fileID: -7529757875110791444}
   - component: {fileID: -5716916886975774687}
@@ -66,6 +70,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &-9038804410049133506
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704383470976959669}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 2
+  m_AngularDrag: 5
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &311459126509506778
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704383470976959669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.05, y: 7, z: 29.01}
+  m_Center: {x: 14.59, y: 0, z: 15.91}
+--- !u!65 &185480131993551139
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704383470976959669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.05, y: 7, z: 29.01}
+  m_Center: {x: -14.59, y: 0, z: 15.91}
+--- !u!65 &5113465636925781148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704383470976959669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.5, y: 9.3, z: 14.24}
+  m_Center: {x: 0, y: 0, z: -3.08}
 --- !u!114 &177928781905172359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,19 +311,19 @@ MonoBehaviour:
   _radius: 1
   _minSpeedForTurning: 0.1
   _movementPriority: 0
-  _turnTime: 0.25
+  _turnTime: 0.5
   _mass: 1
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 0.25
-  _maxSpeed: 1
-  _maxForce: 10
+  _maxSpeed: 9
+  _maxForce: 18
   _canMove: 1
   _queueName: Steering
   _tickLength: 0.1
   _maxQueueProcessedPerUpdate: 20
   _traceAdjustments: 0
-  _accelerationRate: 5
-  _decelerationRate: 8
+  _accelerationRate: 2.5
+  _decelerationRate: 4.5
 --- !u!114 &-1797502462190821748
 MonoBehaviour:
   m_ObjectHideFlags: 0

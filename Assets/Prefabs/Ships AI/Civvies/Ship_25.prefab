@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1684929147733864141}
+  - component: {fileID: 1844132479020695445}
+  - component: {fileID: 4045628278582847509}
   - component: {fileID: -1213712304337307567}
   - component: {fileID: -4934072777606298595}
   - component: {fileID: 3880419400752138799}
@@ -56,6 +58,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1844132479020695445
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684929147733864140}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 2
+  m_AngularDrag: 5
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &4045628278582847509
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684929147733864140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.38, y: 2.34, z: 17.647633}
+  m_Center: {x: 0, y: 0, z: -0.2788558}
 --- !u!114 &-1213712304337307567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,22 +270,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drawGizmos: 0
   _center: {x: 0, y: 0, z: 0}
-  _radius: 1
+  _radius: 9.61
   _minSpeedForTurning: 0.1
   _movementPriority: 0
   _turnTime: 0.25
   _mass: 1
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 0.25
-  _maxSpeed: 1
-  _maxForce: 10
+  _maxSpeed: 10
+  _maxForce: 20
   _canMove: 1
   _queueName: Steering
   _tickLength: 0.1
   _maxQueueProcessedPerUpdate: 20
   _traceAdjustments: 0
-  _accelerationRate: 5
-  _decelerationRate: 8
+  _accelerationRate: 10
+  _decelerationRate: 16
 --- !u!114 &1213513664062809166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 1
-  _maximumDistance: 30
+  _maximumDistance: 200
   _tetherPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-5926014865230488301
 MonoBehaviour:
@@ -348,13 +379,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684929147733864140}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59994f8b883ec4a11979a76de99ee91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 1
-  _minimumSpeed: 4
+  _minimumSpeed: 10
   _moveForwardWhenZero: 1
 --- !u!114 &-8352121655514457350
 MonoBehaviour:

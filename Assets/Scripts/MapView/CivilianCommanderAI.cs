@@ -60,13 +60,7 @@ public class CivilianCommanderAI : CommanderAI
 
         targeting = GetComponent<Targeting>();
 
-        GetComponentInChildren<MeshRenderer>().material = fleetFaction.faction.materialDetail;
-
-        //if(cargoPods.Length > 0)
-        //    for (int i = 0; i < cargoPods.Length; i++)
-        //    {
-        //        cargoPods[i].GetComponent<MeshRenderer>().material = fleetFaction.faction.materialDetail;
-        //    }
+        //GetComponentInChildren<MeshRenderer>().material = fleetFaction.faction.materialDetail;
 
         int temp = Random.Range(1, fleet.maxInFleet);
 
@@ -75,19 +69,8 @@ public class CivilianCommanderAI : CommanderAI
             fleet.AddToFleet(fleetFaction.faction.shipPrefabs[Random.Range(0, fleetFaction.faction.shipPrefabs.Length)]);
         }
 
-        //if (destinationType == DestinationType.warpgate)
-        //{
-        //    destination = FindGate().transform;
-        //}
-        //else if (destinationType == DestinationType.settlement)
-        //{
-        //    destination = FindSettlement().transform;
-        //}
-
         decisionsCoroutine = CheckState();
         StartCoroutine(decisionsCoroutine);
-
-       // FindAllySettlements();
     }
 
     public void MakeDecision()
@@ -104,7 +87,7 @@ public class CivilianCommanderAI : CommanderAI
 
                 break;
 
-            case ShipCommanderAIState.refueling:
+            case ShipCommanderAIState.following:
 
                 //if (!targetSettlement)
                 //{
@@ -163,7 +146,7 @@ public class CivilianCommanderAI : CommanderAI
             }
             else
             {
-                shipShipCommanderAIState = ShipCommanderAIState.refueling;
+                shipShipCommanderAIState = ShipCommanderAIState.following;
                 MakeDecision();
                 yield return new WaitForSeconds(2f);
             }

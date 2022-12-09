@@ -43,11 +43,16 @@ public class ShipAI : CommanderAI
 
                 break;
 
-            case ShipCommanderAIState.refueling:
+            case ShipCommanderAIState.wandering:
+
+                follow.enabled = false;
+                tether.enabled = true;
+                pursue.enabled = false;
+                wander.enabled = true;
 
                 break;
 
-            case ShipCommanderAIState.wandering:
+            case ShipCommanderAIState.following:
 
                 follow.enabled = true;
                 tether.enabled = false;
@@ -74,9 +79,18 @@ public class ShipAI : CommanderAI
             }
             else
             {
-                shipCommanderAIState = ShipCommanderAIState.wandering;
-                MakeDecision();
-                yield return new WaitForSeconds(2f);
+                if(follow.Target != null)
+                {
+                    shipCommanderAIState = ShipCommanderAIState.following;
+                    MakeDecision();
+                    yield return new WaitForSeconds(2f);
+                }
+                else
+                {
+                    shipCommanderAIState = ShipCommanderAIState.wandering;
+                    MakeDecision();
+                    yield return new WaitForSeconds(2f);
+                }
             }
         }
     }
