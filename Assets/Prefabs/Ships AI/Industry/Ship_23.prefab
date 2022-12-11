@@ -407,8 +407,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 1
-  _maxLatitudeSide: 2
-  _maxLatitudeUp: 2
+  _maxLatitudeSide: 0.2
+  _maxLatitudeUp: 0.2
   _smoothRate: 0.05
 --- !u!114 &-8325956958461718855
 MonoBehaviour:

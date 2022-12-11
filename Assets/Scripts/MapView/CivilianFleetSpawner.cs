@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnitySteer.Behaviors;
 
@@ -14,6 +16,8 @@ public class CivilianFleetSpawner : MonoBehaviour
     float maxDelay = 240f;
     float minDelay = 120f;
 
+    public List<GameObject> ships = new();
+
     void Start()
     {
         info = GetComponent<SettlementInfo>();
@@ -25,6 +29,8 @@ public class CivilianFleetSpawner : MonoBehaviour
         {
             Invoke("SpawnCivilian", 1f);
         }
+
+        StartCoroutine("RefreshTether");
     }
 
     public void Update()
@@ -81,7 +87,7 @@ public class CivilianFleetSpawner : MonoBehaviour
         var tether = civilian.GetComponent<SteerForTether>();
         tether.enabled = true;
         tether.TetherPosition = this.transform.position;
-        tether.MaximumDistance = 200f;
+        tether.MaximumDistance = 300f;
 
         civilian.GetComponent<SteerForWander>().enabled = true;
 
@@ -90,18 +96,21 @@ public class CivilianFleetSpawner : MonoBehaviour
             speed.enabled = true;
             speed.MinimumSpeed = civilian.GetComponent<AutonomousVehicle>().MaxSpeed;
         }
+
+        ships.Add(civilian);
     }
 
-    GameObject[] FindGates()
+    //Since the tether doesnt update with the moving origin of the world, the tether needs to be updated regularily.
+    IEnumerator RefreshTether()
     {
-        var temp = GameObject.FindGameObjectsWithTag("Warp Gate");
-        return temp;
-    }
+        while (true)
+        {
+            for (int i = 0; i < ships.Count; i++)
+            {
+                ships[i].GetComponent<SteerForTether>().TetherPosition = this.transform.position;
+            }
 
-    GameObject[] FindSettlements()
-    {
-        var temp = GameObject.FindGameObjectsWithTag("Settlement");
-        return temp;
+            yield return new WaitForSeconds(2f);
+        }
     }
-
 }
