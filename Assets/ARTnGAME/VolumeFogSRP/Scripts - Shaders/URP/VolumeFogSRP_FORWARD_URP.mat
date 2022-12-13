@@ -24,6 +24,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 124adc93489debb40bc4ac4b24e5bd05, type: 3}
   m_ValidKeywords:
   - FOG_EXP2
+  - RADIAL_DIST
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -121,7 +122,7 @@ Material:
     - _Presence: 0.1
     - _QueueOffset: 0
     - _Raw: 0
-    - _RaySamples: 14
+    - _RaySamples: 7
     - _ReceiveShadows: 1
     - _SampleCountA: 21
     - _Scatter: 0.81
@@ -131,15 +132,15 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TemporalGain: 3
-    - _TemporalResponse: 3
+    - _TemporalGain: 0.1
+    - _TemporalResponse: 0.1
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _invertX: 0
-    - _visibleLightsCount: 2
-    - blendVolumeLighting: 1
-    - depthDilation: 3
-    - lightCount: 4
+    - _visibleLightsCount: 1
+    - blendVolumeLighting: 1.08
+    - depthDilation: -0.43
+    - lightCount: 6
     - lightsArrayLength: 0
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -154,10 +155,10 @@ Material:
     - _SunColor: {r: 0, g: 0, b: 0, a: 0}
     - _SunPosition: {r: -5.522709, g: -6.4227314, b: -5.3734527, a: 2.02}
     - _SunThreshold: {r: 0.8113208, g: 0.6647336, b: 0.56256676, a: 1}
-    - _stepsControl: {r: 0.1, g: 0, b: 1, a: 1}
-    - lightControlA: {r: 0.7, g: 1.4, b: 1, a: 1}
+    - _stepsControl: {r: 26.6, g: 1, b: 90.69, a: 0}
+    - lightControlA: {r: 1.3, g: 0.001, b: 1, a: 1}
     - lightControlB: {r: 1, g: 1, b: 1, a: 1}
-    - lightNoiseControl: {r: 0.28, g: 5.12, b: 1, a: 1}
-    - shadowsControl: {r: 1111, g: 1, b: 1, a: 0}
-    - volumeSamplingControl: {r: 0.4, g: 0.91, b: 1.17, a: -0.31}
+    - lightNoiseControl: {r: 1, g: 1, b: 1, a: 0}
+    - shadowsControl: {r: 1111, g: 1, b: 1, a: 0.01}
+    - volumeSamplingControl: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
