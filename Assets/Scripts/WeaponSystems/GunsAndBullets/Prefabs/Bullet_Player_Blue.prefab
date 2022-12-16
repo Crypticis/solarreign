@@ -51,8 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 1
   shooter: {fileID: 0}
-  ImpactFXPrefab: {fileID: 7614480923058215283, guid: 63da6b3af43a67e40846a9193c0aaf42, type: 3}
-  ExplodeFXPrefab: {fileID: 7614480923058215283, guid: 63da6b3af43a67e40846a9193c0aaf42, type: 3}
+  gun: {fileID: 0}
+  ImpactFXPrefab: {fileID: 19800010, guid: 80956a8a13cfcbb449c4d60fd594c165, type: 3}
+  ExplodeFXPrefab: {fileID: 19800002, guid: 0e9afb5802276e249825f0240c7c6cc5, type: 3}
   ChildTrails: []
   RayHitLayers:
     serializedVersion: 2

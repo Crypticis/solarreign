@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ModuleSlot : MonoBehaviour, IDropHandler
 {
     public ModuleType moduleType;
-
+    public ModuleSize moduleSize;
     public Item item;
 
     public Image image;
@@ -46,16 +46,22 @@ public class ModuleSlot : MonoBehaviour, IDropHandler
     {
         if(eventData.pointerDrag != null)
         {
-            if(eventData.pointerDrag.GetComponent<ModuleSelect>().item.type == ItemType.weapons && moduleType == ModuleType.weapon)
+            if(eventData.pointerDrag.GetComponent<ModuleSelectWeapon>() && moduleType == ModuleType.weapon && eventData.pointerDrag.GetComponent<ModuleSelectWeapon>().item.moduleSize == moduleSize)
             {
-                eventData.pointerDrag.GetComponent<ModuleSelect>().overSlot = true;
-                Select(eventData.pointerDrag.GetComponent<ModuleSelect>().item);
+                eventData.pointerDrag.GetComponent<ModuleSelectWeapon>().overSlot = true;
+                Select(eventData.pointerDrag.GetComponent<ModuleSelectWeapon>().item);
                 mechanicUI.UpdateInventoryModules();
             }
-            else if (eventData.pointerDrag.GetComponent<ModuleSelect>().item.type == ItemType.defenses && moduleType == ModuleType.defense)
+            else if (eventData.pointerDrag.GetComponent<ModuleSelectDefense>() && moduleType == ModuleType.defense && eventData.pointerDrag.GetComponent<ModuleSelectDefense>().item.moduleSize == moduleSize)
             {
-                eventData.pointerDrag.GetComponent<ModuleSelect>().overSlot = true;
-                Select(eventData.pointerDrag.GetComponent<ModuleSelect>().item);
+                eventData.pointerDrag.GetComponent<ModuleSelectDefense>().overSlot = true;
+                Select(eventData.pointerDrag.GetComponent<ModuleSelectDefense>().item);
+                mechanicUI.UpdateInventoryModules();
+            }
+            else if (eventData.pointerDrag.GetComponent<ModuleSelectUtility>() && moduleType == ModuleType.utility && eventData.pointerDrag.GetComponent<ModuleSelectUtility>().item.moduleSize == moduleSize)
+            {
+                eventData.pointerDrag.GetComponent<ModuleSelectUtility>().overSlot = true;
+                Select(eventData.pointerDrag.GetComponent<ModuleSelectUtility>().item);
                 mechanicUI.UpdateInventoryModules();
             }
             else
@@ -68,6 +74,7 @@ public class ModuleSlot : MonoBehaviour, IDropHandler
     public enum ModuleType
     {
         weapon,
-        defense
+        defense,
+        utility
     }
 }

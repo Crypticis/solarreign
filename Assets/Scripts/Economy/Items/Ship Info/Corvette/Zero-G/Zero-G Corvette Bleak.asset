@@ -18,6 +18,10 @@ MonoBehaviour:
   ID: 0
   skillRequirements: []
   shipType: 0
+<<<<<<< HEAD
+=======
+  moduleSize: 0
+>>>>>>> origin/RobertNotCorrupted
   sprite: {fileID: 0}
   baseCost: 0
   isOwned: 1

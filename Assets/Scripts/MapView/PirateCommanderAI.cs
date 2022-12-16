@@ -88,7 +88,7 @@ public class PirateCommanderAI : CommanderAI
 
                 break;
 
-            case ShipCommanderAIState.refueling:
+            case ShipCommanderAIState.following:
 
                 break;
 

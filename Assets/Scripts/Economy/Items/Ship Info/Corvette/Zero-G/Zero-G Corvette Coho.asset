@@ -18,13 +18,18 @@ MonoBehaviour:
   ID: 2
   skillRequirements: []
   shipType: 0
-  isOwned: 0
+  moduleSize: 0
+  sprite: {fileID: 0}
+  baseCost: 0
+  isOwned: 1
   weapons:
   - {fileID: 11400000, guid: ea2e106a2c6d1454cad365782dbc736e, type: 2}
   defenses:
   - {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
+  Utilities: []
   defaultWeapons:
   - {fileID: 11400000, guid: ea2e106a2c6d1454cad365782dbc736e, type: 2}
   - {fileID: 11400000, guid: 12c0f4ad58e73ef40a3d6c939f24a78a, type: 2}
   defaultDefenses:
   - {fileID: 11400000, guid: fe41903e2b62c2040b442223339170dc, type: 2}
+  defaultUtilities: []

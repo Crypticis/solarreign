@@ -33,6 +33,10 @@ public enum ItemType
     crystal,
     data,
     relic,
+<<<<<<< HEAD
     blueprint,
     packedship
+=======
+    utility
+>>>>>>> origin/RobertNotCorrupted
 }

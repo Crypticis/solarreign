@@ -138,7 +138,7 @@ public class WeaponSelect : MonoBehaviour
 
                 for (int i = 0; i < guns.Length; i++)
                 {
-                    if (guns[i].gameObject.activeInHierarchy && !guns[i].GetComponent<MiningDrillLauncher>())
+                    if (guns[i].gameObject.activeInHierarchy && !guns[i].GetComponent<MiningDrillLauncher>() && !guns[i].GetComponent<PointDefense>())
                     {
                         weaponGroups[0].weapons.Add(guns[i].gameObject);
                     }
@@ -182,7 +182,7 @@ public class WeaponSelect : MonoBehaviour
 
                 for (int i = 0; i < guns1.Length; i++)
                 {
-                    if (guns1[i].gameObject.activeInHierarchy && !guns1[i].GetComponent<MiningDrillLauncher>())
+                    if (guns1[i].gameObject.activeInHierarchy && !guns1[i].GetComponent<MiningDrillLauncher>() && !guns1[i].GetComponent<PointDefense>())
                     {
                         weaponGroups[0].weapons.Add(guns1[i].gameObject);
                     }
@@ -226,7 +226,7 @@ public class WeaponSelect : MonoBehaviour
 
                 for (int i = 0; i < guns2.Length; i++)
                 {
-                    if (guns2[i].gameObject.activeInHierarchy && !guns2[i].GetComponent<MiningDrillLauncher>())
+                    if (guns2[i].gameObject.activeInHierarchy && !guns2[i].GetComponent<MiningDrillLauncher>() && !guns2[i].GetComponent<PointDefense>())
                     {
                         weaponGroups[0].weapons.Add(guns2[i].gameObject);
                     }
@@ -270,7 +270,7 @@ public class WeaponSelect : MonoBehaviour
 
                 for (int i = 0; i < guns3.Length; i++)
                 {
-                    if (guns3[i].gameObject.activeInHierarchy && !guns3[i].GetComponent<MiningDrillLauncher>())
+                    if (guns3[i].gameObject.activeInHierarchy && !guns3[i].GetComponent<MiningDrillLauncher>() && !guns3[i].GetComponent<PointDefense>())
                     {
                         weaponGroups[0].weapons.Add(guns3[i].gameObject);
                     }
@@ -314,7 +314,7 @@ public class WeaponSelect : MonoBehaviour
 
                 for (int i = 0; i < guns4.Length; i++)
                 {
-                    if (guns4[i].gameObject.activeInHierarchy && !guns4[i].GetComponent<MiningDrillLauncher>())
+                    if (guns4[i].gameObject.activeInHierarchy && !guns4[i].GetComponent<MiningDrillLauncher>() && !guns4[i].GetComponent<PointDefense>())
                     {
                         weaponGroups[0].weapons.Add(guns4[i].gameObject);
                     }

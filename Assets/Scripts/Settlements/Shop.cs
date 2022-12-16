@@ -39,9 +39,14 @@ class Shop : MonoBehaviour
             UpdateShop();
         }
     }
+<<<<<<< HEAD
     /// <summary>
     /// Updates shop ui to reflect changes after transactions and on shop cui creation.
     /// </summary>
+=======
+
+    // Update Shop on buy or sell to reperesent shop inventory and player inventory contents
+>>>>>>> origin/RobertNotCorrupted
     public void UpdateShop()
     {
         ItemSlot itemMatch = new();

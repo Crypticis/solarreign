@@ -8,132 +8,174 @@ using UnityEngine.UI;
 
 public class MechanicUI : MonoBehaviour
 {
-    public MechanicSlot[] ships;
+    public List<ShipInfoObject> ships = new();
     public static UnityAction onShipModuleChange;
-
+    [SerializeField] NPCDatabaseObject database;
     public ShipInfoObject currentShip;
 
-    public Transform weaponsRoot;
-    public Transform defensesRoot;
+    [SerializeField] Transform weaponsRoot;
+    [SerializeField] Transform defensesRoot;
 
-    public GameObject modulePrefab;
+    [SerializeField] GameObject modulePrefab;
 
     public GameObject currentDropdown;
 
-    public GameObject shipModel;
-    public RawImage shipDisplay;
-    public RenderTexture fighter, cruiser;
-    public TMP_Text nameText;
+    [SerializeField] Transform spawnedShipModel;
+    [SerializeField] Transform shipModelRoot;
+    [SerializeField] RawImage shipDisplay;
+    [SerializeField] RenderTexture fighter, cruiser;
+    [SerializeField] TMP_Text nameText;
 
-    public Shipyard shipyard;
+    [SerializeField] Shipyard shipyard;
 
-    public Button[] buttons;
+    [SerializeField] Button[] buttons;
 
     public List<ModuleSlot> modules = new();
 
-    public Camera fighterCam, cruiserCam;
+    [SerializeField] Camera fighterCam, cruiserCam;
 
-    public Inventory inventory;
-    public GameObject moduleSelectPrefab;
-    public Transform inventoryModuleRoot;
-    public Canvas canvas;
+    [SerializeField] Inventory inventory;
+
+    [SerializeField] GameObject moduleSelectPrefabW;
+    [SerializeField] GameObject moduleSelectPrefabD;
+    [SerializeField] GameObject moduleSelectPrefabU;
+
+    [SerializeField] Transform inventoryModuleRoot;
+    [SerializeField] Canvas canvas;
+    [SerializeField] GameObject buttonPrefab;
+    [SerializeField] Transform buttonsRoot;
 
     public void Start()
     {
-        SetShip(0);
+        //Buttons
+        for (int i = 0; i < buttonsRoot.childCount; i++)
+        {
+            Destroy(buttonsRoot.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < database.shipinfos.Length; i++)
+        {
+            if (database.shipinfos[i].isOwned)
+            {
+                int j = i;
+                Button button = Instantiate(buttonPrefab, buttonsRoot).GetComponent<Button>();
+                button.onClick.AddListener(() => SetShip(j));
+                button.GetComponentInChildren<TMP_Text>().text = database.shipinfos[i].Name;
+            }
+        }
     }
 
-    public void Update()
+    private void OnEnable()
     {
-        for (int i = 0; i < shipyard.shipyardSlots.Count; i++)
+        SetupShips();
+        UpdateButtons();
+    }
+
+    void SetupShips()
+    {
+        ships = new();
+
+        for (int i = 0; i < database.shipinfos.Length; i++)
         {
-            if(shipyard.shipyardSlots[i].isOwned == true)
+            if (database.shipinfos[i].isOwned)
+                ships.Add(database.shipinfos[i]);
+        }
+    }
+
+    void UpdateButtons()
+    {
+        for (int i = 0; i < buttonsRoot.childCount; i++)
+        {
+            Destroy(buttonsRoot.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i < database.shipinfos.Length; i++)
+        {
+            if (database.shipinfos[i].isOwned)
             {
-                buttons[i].interactable = true;
-            }
-            else
-            {
-                buttons[i].interactable = false;
+                int j = i;
+                Button button = Instantiate(buttonPrefab, buttonsRoot).GetComponent<Button>();
+                button.onClick.AddListener(() => SetShip(j));
+                button.GetComponentInChildren<TMP_Text>().text = database.shipinfos[i].Name;
             }
         }
     }
 
     public void SetShip(int index)
     {
-        currentShip = ships[index].shipInfo;
+        currentShip = ships[index];
         SetupModules();
+        UpdateVisuals();
 
-        cruiserCam.enabled = true;
-        fighterCam.enabled = true;
+        nameText.text = ships[index].name;
+    }
 
+    void UpdateVisuals()
+    {
         // Visuals
-        shipModel.GetComponent<MeshFilter>().sharedMesh = ships[index].prefab.GetComponent<MeshFilter>().sharedMesh;
+        if (spawnedShipModel)
+            Destroy(spawnedShipModel.gameObject);
 
-        nameText.text = ships[index].shipInfo.name;
-
-        if (index == 3)
-        {
-            shipDisplay.texture = cruiser;
-        }
-        else
-        {
-            shipDisplay.texture = fighter;
-        }
-
-        //List<float> size = new List<float>();
-
-        //size.Add((shipModel.GetComponent<MeshFilter>().transform.localScale.z * shipModel.GetComponent<MeshFilter>().mesh.bounds.size.z));
-        //size.Add((shipModel.GetComponent<MeshFilter>().transform.localScale.x * shipModel.GetComponent<MeshFilter>().mesh.bounds.size.x));
-        //size.Add((shipModel.GetComponent<MeshFilter>().transform.localScale.y * shipModel.GetComponent<MeshFilter>().mesh.bounds.size.y));
-
-        //size = size.OrderBy(i => i).ToList();
-
-        //float objectSize = size[0] / 3f;
-
-        //shipModel.GetComponent<MeshFilter>().transform.localScale /= objectSize;
+        spawnedShipModel = Instantiate(database.GetShip[currentShip.ID], shipModelRoot).transform;
+        //
     }
 
     public void SetupModules()
     {
         ClearModules();
+        UpdateVisuals();
 
         for (int i = 0; i < currentShip.defenses.Length; i++)
         {
-            GameObject go = Instantiate(modulePrefab, defensesRoot);
-            go.GetComponent<ModuleSlot>().moduleType = ModuleSlot.ModuleType.defense;
-            //go.GetComponent<ModuleSlot>().GetComponent<Button>().onClick.AddListener(() => go.GetComponent<ModuleSlot>().SpawnModules());
-            go.GetComponent<ModuleSlot>().mechanicUI = this;
-            go.GetComponent<ModuleSlot>().item = currentShip.defenses[i];
-            //go.GetComponent<ModuleSlot>().item.equipped = true;
-            go.GetComponent<ModuleSlot>().image.sprite = currentShip.defenses[i].sprite;
-            go.GetComponent<ModuleSlot>().itemNameText.text = currentShip.defenses[i].Name;
+            ModuleSlot go = Instantiate(modulePrefab, defensesRoot).GetComponent<ModuleSlot>();
+            go.moduleType = ModuleSlot.ModuleType.defense;
+            go.mechanicUI = this;
+            go.item = currentShip.defenses[i];
+            go.image.sprite = currentShip.defenses[i].sprite;
+            go.itemNameText.text = currentShip.defenses[i].Name;
+            go.moduleSize = currentShip.moduleSize;
 
             modules.Add(go.GetComponent<ModuleSlot>());
         }
 
         for (int i = 0; i < currentShip.weapons.Length; i++)
         {
-            GameObject go = Instantiate(modulePrefab, weaponsRoot);
-            go.GetComponent<ModuleSlot>().moduleType = ModuleSlot.ModuleType.weapon;
-            //go.GetComponent<ModuleSlot>().GetComponent<Button>().onClick.AddListener(() => go.GetComponent<ModuleSlot>().SpawnModules());
-            go.GetComponent<ModuleSlot>().mechanicUI = this;
-            go.GetComponent<ModuleSlot>().item = currentShip.weapons[i];
-            //go.GetComponent<ModuleSlot>().item.equipped = true;
-            go.GetComponent<ModuleSlot>().image.sprite = currentShip.weapons[i].sprite;
-            go.GetComponent<ModuleSlot>().itemNameText.text = currentShip.weapons[i].Name;
+            ModuleSlot go = Instantiate(modulePrefab, weaponsRoot).GetComponent<ModuleSlot>();
+            go.moduleType = ModuleSlot.ModuleType.weapon;
+            go.mechanicUI = this;
+            go.item = currentShip.weapons[i];
+            go.moduleSize = currentShip.moduleSize;
+            go.image.sprite = currentShip.weapons[i].sprite;
+            go.itemNameText.text = currentShip.weapons[i].Name;
 
             modules.Add(go.GetComponent<ModuleSlot>());
         }
 
         for (int i = 0; i < inventory.itemSlots.Count; i++)
         {
-            if(inventory.itemSlots[i].item.type == ItemType.weapons || inventory.itemSlots[i].item.type == ItemType.defenses)
+            if(inventory.itemSlots[i].item.type == ItemType.weapons)
             {
-                GameObject modulePrefab = Instantiate(moduleSelectPrefab, inventoryModuleRoot);
-                modulePrefab.GetComponent<ModuleSelect>().item = inventory.itemSlots[i].item;
-                modulePrefab.GetComponent<ModuleSelect>().canvas = canvas;
-                modulePrefab.GetComponent<ModuleSelect>().oldParent = inventoryModuleRoot;
-                modulePrefab.GetComponent<ModuleSelect>().SetupModule();
+                ModuleSelectWeapon modulePrefab = Instantiate(moduleSelectPrefabW, inventoryModuleRoot).GetComponent<ModuleSelectWeapon>();
+                modulePrefab.item = (Weapon)inventory.itemSlots[i].item;
+                modulePrefab.canvas = canvas;
+                modulePrefab.oldParent = inventoryModuleRoot;
+                modulePrefab.SetupModule();
+            }
+            if (inventory.itemSlots[i].item.type == ItemType.defenses)
+            {
+                ModuleSelectDefense modulePrefab = Instantiate(moduleSelectPrefabD, inventoryModuleRoot).GetComponent<ModuleSelectDefense>();
+                modulePrefab.item = (Defense)inventory.itemSlots[i].item;
+                modulePrefab.canvas = canvas;
+                modulePrefab.oldParent = inventoryModuleRoot;
+                modulePrefab.SetupModule();
+            }
+            if (inventory.itemSlots[i].item.type == ItemType.utility)
+            {
+                ModuleSelectUtility modulePrefab = Instantiate(moduleSelectPrefabU, inventoryModuleRoot).GetComponent<ModuleSelectUtility>();
+                modulePrefab.item = (Utility)inventory.itemSlots[i].item;
+                modulePrefab.canvas = canvas;
+                modulePrefab.oldParent = inventoryModuleRoot;
+                modulePrefab.SetupModule();
             }
         }
     }
@@ -147,13 +189,29 @@ public class MechanicUI : MonoBehaviour
 
         for (int i = 0; i < inventory.itemSlots.Count; i++)
         {
-            if (inventory.itemSlots[i].item.type == ItemType.weapons || inventory.itemSlots[i].item.type == ItemType.defenses)
+            if (inventory.itemSlots[i].item.type == ItemType.weapons)
             {
-                GameObject modulePrefab = Instantiate(moduleSelectPrefab, inventoryModuleRoot);
-                modulePrefab.GetComponent<ModuleSelect>().item = inventory.itemSlots[i].item;
-                modulePrefab.GetComponent<ModuleSelect>().canvas = canvas;
-                modulePrefab.GetComponent<ModuleSelect>().oldParent = inventoryModuleRoot;
-                modulePrefab.GetComponent<ModuleSelect>().SetupModule();
+                ModuleSelectWeapon modulePrefab = Instantiate(moduleSelectPrefabW, inventoryModuleRoot).GetComponent<ModuleSelectWeapon>();
+                modulePrefab.item = (Weapon)inventory.itemSlots[i].item;
+                modulePrefab.canvas = canvas;
+                modulePrefab.oldParent = inventoryModuleRoot;
+                modulePrefab.SetupModule();
+            }
+            if (inventory.itemSlots[i].item.type == ItemType.defenses)
+            {
+                ModuleSelectDefense modulePrefab = Instantiate(moduleSelectPrefabD, inventoryModuleRoot).GetComponent<ModuleSelectDefense>();
+                modulePrefab.item = (Defense)inventory.itemSlots[i].item;
+                modulePrefab.canvas = canvas;
+                modulePrefab.oldParent = inventoryModuleRoot;
+                modulePrefab.SetupModule();
+            }
+            if (inventory.itemSlots[i].item.type == ItemType.utility)
+            {
+                ModuleSelectUtility modulePrefab = Instantiate(moduleSelectPrefabU, inventoryModuleRoot).GetComponent<ModuleSelectUtility>();
+                modulePrefab.item = (Utility)inventory.itemSlots[i].item;
+                modulePrefab.canvas = canvas;
+                modulePrefab.oldParent = inventoryModuleRoot;
+                modulePrefab.SetupModule();
             }
         }
     }
@@ -174,6 +232,8 @@ public class MechanicUI : MonoBehaviour
         {
             Destroy(defensesRoot.GetChild(i).gameObject);
         }
+
+        modules.Clear();
     }
 
     public void UpdateModules(int index, ModuleSlot slot)
@@ -206,6 +266,6 @@ public class MechanicUI : MonoBehaviour
     public struct MechanicSlot
     {
         public ShipInfoObject shipInfo;
-        public GameObject prefab;
+        //public GameObject prefab;
     }
 }

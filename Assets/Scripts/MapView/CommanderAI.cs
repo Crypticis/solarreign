@@ -8,7 +8,7 @@ public class CommanderAI : MonoBehaviour
     {
         wandering,
         recruiting,
-        refueling,
+        following,
         pursuing,
         hunting,
     }

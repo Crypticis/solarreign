@@ -251,7 +251,31 @@ public class DamageHandler : MonoBehaviour
         } 
         else
         {
-            health -= damageAmt;
+            var shield = currentShield;
+
+            if (shield > 0)
+            {
+                if ((shield -= damageAmt) < 0f)
+                {
+                    var overDamage = Mathf.Abs(shield -= damageAmt);
+
+                    shield -= damageAmt;
+
+                    currentShield = shield;
+
+                    health -= overDamage;
+                }
+                else
+                {
+                    shield -= damageAmt;
+
+                    currentShield = shield;
+                }
+            }
+            else
+            {
+                health -= damageAmt;
+            }
         }
 
         if(health <= 0)
@@ -299,5 +323,6 @@ public class DamageHandler : MonoBehaviour
 public enum DefenseType
 {
     shield,
-    armor
+    armor,
+    point_defense
 }
