@@ -40,11 +40,17 @@ public class DamageHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
-        currentShield = maxShield;
         player = GameObject.FindGameObjectWithTag("Player");
 
         StartCoroutine("ShieldRecovery");
+
+        Invoke("SetupValues", 1f);
+    }
+
+    void SetupValues()
+    {
+        health = maxHealth;
+        currentShield = maxShield;
 
         CalculateShieldRecovery();
     }

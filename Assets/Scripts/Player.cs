@@ -55,9 +55,9 @@ public class Player : PlayerController
     public TrailRenderer[] wingTails;
 
     WarpJump warp;
-    public Gun[] guns;
-    public AAHardpoint[] missiles;
-    public Laser[] lasers;
+   // public Gun[] guns;
+   // public AAHardpoint[] missiles;
+   // public Laser[] lasers;
     float shakeAmount = 0f;
 
     [Header("Weapon Settings")]
@@ -113,6 +113,8 @@ public class Player : PlayerController
 
     bool isBraking = false;
 
+    public WeaponSelect weaponSelect;
+
     private void Awake()
     {
         playerInstance = this;
@@ -121,8 +123,8 @@ public class Player : PlayerController
     void Start()
     {
         warp = GetComponent<WarpJump>();
-        guns = GetComponentsInChildren<Gun>();
-        lasers = GetComponentsInChildren<Laser>();
+        //guns = GetComponentsInChildren<Gun>();
+        //lasers = GetComponentsInChildren<Laser>();
         targetingSystem = GetComponentInChildren<TargetingSystem>();
         targetingManager = GetComponentInChildren<TargetingManager>();
         player = gameObject;
@@ -130,7 +132,7 @@ public class Player : PlayerController
         audiosource.volume = .1f;
         audiosource.pitch = .1f;
         energy = maxEnergy;
-        missiles = GetComponentsInChildren<AAHardpoint>();
+        //missiles = GetComponentsInChildren<AAHardpoint>();
         rb = GetComponent<Rigidbody>();
 
         physics = GetComponent<ShipPhysics>();
@@ -260,62 +262,108 @@ public class Player : PlayerController
             boostCooldown = 10f;
         }
 
-        if (Input.GetButton("Fire1") && controlsEnabled && energy > 0)
+        //Handles Firing of Weapons
+
+        if (Input.GetButton("Fire1") && controlsEnabled)
         {
-            for (int i = 0; i < guns.Length; i++)
+            for (int i = 0; i < weaponSelect.activeWeaponGroup.weapons.Count; i++)
             {
-                guns[i].IsFiring = true;
-            }
-
-            energy -= Time.deltaTime * guns.Length * .5f;
-
-          //  ScreenShake.instance.TriggerShake(.1f, .01f);
-        }
-        else
-        {
-            for (int i = 0; i < guns.Length; i++)
-            {
-                guns[i].IsFiring = false;
-            }
-        }
-
-        if (Input.GetButton("Fire1") && controlsEnabled && energy > 0)
-        {
-            for (int i = 0; i < lasers.Length; i++)
-            {
-                lasers[i].isFiring = true;
-            }
-
-            energy -= Time.deltaTime * lasers.Length * 1f;
-
-           // ScreenShake.instance.TriggerShake(.1f, .01f);
-        }
-        else
-        {
-            for (int i = 0; i < lasers.Length; i++)
-            {
-                lasers[i].isFiring = false;
-            }
-        }
-
-        for (int i = 0; i < missiles.Length; i++)
-        {
-            if (missiles[i].enabled)
-            {
-                if (Input.GetButton("Fire1") && controlsEnabled)
+                if (weaponSelect.activeWeaponGroup.weapons[i].TryGetComponent<Gun>(out Gun gun))
+                {
+                    gun.IsFiring = true;
+                }
+                else if (weaponSelect.activeWeaponGroup.weapons[i].TryGetComponent<AAHardpoint>(out AAHardpoint missile))
                 {
                     if (target)
                     {
                         if (target.tag != "Celestial Body" || target.tag != "Station")
-                            missiles[i].Launch(target.transform, velocity);
+                            missile.Launch(target.transform, velocity);
                     }
                     else
                     {
-                        missiles[i].Launch(null, velocity);
+                        missile.Launch(null, velocity);
+                    }
+                }
+                else if (weaponSelect.activeWeaponGroup.weapons[i].TryGetComponent<Laser>(out Laser laser))
+                {
+                    laser.isFiring = true;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < weaponSelect.weaponGroups.Length; i++)
+            {
+                for (int j = 0; j < weaponSelect.weaponGroups[i].weapons.Count; j++)
+                {
+                    if (weaponSelect.weaponGroups[i].weapons[j].TryGetComponent<Gun>(out Gun gun))
+                    {
+                        gun.IsFiring = false;
+                    }
+                    else if (weaponSelect.weaponGroups[i].weapons[j].TryGetComponent<Laser>(out Laser laser))
+                    {
+                        laser.isFiring = false;
                     }
                 }
             }
         }
+
+        //if (Input.GetButton("Fire1") && controlsEnabled && energy > 0)
+        //{
+        //    for (int i = 0; i < guns.Length; i++)
+        //    {
+        //        guns[i].IsFiring = true;
+        //    }
+
+        //    energy -= Time.deltaTime * guns.Length * .5f;
+
+        //  //  ScreenShake.instance.TriggerShake(.1f, .01f);
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < guns.Length; i++)
+        //    {
+        //        guns[i].IsFiring = false;
+        //    }
+        //}
+
+        //if (Input.GetButton("Fire1") && controlsEnabled && energy > 0)
+        //{
+        //    for (int i = 0; i < lasers.Length; i++)
+        //    {
+        //        lasers[i].isFiring = true;
+        //    }
+
+        //    energy -= Time.deltaTime * lasers.Length * 1f;
+
+        //   // ScreenShake.instance.TriggerShake(.1f, .01f);
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < lasers.Length; i++)
+        //    {
+        //        lasers[i].isFiring = false;
+        //    }
+        //}
+
+        //for (int i = 0; i < missiles.Length; i++)
+        //{
+        //    if (missiles[i].enabled)
+        //    {
+        //        if (Input.GetButton("Fire1") && controlsEnabled)
+        //        {
+        //            if (target)
+        //            {
+        //                if (target.tag != "Celestial Body" || target.tag != "Station")
+        //                    missiles[i].Launch(target.transform, velocity);
+        //            }
+        //            else
+        //            {
+        //                missiles[i].Launch(null, velocity);
+        //            }
+        //        }
+        //    }
+        //}
 
         if (Ship.PlayerShip != null)
         {

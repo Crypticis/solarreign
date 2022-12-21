@@ -13,7 +13,7 @@ public class WeaponSelect : MonoBehaviour
 
     public WeaponGroup activeWeaponGroup;
 
-    [SerializeField] WeaponGroup[] weaponGroups = new WeaponGroup[4];
+    public WeaponGroup[] weaponGroups = new WeaponGroup[4];
 
     int selectIndex = 0;
 
@@ -23,8 +23,10 @@ public class WeaponSelect : MonoBehaviour
 
     private void Start()
     {
-        UpdateWeapons();
-        IncrementSelectedIndex();
+        //Ship was spawning too slowly causing errors. Invoke ensures that the method slows down.
+        Invoke("UpdateWeapons", 1f);
+        Invoke("IncrementSelectedIndex", 1.1f);
+        //IncrementSelectedIndex();
     }
 
     public void Update()
@@ -130,227 +132,51 @@ public class WeaponSelect : MonoBehaviour
             weaponGroups[i].weapons.Clear();
         }
 
-        switch (playerInfoObject.shipType)
+        // Adding guns, cleaned up to not matter the ship type.
+
+        Gun[] guns = shipTransform.GetComponentsInChildren<Gun>();
+
+        Debug.Log(guns.Length);
+
+        for (int i = 0; i < guns.Length; i++)
         {
-            case ShipType.corvette:
+            Debug.Log(guns[i]);
 
-                Gun[] guns = shipTransform.GetComponentsInChildren<Gun>();
+            if (guns[i].gameObject.activeInHierarchy && !guns[i].GetComponent<MiningDrillLauncher>() && !guns[i].GetComponent<PointDefense>())
+            {
+                Debug.Log("Adding gun");
+                weaponGroups[0].weapons.Add(guns[i].gameObject);
+            }
+        }
 
-                for (int i = 0; i < guns.Length; i++)
-                {
-                    if (guns[i].gameObject.activeInHierarchy && !guns[i].GetComponent<MiningDrillLauncher>() && !guns[i].GetComponent<PointDefense>())
-                    {
-                        weaponGroups[0].weapons.Add(guns[i].gameObject);
-                    }
-                }
+        AAHardpoint[] hardpoints = shipTransform.GetComponentsInChildren<AAHardpoint>();
 
-                AAHardpoint[] hardpoints = shipTransform.GetComponentsInChildren<AAHardpoint>();
+        for (int i = 0; i < hardpoints.Length; i++)
+        {
+            if (hardpoints[i].gameObject.activeInHierarchy)
+            {
+                weaponGroups[1].weapons.Add(hardpoints[i].gameObject);
+            }
+        }
 
-                for (int i = 0; i < hardpoints.Length; i++)
-                {
-                    if (hardpoints[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[1].weapons.Add(hardpoints[i].gameObject);
-                    }
-                }
+        Laser[] lasers = shipTransform.GetComponentsInChildren<Laser>();
 
-                Laser[] lasers = shipTransform.GetComponentsInChildren<Laser>();
+        for (int i = 0; i < lasers.Length; i++)
+        {
+            if (lasers[i].gameObject.activeInHierarchy)
+            {
+                weaponGroups[2].weapons.Add(lasers[i].gameObject);
+            }
+        }
 
-                for (int i = 0; i < lasers.Length; i++)
-                {
-                    if (lasers[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[2].weapons.Add(lasers[i].gameObject);
-                    }
-                }
+        MiningDrillLauncher[] miningdrills = shipTransform.GetComponentsInChildren<MiningDrillLauncher>();
 
-                MiningDrillLauncher[] miningdrills = shipTransform.GetComponentsInChildren<MiningDrillLauncher>();
-
-                for (int i = 0; i < miningdrills.Length; i++)
-                {
-                    if (miningdrills[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[3].weapons.Add(miningdrills[i].gameObject);
-                    }
-                }
-
-                break;
-
-            case ShipType.destroyer:
-
-                Gun[] guns1 = shipTransform.GetComponentsInChildren<Gun>();
-
-                for (int i = 0; i < guns1.Length; i++)
-                {
-                    if (guns1[i].gameObject.activeInHierarchy && !guns1[i].GetComponent<MiningDrillLauncher>() && !guns1[i].GetComponent<PointDefense>())
-                    {
-                        weaponGroups[0].weapons.Add(guns1[i].gameObject);
-                    }
-                }
-
-                AAHardpoint[] hardpoints1 = shipTransform.GetComponentsInChildren<AAHardpoint>();
-
-                for (int i = 0; i < hardpoints1.Length; i++)
-                {
-                    if (hardpoints1[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[1].weapons.Add(hardpoints1[i].gameObject);
-                    }
-                }
-
-                Laser[] lasers1 = shipTransform.GetComponentsInChildren<Laser>();
-
-                for (int i = 0; i < lasers1.Length; i++)
-                {
-                    if (lasers1[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[2].weapons.Add(lasers1[i].gameObject);
-                    }
-                }
-
-                MiningDrillLauncher[] miningdrills1 = shipTransform.GetComponentsInChildren<MiningDrillLauncher>();
-
-                for (int i = 0; i < miningdrills1.Length; i++)
-                {
-                    if (miningdrills1[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[3].weapons.Add(miningdrills1[i].gameObject);
-                    }
-                }
-
-                break;
-
-            case ShipType.cruiser:
-
-                Gun[] guns2 = shipTransform.GetComponentsInChildren<Gun>();
-
-                for (int i = 0; i < guns2.Length; i++)
-                {
-                    if (guns2[i].gameObject.activeInHierarchy && !guns2[i].GetComponent<MiningDrillLauncher>() && !guns2[i].GetComponent<PointDefense>())
-                    {
-                        weaponGroups[0].weapons.Add(guns2[i].gameObject);
-                    }
-                }
-
-                AAHardpoint[] hardpoints2 = shipTransform.GetComponentsInChildren<AAHardpoint>();
-
-                for (int i = 0; i < hardpoints2.Length; i++)
-                {
-                    if (hardpoints2[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[1].weapons.Add(hardpoints2[i].gameObject);
-                    }
-                }
-
-                Laser[] lasers2 = shipTransform.GetComponentsInChildren<Laser>();
-
-                for (int i = 0; i < lasers2.Length; i++)
-                {
-                    if (lasers2[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[2].weapons.Add(lasers2[i].gameObject);
-                    }
-                }
-
-                MiningDrillLauncher[] miningdrills2 = shipTransform.GetComponentsInChildren<MiningDrillLauncher>();
-
-                for (int i = 0; i < miningdrills2.Length; i++)
-                {
-                    if (miningdrills2[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[3].weapons.Add(miningdrills2[i].gameObject);
-                    }
-                }
-
-                break;
-
-            case ShipType.battlecruiser:
-
-                Gun[] guns3 = shipTransform.GetComponentsInChildren<Gun>();
-
-                for (int i = 0; i < guns3.Length; i++)
-                {
-                    if (guns3[i].gameObject.activeInHierarchy && !guns3[i].GetComponent<MiningDrillLauncher>() && !guns3[i].GetComponent<PointDefense>())
-                    {
-                        weaponGroups[0].weapons.Add(guns3[i].gameObject);
-                    }
-                }
-
-                AAHardpoint[] hardpoints3 = shipTransform.GetComponentsInChildren<AAHardpoint>();
-
-                for (int i = 0; i < hardpoints3.Length; i++)
-                {
-                    if (hardpoints3[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[1].weapons.Add(hardpoints3[i].gameObject);
-                    }
-                }
-
-                Laser[] lasers3 = shipTransform.GetComponentsInChildren<Laser>();
-
-                for (int i = 0; i < lasers3.Length; i++)
-                {
-                    if (lasers3[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[2].weapons.Add(lasers3[i].gameObject);
-                    }
-                }
-
-                MiningDrillLauncher[] miningdrills3 = shipTransform.GetComponentsInChildren<MiningDrillLauncher>();
-
-                for (int i = 0; i < miningdrills3.Length; i++)
-                {
-                    if (miningdrills3[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[3].weapons.Add(miningdrills3[i].gameObject);
-                    }
-                }
-
-                break;
-
-            case ShipType.dreadnought:
-
-                Gun[] guns4 = shipTransform.GetComponentsInChildren<Gun>();
-
-                for (int i = 0; i < guns4.Length; i++)
-                {
-                    if (guns4[i].gameObject.activeInHierarchy && !guns4[i].GetComponent<MiningDrillLauncher>() && !guns4[i].GetComponent<PointDefense>())
-                    {
-                        weaponGroups[0].weapons.Add(guns4[i].gameObject);
-                    }
-                }
-
-                AAHardpoint[] hardpoints4 = shipTransform.GetComponentsInChildren<AAHardpoint>();
-
-                for (int i = 0; i < hardpoints4.Length; i++)
-                {
-                    if (hardpoints4[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[1].weapons.Add(hardpoints4[i].gameObject);
-                    }
-                }
-
-                Laser[] lasers4 = shipTransform.GetComponentsInChildren<Laser>();
-
-                for (int i = 0; i < lasers4.Length; i++)
-                {
-                    if (lasers4[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[2].weapons.Add(lasers4[i].gameObject);
-                    }
-                }
-
-                MiningDrillLauncher[] miningdrills4 = shipTransform.GetComponentsInChildren<MiningDrillLauncher>();
-
-                for (int i = 0; i < miningdrills4.Length; i++)
-                {
-                    if (miningdrills4[i].gameObject.activeInHierarchy)
-                    {
-                        weaponGroups[3].weapons.Add(miningdrills4[i].gameObject);
-                    }
-                }
-
-                break;
+        for (int i = 0; i < miningdrills.Length; i++)
+        {
+            if (miningdrills[i].gameObject.activeInHierarchy)
+            {
+                weaponGroups[3].weapons.Add(miningdrills[i].gameObject);
+            }
         }
     }
 
