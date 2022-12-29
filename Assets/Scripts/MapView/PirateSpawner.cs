@@ -55,17 +55,17 @@ public class PirateSpawner : MonoBehaviour
     public void SpawnPirateAt(Transform transform, string prefix)
     {
         GameObject pirate = Instantiate(piratePrefab[Random.Range(0, piratePrefab.Length)], transform.position, Quaternion.identity);
-        pirate.GetComponent<UniqueNPC>().npc = ScriptableObject.CreateInstance("NPC") as NPC;
-        pirate.GetComponent<UniqueNPC>().npc.Name = "Pirate Fleet";
+        //pirate.GetComponent<UniqueNPC>().npc = ScriptableObject.CreateInstance("NPC") as NPC;
+        //pirate.GetComponent<UniqueNPC>().npc.Name = "Pirate Fleet";
 
         pirate.GetComponent<HUDElements>().name = prefix + " Pirate Leader";
 
-        pirate.GetComponent<UniqueNPC>().ID = Random.Range(1000, 99999);
+        //pirate.GetComponent<UniqueNPC>().ID = Random.Range(1000, 99999);
 
         pirate.GetComponent<SteerForTether>().TetherPosition = transform.position;
         pirate.GetComponent<SteerForTether>().enabled = true;
 
-        transform.GetComponent<PirateHideout>().pirates.Add(pirate);
+        transform.parent.GetComponent<PirateHideout>().pirates.Add(pirate);
 
         //pirates.Add(pirate);
     }

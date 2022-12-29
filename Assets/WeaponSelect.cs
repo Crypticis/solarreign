@@ -136,15 +136,15 @@ public class WeaponSelect : MonoBehaviour
 
         Gun[] guns = shipTransform.GetComponentsInChildren<Gun>();
 
-        Debug.Log(guns.Length);
+        //Debug.Log(guns.Length);
 
         for (int i = 0; i < guns.Length; i++)
         {
-            Debug.Log(guns[i]);
+            //Debug.Log(guns[i]);
 
             if (guns[i].gameObject.activeInHierarchy && !guns[i].GetComponent<MiningDrillLauncher>() && !guns[i].GetComponent<PointDefense>())
             {
-                Debug.Log("Adding gun");
+                //Debug.Log("Adding gun");
                 weaponGroups[0].weapons.Add(guns[i].gameObject);
             }
         }

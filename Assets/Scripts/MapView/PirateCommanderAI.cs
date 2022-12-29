@@ -34,7 +34,7 @@ public class PirateCommanderAI : CommanderAI
     public SteerForPursuit pursue;
     public SteerForTether tether;
 
-    public Transform formationRoot;
+    //public Transform formationRoot;
 
     public void Start()
     {
@@ -65,7 +65,7 @@ public class PirateCommanderAI : CommanderAI
         {
             if (fleet.fleet.Count < fleet.maxInFleet)
             {
-                GameObject go = Instantiate(fleetFaction.faction.shipPrefabs[Random.Range(0, fleetFaction.faction.shipPrefabs.Length)], this.transform.position, Quaternion.identity, formationRoot);
+                GameObject go = Instantiate(fleetFaction.faction.shipPrefabs[Random.Range(0, fleetFaction.faction.shipPrefabs.Length)], this.transform.position, Quaternion.identity);
 
                 go.GetComponentInChildren<SteerToFollow>().Target = transform;
                 go.GetComponentInChildren<SteerToFollow>().enabled = true;
@@ -136,7 +136,7 @@ public class PirateCommanderAI : CommanderAI
 
         for (int i = 0; i < temp; i++)
         {
-            GameObject go = Instantiate(fleetFaction.faction.shipPrefabs[Random.Range(0, fleetFaction.faction.shipPrefabs.Length)], this.transform.position, Quaternion.identity, formationRoot);
+            GameObject go = Instantiate(fleetFaction.faction.shipPrefabs[Random.Range(0, fleetFaction.faction.shipPrefabs.Length)], this.transform.position, Quaternion.identity);
 
             go.GetComponentInChildren<SteerToFollow>().Target = transform;
             go.GetComponentInChildren<SteerToFollow>().enabled = true;

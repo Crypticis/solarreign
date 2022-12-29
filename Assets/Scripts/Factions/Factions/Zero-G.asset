@@ -18,7 +18,7 @@ MonoBehaviour:
     several systems.
   icon: {fileID: 21300000, guid: 0a4835b590a0e174ca509c49a778b38c, type: 3}
   playerInFaction: 1
-  resources: 0
+  resources: 1008316.06
   factionColor: {r: 0.09019608, g: 0.7529412, b: 0.92156863, a: 1}
   materialSmooth: {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
   materialDetail: {fileID: 2100000, guid: 590c03f519d4cd04ebfa3c2dc671f0f0, type: 2}
@@ -32,11 +32,9 @@ MonoBehaviour:
   allies:
   - {fileID: 11400000, guid: cf38f8528f068b941af4d495cf1540fc, type: 2}
   shipPrefabs:
-  - {fileID: 291541520449163948, guid: 81e8841d92cedcb43b80c633ccc07bd3, type: 3}
-  - {fileID: 3846859394499310332, guid: ea014228829b1bf4c93d1efcc0529ee4, type: 3}
-  - {fileID: 1385001179612073857, guid: 229f013cfab6a144bad926aab387b6b7, type: 3}
-  - {fileID: 86377266501664324, guid: b1fcbc6589af7954ea66a80db5402579, type: 3}
-  - {fileID: 5418598031680892218, guid: 521cb7813374b074fbd7fc35be014d5d, type: 3}
+  - {fileID: 7249647763065015613, guid: 6118341b2044d434188212b2379a969d, type: 3}
+  - {fileID: 414816984095263741, guid: a91438c781e9d2f4193b17c5a3d33bd8, type: 3}
+  - {fileID: 9062083977010754176, guid: af1327e5d5f992547b6d4e835fb1a65f, type: 3}
   defaultEnemies:
   - {fileID: 11400000, guid: e8c20e08f3fdab54ba86ada2b8fcb64c, type: 2}
   - {fileID: 11400000, guid: 0a3a068a97dace145b90f579a660c899, type: 2}

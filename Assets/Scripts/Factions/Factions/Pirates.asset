@@ -32,7 +32,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf38f8528f068b941af4d495cf1540fc, type: 2}
   allies: []
   shipPrefabs:
-  - {fileID: 2299313712135079954, guid: d71e2278c1a46544281d2bcb3ac793a0, type: 3}
+  - {fileID: 7249647763065015613, guid: dd905131a606fb54eb2b37f0437e7ad7, type: 3}
   defaultEnemies:
   - {fileID: 11400000, guid: e1c4fa296eac6264e9f305fd11847c3d, type: 2}
   - {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}

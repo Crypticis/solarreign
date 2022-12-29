@@ -22,8 +22,8 @@ public class AAMissileEffects : MonoBehaviour
     public VisualEffect vfxTrailPrefab;
 
     [Tooltip("Effect spawened when missile explodes.")]
-    //public ParticleSystem explosionFXPrefab;
-    public VisualEffect explosionFXPrefab;
+    public ParticleSystem explosionFXPrefab;
+    //public VisualEffect explosionFXPrefab;
     public bool playExplosionOnSelfDestruct = false;
 
     [Header("Audio")]
@@ -192,7 +192,7 @@ public class AAMissileEffects : MonoBehaviour
         if (explosionFXPrefab != null)
         {
             //ParticleSystem explode = GameObject.Instantiate(explosionFXPrefab);
-            VisualEffect explode = GameObject.Instantiate(explosionFXPrefab);
+            ParticleSystem explode = GameObject.Instantiate(explosionFXPrefab);
             explode.transform.position = transform.position;
             explode.transform.rotation = transform.rotation;
 

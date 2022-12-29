@@ -88,35 +88,56 @@ public class LineOfSightMulti : MonoBehaviour
             {
                 if (HaveLineOfSight())
                 {
-                    if (hasGun)
+                    if (hasGun && !hasTurret)
                         for (int i = 0; i < guns.Length; i++)
                         {
                             guns[i].IsFiring = true;
                         }
-                    if (hasHardpoint)
+                    if (hasHardpoint && !hasTurret)
                         for (int i = 0; i < hardpoints.Length; i++)
                         {
                             hardpoints[i].Launch(target.transform, velocity);
                         }
 
-                    if (hasGun && hasTurret)
-                    {
-                        for (int i = 0; i < turrets.Length; i++)
-                        {
-                            if (turrets[i].isAimed)
-                            {
-                                guns[i].IsFiring = true;
-                            }
-                        }
-                    }
+                    //if (hasGun && hasTurret)
+                    //{
+                    //    for (int i = 0; i < turrets.Length; i++)
+                    //    {
+                    //        if (turrets[i].isAimed)
+                    //        {
+                    //            guns[i].IsFiring = true;
+                    //        }
+                    //    }
+                    //}
 
-                    if (hasLasers && hasTurret)
+                    //if (hasLasers && hasTurret)
+                    //{
+                    //    for (int i = 0; i < turrets.Length; i++)
+                    //    {
+                    //        if (turrets[i].isAimed)
+                    //        {
+                    //            lasers[i].isFiring = true;
+                    //        }
+                    //    }
+                    //}
+
+                    if (hasTurret)
                     {
                         for (int i = 0; i < turrets.Length; i++)
                         {
-                            if (turrets[i].isAimed)
+                            if (turrets[i].GetComponentInChildren<Gun>() && turrets[i].IsAimed)
                             {
-                                lasers[i].isFiring = true;
+                                turrets[i].GetComponentInChildren<Gun>().IsFiring = true;
+                            }
+
+                            if (turrets[i].GetComponentInChildren<AAHardpoint>() && turrets[i].IsAimed)
+                            {
+                                turrets[i].GetComponentInChildren<AAHardpoint>().Launch(target.transform, velocity);
+                            }
+
+                            if (turrets[i].GetComponentInChildren<Laser>() && turrets[i].IsAimed)
+                            {
+                                turrets[i].GetComponentInChildren<Laser>().isFiring = true;
                             }
                         }
                     }
@@ -127,6 +148,12 @@ public class LineOfSightMulti : MonoBehaviour
                         for (int i = 0; i < guns.Length; i++)
                         {
                             guns[i].IsFiring = false;
+                        }
+
+                    if(hasLasers)
+                        for (int i = 0; i < lasers.Length; i++)
+                        {
+                            lasers[i].isFiring = false;
                         }
                 }
             }

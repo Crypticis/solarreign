@@ -9,7 +9,7 @@ using UnitySteer.Behaviors;
 public class Targeting : MonoBehaviour
 {
     public GameObject target;
-    public GameObject player;
+    //public GameObject player;
     LineOfSightSingle[] los;
     LineOfSightMulti lineOfSight;
     public float searchInterval = 10f;
@@ -31,7 +31,7 @@ public class Targeting : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         los = GetComponentsInChildren<LineOfSightSingle>();
         lineOfSight = GetComponentInChildren<LineOfSightMulti>();
 

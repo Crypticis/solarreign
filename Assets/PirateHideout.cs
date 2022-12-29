@@ -7,6 +7,7 @@ public class PirateHideout : MonoBehaviour
 {
     public int maxPirates = 1;
     public string prefix;
+    [SerializeField] Transform spawnPoint;
 
     public List<GameObject> pirates = new List<GameObject>();
 
@@ -38,7 +39,7 @@ public class PirateHideout : MonoBehaviour
                 Destroy(this);
             }
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -46,7 +47,7 @@ public class PirateHideout : MonoBehaviour
     {
         for (int i = 0; i < maxPirates; i++)
         {
-            PirateSpawner.instance.SpawnPirateAt(transform, prefix);
+            PirateSpawner.instance.SpawnPirateAt(spawnPoint, prefix);
         }
     }
 }
