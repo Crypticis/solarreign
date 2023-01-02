@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3267288217418027515}
   - component: {fileID: 3517021143393969378}
-  - component: {fileID: 6892624097480776514}
   - component: {fileID: 3066053550750239197}
   - component: {fileID: -6031780855633071293}
   - component: {fileID: -1270937394944219801}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: -5629108440548738474}
   - component: {fileID: -1734257536556941676}
   - component: {fileID: -8518497814400142152}
+  - component: {fileID: -6338931204727550737}
   - component: {fileID: -3892559076831321583}
   - component: {fileID: 5584874849261654931}
   - component: {fileID: 3747472929120058185}
@@ -116,21 +116,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6892624097480776514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3267288217418027508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c862f7c4ecc1ee4c8e2130b31a2c073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 67140d6c8e4dc40498b3c3c4f5e3235e, type: 2}
-  weaponModules: []
-  defenseModules: []
 --- !u!114 &3066053550750239197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e26a2935b0d404fbad10bf9ae593d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Dace
   icon: {fileID: 0}
   iconModel: {fileID: 0}
   inOverlay: 0
@@ -208,7 +193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  player: {fileID: 0}
   searchInterval: 5
   enemies: []
   commandMode: 0
@@ -300,6 +284,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}
+--- !u!114 &-6338931204727550737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267288217418027508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4169c587305b54ca4469022f85d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
 --- !u!114 &-3892559076831321583
 MonoBehaviour:
   m_ObjectHideFlags: 0

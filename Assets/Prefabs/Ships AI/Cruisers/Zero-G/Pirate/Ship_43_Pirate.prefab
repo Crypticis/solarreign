@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e26a2935b0d404fbad10bf9ae593d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Dorado
   icon: {fileID: 0}
   iconModel: {fileID: 0}
   inOverlay: 0

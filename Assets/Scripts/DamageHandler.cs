@@ -10,8 +10,8 @@ public class DamageHandler : MonoBehaviour
 
     [Header("Health Settings")]
 
-    public float currentArmor;
-    public float maxArmor;
+    //public float currentArmor;
+    //public float maxArmor;
 
     public float currentShield;
     public float maxShield;

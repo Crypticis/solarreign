@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 3601317860810275781}
   - component: {fileID: 2942945398373519071}
   - component: {fileID: 5157831952731747593}
-  - component: {fileID: -1253014895556286135}
   - component: {fileID: 350019100202548297}
   - component: {fileID: 4250462828186302269}
   - component: {fileID: 363835132173643029}
@@ -83,6 +82,7 @@ GameObject:
   - component: {fileID: -7691243109768241024}
   - component: {fileID: 9106238480122538624}
   - component: {fileID: -4972662641824801841}
+  - component: {fileID: -8715205054138370274}
   - component: {fileID: 2653619080664889792}
   - component: {fileID: 2995603344248668760}
   - component: {fileID: 8192499181323130409}
@@ -214,21 +214,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.58, y: 5.47, z: 49.37}
   m_Center: {x: -18.39, y: -1.8, z: -0.46}
---- !u!114 &-1253014895556286135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3493713317777219054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c862f7c4ecc1ee4c8e2130b31a2c073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 98c51d8b5982a6c4e92fd69cefbe27f9, type: 2}
-  weaponModules: []
-  defenseModules: []
 --- !u!114 &350019100202548297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e26a2935b0d404fbad10bf9ae593d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Dorado
   icon: {fileID: 0}
   iconModel: {fileID: 0}
   inOverlay: 0
@@ -306,7 +291,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  player: {fileID: 0}
   searchInterval: 5
   enemies: []
   commandMode: 0
@@ -398,6 +382,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: {fileID: 11400000, guid: fd5567abfcc0e624e8352c719066dd92, type: 2}
+--- !u!114 &-8715205054138370274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3493713317777219054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4169c587305b54ca4469022f85d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
 --- !u!114 &2653619080664889792
 MonoBehaviour:
   m_ObjectHideFlags: 0

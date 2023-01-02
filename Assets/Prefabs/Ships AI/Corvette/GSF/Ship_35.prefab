@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7983966929699393563}
   - component: {fileID: -6380794797191142296}
-  - component: {fileID: -7859353713719254228}
   - component: {fileID: -5671572629402788492}
   - component: {fileID: -292460373295731405}
   - component: {fileID: 717315421059062598}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: -1371964498898153037}
   - component: {fileID: -7508116904845044078}
   - component: {fileID: -168650583754672404}
+  - component: {fileID: 1792035014570596446}
   - component: {fileID: -1367465054711557206}
   - component: {fileID: 4386451793371079006}
   - component: {fileID: 452705967367478003}
@@ -26,6 +26,9 @@ GameObject:
   - component: {fileID: 2953502717681294780}
   - component: {fileID: 1838322557782701408}
   - component: {fileID: 1755949680245606186}
+  - component: {fileID: 5768092166690898836}
+  - component: {fileID: 4980948510713874869}
+  - component: {fileID: 1956621385674462725}
   m_Layer: 0
   m_Name: Ship_35
   m_TagString: Untagged
@@ -73,21 +76,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-7859353713719254228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7983966929699393561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c862f7c4ecc1ee4c8e2130b31a2c073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 98bd608458f911e42b3e4d010ec32666, type: 2}
-  weaponModules: []
-  defenseModules: []
 --- !u!114 &-5671572629402788492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e26a2935b0d404fbad10bf9ae593d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Immunes
   icon: {fileID: 0}
   iconModel: {fileID: 0}
   inOverlay: 0
@@ -138,13 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defenseType: 0
-  currentArmor: 0
-  maxArmor: 0
   currentShield: 0
-  maxShield: 40
+  maxShield: 50
   shieldRecoveryTotal: 0
   health: 0
-  maxHealth: 10
+  maxHealth: 50
   deathParticle: {fileID: 268362488234206613, guid: 1208d9bb8e801a646892921ee6f34c86, type: 3}
   experienceReward: 5
   moneyReward: 1000
@@ -165,7 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  player: {fileID: 0}
   searchInterval: 5
   enemies: []
   commandMode: 0
@@ -257,6 +242,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: {fileID: 11400000, guid: cf38f8528f068b941af4d495cf1540fc, type: 2}
+--- !u!114 &1792035014570596446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983966929699393561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4169c587305b54ca4469022f85d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
 --- !u!114 &-1367465054711557206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +272,7 @@ MonoBehaviour:
   _radius: 1
   _minSpeedForTurning: 0.1
   _movementPriority: 0
-  _turnTime: 0.25
+  _turnTime: 1
   _mass: 1
   _allowedMovementAxes: {x: 1, y: 1, z: 1}
   _arrivalRadius: 0.25
@@ -385,6 +383,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9897b56a6a80044638c6d2122814f2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5768092166690898836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983966929699393561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2.14, z: 35.42}
+  m_Center: {x: 0, y: 1.39, z: 13.36}
+--- !u!65 &4980948510713874869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983966929699393561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.75, y: 3.15, z: 27.55}
+  m_Center: {x: -8.25, y: -1.8, z: 9.3}
+--- !u!65 &1956621385674462725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983966929699393561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.75, y: 3.15, z: 27.55}
+  m_Center: {x: 8.25, y: -1.8, z: 9.3}
 --- !u!1001 &1321466466051089834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -464,19 +501,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6603941
+      value: -0.57225484
       objectReference: {fileID: 0}
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.25274432
+      value: 0.4153606
       objectReference: {fileID: 0}
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6603941
+      value: 0.57225484
       objectReference: {fileID: 0}
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.25274432
+      value: 0.4153606
       objectReference: {fileID: 0}
     - target: {fileID: 5879435446044916367, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_Name
@@ -624,19 +661,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6843906
+      value: -0.62346137
       objectReference: {fileID: 0}
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17779064
+      value: 0.33361048
       objectReference: {fileID: 0}
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6843906
+      value: 0.62346137
       objectReference: {fileID: 0}
     - target: {fileID: 5622471166401479797, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.17779064
+      value: 0.33361042
       objectReference: {fileID: 0}
     - target: {fileID: 5879435446044916367, guid: 483b331341aa8bb4795a6ddde425c0cf, type: 3}
       propertyPath: m_Name
