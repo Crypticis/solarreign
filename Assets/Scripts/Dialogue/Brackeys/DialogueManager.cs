@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public TMP_Text nameText;
 	public TMP_Text dialogueText;
+	public Image image;
 
 	public GameObject dialogueUI;
 	public Transform responseUI;
@@ -43,6 +44,18 @@ public class DialogueManager : MonoBehaviour {
 	{
 		dialogueUI.SetActive(true);
 		Time.timeScale = 0f;
+
+        if (dialogue.sprite)
+        {
+			image.gameObject.SetActive(true);
+			image.sprite = dialogue.sprite;
+		}
+        else
+        {
+			image.gameObject.SetActive(false);
+		}
+
+
 
 		if (dialogue.relation == Dialogue.Relation.Enemy)
 		{

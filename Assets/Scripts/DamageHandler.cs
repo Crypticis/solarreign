@@ -10,9 +10,6 @@ public class DamageHandler : MonoBehaviour
 
     [Header("Health Settings")]
 
-    //public float currentArmor;
-    //public float maxArmor;
-
     public float currentShield;
     public float maxShield;
     public float shieldRecoveryTotal;
@@ -86,6 +83,14 @@ public class DamageHandler : MonoBehaviour
             shooter.GetComponent<HitmarkerManager>().Hit();
 
             var wepType = projectile.GetComponent<WeaponInfo>();
+
+            if(TryGetComponent<Targeting>(out Targeting targeting))
+            {
+                if (!targeting.enemies.Contains(player.gameObject))
+                {
+                    targeting.enemies.Add(player);
+                }
+            }
 
             if (wepType.weaponType == WeaponType.missile)
             {

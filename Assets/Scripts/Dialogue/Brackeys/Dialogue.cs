@@ -14,6 +14,8 @@ public class Dialogue : ScriptableObject
 
 	public Relation relation;
 
+	public Sprite sprite;
+
 	public enum Relation
     {
 		Enemy,

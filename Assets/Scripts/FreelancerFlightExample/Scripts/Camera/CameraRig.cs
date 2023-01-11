@@ -89,7 +89,11 @@ namespace FLFlight
 
             // After rotating the look rig, the camera needs to continue pointing forwards.
             // Point the camera at some point projected forwards from the ship.
+
+            //Vector3 lookaheadPosition = ship.transform.TransformPoint(new Vector3(horizontal, -vertical, 1f) * 100f);
+
             Vector3 lookaheadPosition = ship.transform.TransformPoint(Vector3.forward * 100f);
+
             cam.transform.rotation = Quaternion.LookRotation(lookaheadPosition - lookAheadRig.position, lookAheadRig.up);
         }
     }
